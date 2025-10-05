@@ -31,7 +31,7 @@ export default function LandingPage() {
         <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
           CNC Machine Down?<br />Get Answers in Seconds
         </h2>
-        <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+        <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto">
           24/7 AI phone support + searchable alarm database for Mazak CNC machines
         </p>
         <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-12">
@@ -43,13 +43,13 @@ export default function LandingPage() {
             Call Now: +1 (318) 408-9163
           </a>
           <Link 
-            href="/alarms"
+            href="/"
             className="bg-white hover:bg-gray-50 text-blue-600 border-2 border-blue-600 px-8 py-4 rounded-lg font-bold text-lg transition-colors"
           >
             Browse Alarm Database
           </Link>
         </div>
-        <p className="text-gray-500">
+        <p className="text-gray-700">
           <strong>One hour of prevented downtime ($300-500)</strong> pays for 2-3 months of service
         </p>
       </section>
@@ -60,21 +60,21 @@ export default function LandingPage() {
           <div className="bg-white p-8 rounded-lg shadow-sm">
             <div className="text-4xl mb-4">🤖</div>
             <h3 className="text-xl font-bold mb-3">24/7 AI Phone Support</h3>
-            <p className="text-gray-600">
+            <p className="text-gray-700">
               Call anytime, get instant troubleshooting guidance. AI understands your alarm codes and walks you through solutions.
             </p>
           </div>
           <div className="bg-white p-8 rounded-lg shadow-sm">
             <div className="text-4xl mb-4">📚</div>
             <h3 className="text-xl font-bold mb-3">Searchable Database</h3>
-            <p className="text-gray-600">
+            <p className="text-gray-700">
               181+ Mazak alarm codes with causes, solutions, and safety warnings. Color-coded by severity.
             </p>
           </div>
           <div className="bg-white p-8 rounded-lg shadow-sm">
             <div className="text-4xl mb-4">⚡</div>
             <h3 className="text-xl font-bold mb-3">Instant Answers</h3>
-            <p className="text-gray-600">
+            <p className="text-gray-700">
               No more flipping through manuals at 2 AM. Get the fix you need in under 60 seconds.
             </p>
           </div>
@@ -88,24 +88,24 @@ export default function LandingPage() {
           {/* Free Plan */}
           <div className="bg-white p-8 rounded-lg shadow-lg border-2 border-gray-200">
             <h3 className="text-2xl font-bold mb-2">Free</h3>
-            <p className="text-gray-600 mb-6">Try before you commit</p>
-            <div className="text-4xl font-bold mb-6">$0<span className="text-lg text-gray-600">/month</span></div>
+            <p className="text-gray-700 mb-6">Try before you commit</p>
+            <div className="text-4xl font-bold mb-6">$0<span className="text-lg text-gray-700">/month</span></div>
             <ul className="space-y-3 mb-8">
               <li className="flex items-start">
                 <span className="text-green-500 mr-2">✓</span>
-                <span>3 AI phone calls per month</span>
+                <span className="text-gray-800">3 AI phone calls per month</span>
               </li>
               <li className="flex items-start">
                 <span className="text-green-500 mr-2">✓</span>
-                <span>Access to 50 alarm codes</span>
+                <span className="text-gray-800">Access to 50 alarm codes</span>
               </li>
               <li className="flex items-start">
                 <span className="text-green-500 mr-2">✓</span>
-                <span>Basic troubleshooting</span>
+                <span className="text-gray-800">Basic troubleshooting</span>
               </li>
               <li className="flex items-start">
                 <span className="text-gray-400 mr-2">✗</span>
-                <span className="text-gray-400">Full alarm database</span>
+                <span className="text-gray-500">Full alarm database</span>
               </li>
             </ul>
             <a 
@@ -122,8 +122,8 @@ export default function LandingPage() {
               MOST POPULAR
             </div>
             <h3 className="text-2xl font-bold mb-2">Pro</h3>
-            <p className="text-blue-100 mb-6">For serious operations</p>
-            <div className="text-4xl font-bold mb-6">$199<span className="text-lg text-blue-200">/month</span></div>
+            <p className="text-blue-50 mb-6">For serious operations</p>
+            <div className="text-4xl font-bold mb-6">$199<span className="text-lg text-blue-100">/month</span></div>
             <ul className="space-y-3 mb-8">
               <li className="flex items-start">
                 <span className="text-yellow-400 mr-2">✓</span>
@@ -164,7 +164,7 @@ export default function LandingPage() {
               <span>📞</span>
               <span>+1 (318) 408-9163</span>
             </a>
-            <span className="hidden md:block text-gray-600">|</span>
+            <span className="hidden md:block text-gray-500">|</span>
             <a 
               href="mailto:info@cowie.ai"
               className="flex items-center gap-2 text-xl hover:text-blue-400 transition-colors"
@@ -173,7 +173,7 @@ export default function LandingPage() {
               <span>info@cowie.ai</span>
             </a>
           </div>
-          <p className="text-gray-400">Response within 2 hours during business hours</p>
+          <p className="text-gray-300">Response within 2 hours during business hours</p>
         </div>
       </section>
 
