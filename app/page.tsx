@@ -61,7 +61,7 @@ export default function Home() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <div className="flex justify-between items-start">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
             <div>
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
                 Mazak CNC Alarm Database
@@ -72,12 +72,12 @@ export default function Home() {
             </div>
             <a 
               href="tel:+13184089163"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors flex items-center gap-2"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 md:px-6 rounded-lg transition-colors flex items-center gap-2 w-full md:w-auto justify-center md:justify-start"
             >
               <span className="text-2xl">📞</span>
               <div className="text-left">
                 <div className="text-sm">24/7 Support</div>
-                <div className="text-lg">+1 (318) 408-9163</div>
+                <div className="text-base md:text-lg">+1 (318) 408-9163</div>
               </div>
             </a>
           </div>
@@ -95,7 +95,7 @@ export default function Home() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Enter alarm code (e.g. 101) or keyword..."
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg text-gray-900 placeholder-gray-400"
               />
             </div>
 
