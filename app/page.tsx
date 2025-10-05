@@ -61,12 +61,26 @@ export default function Home() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Mazak CNC Alarm Database
-          </h1>
-          <p className="text-gray-600">
-            Search {alarms.length} alarm codes for instant troubleshooting
-          </p>
+          <div className="flex justify-between items-start">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                Mazak CNC Alarm Database
+              </h1>
+              <p className="text-gray-600">
+                Search {alarms.length} alarm codes for instant troubleshooting
+              </p>
+            </div>
+            <a 
+              href="tel:+13184089163"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors flex items-center gap-2"
+            >
+              <span className="text-2xl">📞</span>
+              <div className="text-left">
+                <div className="text-sm">24/7 Support</div>
+                <div className="text-lg">+1 (318) 408-9163</div>
+              </div>
+            </a>
+          </div>
         </div>
 
         {/* Search & Filters */}
