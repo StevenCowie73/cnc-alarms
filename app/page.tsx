@@ -1,38 +1,31 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import alarmData from './full-alarms.json';
+import alarmData from '../public/alarms.json';
 
 type Alarm = {
   code: string;
   name: string;
   severity?: string;
-  cause?: string;
-  operator_action?: string;
-  machine_types?: string[];
-  category?: string;
-  symptoms?: string;
-  when_to_escalate?: string;
-  safety_concerns?: string;
-  estimated_fix_time?: string;
-  tools_required?: string[];
-  related_alarms?: string[];
-  common_mistakes?: string;
-  prevention?: string;
+  cause?: string | null;
+  action?: string | null;
+  display_color?: string;
+  search_keywords?: string;
 };
 
 export default function Home() {
   const [search, setSearch] = useState('');
   const [severityFilter, setSeverityFilter] = useState('all');
 
-  const alarms: Alarm[] = alarmData.alarms || [];
+  const alarms: Alarm[] = alarmData;
 
   const filteredAlarms = useMemo(() => {
     return alarms.filter((alarm) => {
       const matchesSearch =
         alarm.code.toLowerCase().includes(search.toLowerCase()) ||
         alarm.name.toLowerCase().includes(search.toLowerCase()) ||
-        (alarm.cause && alarm.cause.toLowerCase().includes(search.toLowerCase()));
+        (alarm.cause && alarm.cause.toLowerCase().includes(search.toLowerCase())) ||
+        (alarm.search_keywords && alarm.search_keywords.includes(search.toLowerCase()));
 
       const matchesSeverity =
         severityFilter === 'all' || alarm.severity === severityFilter;
@@ -56,6 +49,11 @@ export default function Home() {
     }
   };
 
+  const getSeverityCount = (severity: string) => {
+    if (severity === 'all') return alarms.length;
+    return alarms.filter(a => a.severity === severity).length;
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-6xl mx-auto">
@@ -76,7 +74,7 @@ export default function Home() {
             >
               <span className="text-2xl">📞</span>
               <div className="text-left">
-                <div className="text-sm">24/7 Support</div>
+                <div className="text-sm">24/7 AI Support</div>
                 <div className="text-base md:text-lg">+1 (318) 408-9163</div>
               </div>
             </a>
@@ -94,7 +92,7 @@ export default function Home() {
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Enter alarm code (e.g. 101) or keyword..."
+                placeholder="Enter alarm code (e.g. 1485) or keyword..."
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg text-gray-900 placeholder-gray-400"
               />
             </div>
@@ -104,31 +102,11 @@ export default function Home() {
                 onClick={() => setSeverityFilter('all')}
                 className={`px-4 py-2 rounded-lg font-medium ${
                   severityFilter === 'all'
-                    ? 'bg-blue-500 text-white'
+                    ? 'bg-gray-600 text-white'
                     : 'bg-gray-200 text-gray-700'
                 }`}
               >
-                All ({alarms.length})
-              </button>
-              <button
-                onClick={() => setSeverityFilter('green')}
-                className={`px-4 py-2 rounded-lg font-medium ${
-                  severityFilter === 'green'
-                    ? 'bg-green-500 text-white'
-                    : 'bg-gray-200 text-gray-700'
-                }`}
-              >
-                🟢 Green
-              </button>
-              <button
-                onClick={() => setSeverityFilter('yellow')}
-                className={`px-4 py-2 rounded-lg font-medium ${
-                  severityFilter === 'yellow'
-                    ? 'bg-yellow-500 text-white'
-                    : 'bg-gray-200 text-gray-700'
-                }`}
-              >
-                🟡 Yellow
+                All ({getSeverityCount('all')})
               </button>
               <button
                 onClick={() => setSeverityFilter('red')}
@@ -138,7 +116,7 @@ export default function Home() {
                     : 'bg-gray-200 text-gray-700'
                 }`}
               >
-                🔴 Red
+                🔴 Red ({getSeverityCount('red')})
               </button>
               <button
                 onClick={() => setSeverityFilter('blue')}
@@ -148,7 +126,27 @@ export default function Home() {
                     : 'bg-gray-200 text-gray-700'
                 }`}
               >
-                🔵 Blue
+                🔵 Blue ({getSeverityCount('blue')})
+              </button>
+              <button
+                onClick={() => setSeverityFilter('yellow')}
+                className={`px-4 py-2 rounded-lg font-medium ${
+                  severityFilter === 'yellow'
+                    ? 'bg-yellow-500 text-white'
+                    : 'bg-gray-200 text-gray-700'
+                }`}
+              >
+                🟡 Yellow ({getSeverityCount('yellow')})
+              </button>
+              <button
+                onClick={() => setSeverityFilter('green')}
+                className={`px-4 py-2 rounded-lg font-medium ${
+                  severityFilter === 'green'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-gray-200 text-gray-700'
+                }`}
+              >
+                🟢 Green ({getSeverityCount('green')})
               </button>
             </div>
           </div>
@@ -175,7 +173,7 @@ export default function Home() {
               >
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <h3 className="text-2xl font-bold">Code {alarm.code}</h3>
+                    <h3 className="text-2xl font-bold">Alarm {alarm.code}</h3>
                     <h4 className="text-lg font-semibold mt-1">{alarm.name}</h4>
                   </div>
                   {alarm.severity && (
@@ -204,30 +202,18 @@ export default function Home() {
                       <p className="text-sm">{alarm.cause}</p>
                     </div>
                   )}
-                  {alarm.operator_action && (
+                  {alarm.action && (
                     <div>
-                      <p className="text-sm font-semibold mb-1">What to do:</p>
-                      <p className="text-sm">{alarm.operator_action}</p>
+                      <p className="text-sm font-semibold mb-1">Action:</p>
+                      <p className="text-sm">{alarm.action}</p>
                     </div>
                   )}
-                  {alarm.when_to_escalate && (
-                    <div>
-                      <p className="text-sm font-semibold mb-1">When to escalate:</p>
-                      <p className="text-sm">{alarm.when_to_escalate}</p>
-                    </div>
-                  )}
-                  {alarm.safety_concerns && (
-                    <div>
-                      <p className="text-sm font-semibold mb-1 text-red-600">⚠️ Safety:</p>
-                      <p className="text-sm">{alarm.safety_concerns}</p>
-                    </div>
-                  )}
-                  {alarm.estimated_fix_time && (
-                    <div>
-                      <p className="text-sm font-semibold mb-1">Estimated fix time:</p>
-                      <p className="text-sm">{alarm.estimated_fix_time}</p>
-                    </div>
-                  )}
+                </div>
+
+                <div className="mt-4 pt-4 border-t border-gray-300">
+                  <p className="text-xs text-gray-500">
+                    💡 Need help? Call our 24/7 AI support: +1 (318) 408-9163
+                  </p>
                 </div>
               </div>
             ))
@@ -237,6 +223,7 @@ export default function Home() {
         {/* Footer */}
         <div className="mt-8 text-center text-sm text-gray-500">
           <p>Independent third-party service • Not affiliated with Yamazaki Mazak Corporation</p>
+          <p className="mt-2">For official support: Mazak Technical Center 859-342-1700</p>
         </div>
       </div>
     </div>
