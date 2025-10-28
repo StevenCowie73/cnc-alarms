@@ -1,0 +1,2551 @@
+{
+  "alarms": [
+    {
+      "code": "101",
+      "name": "SOFT LIMIT +X",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Soft Limit",
+      "severity": "yellow",
+      "cause": "The program commanded the axis to move beyond the software\u2011defined travel limit. This usually happens when work offsets or coordinates are incorrect, causing the tool to attempt to move outside the allowed envelope",
+      "symptoms": "The machine halts and displays a soft\u2011limit alarm for the relevant axis. The axis stops before reaching the programmed position and the cycle will not resume until the alarm is cleared.",
+      "operator_action": "Switch to jog or manual mode and use the axis jog keys to move the axis back within its travel range. Review the program and work offsets and correct any positions that exceed the machine\u2019s limits. Use single\u2011block or dry\u2011run to verify the corrected path before resuming production.",
+      "when_to_escalate": "If the alarm repeats after correcting the program or if soft\u2011limit parameters seem incorrect, involve a lead operator or maintenance. Contact Mazak support if the limit parameters require adjustment.",
+      "safety_concerns": "Never force an axis against a hard stop. Keep hands and tools clear of moving parts when jogging the machine and ensure the guards and doors are closed during axis movement.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "113",
+        "125"
+      ],
+      "common_mistakes": "Mis\u2011calculating program coordinates, ignoring tool length or offsets and entering data without verifying that it stays within the machine\u2019s travels.",
+      "prevention": "Check work coordinate settings and the program\u2019s maximum positions before cutting. Run a dry run or tool\u2011path check and keep machine parameters and offsets updated to avoid exceeding software limits."
+    },
+    {
+      "code": "102",
+      "name": "SOFT LIMIT -X",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Soft Limit",
+      "severity": "yellow",
+      "cause": "The program commanded the axis to move beyond the software\u2011defined travel limit. This usually happens when work offsets or coordinates are incorrect, causing the tool to attempt to move outside the allowed envelope",
+      "symptoms": "The machine halts and displays a soft\u2011limit alarm for the relevant axis. The axis stops before reaching the programmed position and the cycle will not resume until the alarm is cleared.",
+      "operator_action": "Switch to jog or manual mode and use the axis jog keys to move the axis back within its travel range. Review the program and work offsets and correct any positions that exceed the machine\u2019s limits. Use single\u2011block or dry\u2011run to verify the corrected path before resuming production.",
+      "when_to_escalate": "If the alarm repeats after correcting the program or if soft\u2011limit parameters seem incorrect, involve a lead operator or maintenance. Contact Mazak support if the limit parameters require adjustment.",
+      "safety_concerns": "Never force an axis against a hard stop. Keep hands and tools clear of moving parts when jogging the machine and ensure the guards and doors are closed during axis movement.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "113",
+        "125"
+      ],
+      "common_mistakes": "Mis\u2011calculating program coordinates, ignoring tool length or offsets and entering data without verifying that it stays within the machine\u2019s travels.",
+      "prevention": "Check work coordinate settings and the program\u2019s maximum positions before cutting. Run a dry run or tool\u2011path check and keep machine parameters and offsets updated to avoid exceeding software limits."
+    },
+    {
+      "code": "103",
+      "name": "SOFT LIMIT +Y",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Soft Limit",
+      "severity": "yellow",
+      "cause": "The program commanded the axis to move beyond the software\u2011defined travel limit. This usually happens when work offsets or coordinates are incorrect, causing the tool to attempt to move outside the allowed envelope",
+      "symptoms": "The machine halts and displays a soft\u2011limit alarm for the relevant axis. The axis stops before reaching the programmed position and the cycle will not resume until the alarm is cleared.",
+      "operator_action": "Switch to jog or manual mode and use the axis jog keys to move the axis back within its travel range. Review the program and work offsets and correct any positions that exceed the machine\u2019s limits. Use single\u2011block or dry\u2011run to verify the corrected path before resuming production.",
+      "when_to_escalate": "If the alarm repeats after correcting the program or if soft\u2011limit parameters seem incorrect, involve a lead operator or maintenance. Contact Mazak support if the limit parameters require adjustment.",
+      "safety_concerns": "Never force an axis against a hard stop. Keep hands and tools clear of moving parts when jogging the machine and ensure the guards and doors are closed during axis movement.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "113",
+        "125"
+      ],
+      "common_mistakes": "Mis\u2011calculating program coordinates, ignoring tool length or offsets and entering data without verifying that it stays within the machine\u2019s travels.",
+      "prevention": "Check work coordinate settings and the program\u2019s maximum positions before cutting. Run a dry run or tool\u2011path check and keep machine parameters and offsets updated to avoid exceeding software limits."
+    },
+    {
+      "code": "104",
+      "name": "SOFT LIMIT -Y",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Soft Limit",
+      "severity": "yellow",
+      "cause": "The program commanded the axis to move beyond the software\u2011defined travel limit. This usually happens when work offsets or coordinates are incorrect, causing the tool to attempt to move outside the allowed envelope",
+      "symptoms": "The machine halts and displays a soft\u2011limit alarm for the relevant axis. The axis stops before reaching the programmed position and the cycle will not resume until the alarm is cleared.",
+      "operator_action": "Switch to jog or manual mode and use the axis jog keys to move the axis back within its travel range. Review the program and work offsets and correct any positions that exceed the machine\u2019s limits. Use single\u2011block or dry\u2011run to verify the corrected path before resuming production.",
+      "when_to_escalate": "If the alarm repeats after correcting the program or if soft\u2011limit parameters seem incorrect, involve a lead operator or maintenance. Contact Mazak support if the limit parameters require adjustment.",
+      "safety_concerns": "Never force an axis against a hard stop. Keep hands and tools clear of moving parts when jogging the machine and ensure the guards and doors are closed during axis movement.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "113",
+        "125"
+      ],
+      "common_mistakes": "Mis\u2011calculating program coordinates, ignoring tool length or offsets and entering data without verifying that it stays within the machine\u2019s travels.",
+      "prevention": "Check work coordinate settings and the program\u2019s maximum positions before cutting. Run a dry run or tool\u2011path check and keep machine parameters and offsets updated to avoid exceeding software limits."
+    },
+    {
+      "code": "105",
+      "name": "SOFT LIMIT +Z",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Soft Limit",
+      "severity": "yellow",
+      "cause": "The program commanded the axis to move beyond the software\u2011defined travel limit. This usually happens when work offsets or coordinates are incorrect, causing the tool to attempt to move outside the allowed envelope",
+      "symptoms": "The machine halts and displays a soft\u2011limit alarm for the relevant axis. The axis stops before reaching the programmed position and the cycle will not resume until the alarm is cleared.",
+      "operator_action": "Switch to jog or manual mode and use the axis jog keys to move the axis back within its travel range. Review the program and work offsets and correct any positions that exceed the machine\u2019s limits. Use single\u2011block or dry\u2011run to verify the corrected path before resuming production.",
+      "when_to_escalate": "If the alarm repeats after correcting the program or if soft\u2011limit parameters seem incorrect, involve a lead operator or maintenance. Contact Mazak support if the limit parameters require adjustment.",
+      "safety_concerns": "Never force an axis against a hard stop. Keep hands and tools clear of moving parts when jogging the machine and ensure the guards and doors are closed during axis movement.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "113",
+        "125"
+      ],
+      "common_mistakes": "Mis\u2011calculating program coordinates, ignoring tool length or offsets and entering data without verifying that it stays within the machine\u2019s travels.",
+      "prevention": "Check work coordinate settings and the program\u2019s maximum positions before cutting. Run a dry run or tool\u2011path check and keep machine parameters and offsets updated to avoid exceeding software limits."
+    },
+    {
+      "code": "106",
+      "name": "SOFT LIMIT -Z",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Soft Limit",
+      "severity": "yellow",
+      "cause": "The program commanded the axis to move beyond the software\u2011defined travel limit. This usually happens when work offsets or coordinates are incorrect, causing the tool to attempt to move outside the allowed envelope",
+      "symptoms": "The machine halts and displays a soft\u2011limit alarm for the relevant axis. The axis stops before reaching the programmed position and the cycle will not resume until the alarm is cleared.",
+      "operator_action": "Switch to jog or manual mode and use the axis jog keys to move the axis back within its travel range. Review the program and work offsets and correct any positions that exceed the machine\u2019s limits. Use single\u2011block or dry\u2011run to verify the corrected path before resuming production.",
+      "when_to_escalate": "If the alarm repeats after correcting the program or if soft\u2011limit parameters seem incorrect, involve a lead operator or maintenance. Contact Mazak support if the limit parameters require adjustment.",
+      "safety_concerns": "Never force an axis against a hard stop. Keep hands and tools clear of moving parts when jogging the machine and ensure the guards and doors are closed during axis movement.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "113",
+        "125"
+      ],
+      "common_mistakes": "Mis\u2011calculating program coordinates, ignoring tool length or offsets and entering data without verifying that it stays within the machine\u2019s travels.",
+      "prevention": "Check work coordinate settings and the program\u2019s maximum positions before cutting. Run a dry run or tool\u2011path check and keep machine parameters and offsets updated to avoid exceeding software limits."
+    },
+    {
+      "code": "107",
+      "name": "SOFT LIMIT +4th",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Soft Limit",
+      "severity": "yellow",
+      "cause": "The program commanded the axis to move beyond the software\u2011defined travel limit. This usually happens when work offsets or coordinates are incorrect, causing the tool to attempt to move outside the allowed envelope",
+      "symptoms": "The machine halts and displays a soft\u2011limit alarm for the relevant axis. The axis stops before reaching the programmed position and the cycle will not resume until the alarm is cleared.",
+      "operator_action": "Switch to jog or manual mode and use the axis jog keys to move the axis back within its travel range. Review the program and work offsets and correct any positions that exceed the machine\u2019s limits. Use single\u2011block or dry\u2011run to verify the corrected path before resuming production.",
+      "when_to_escalate": "If the alarm repeats after correcting the program or if soft\u2011limit parameters seem incorrect, involve a lead operator or maintenance. Contact Mazak support if the limit parameters require adjustment.",
+      "safety_concerns": "Never force an axis against a hard stop. Keep hands and tools clear of moving parts when jogging the machine and ensure the guards and doors are closed during axis movement.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "113",
+        "125"
+      ],
+      "common_mistakes": "Mis\u2011calculating program coordinates, ignoring tool length or offsets and entering data without verifying that it stays within the machine\u2019s travels.",
+      "prevention": "Check work coordinate settings and the program\u2019s maximum positions before cutting. Run a dry run or tool\u2011path check and keep machine parameters and offsets updated to avoid exceeding software limits."
+    },
+    {
+      "code": "108",
+      "name": "SOFT LIMIT -4th",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Soft Limit",
+      "severity": "yellow",
+      "cause": "The program commanded the axis to move beyond the software\u2011defined travel limit. This usually happens when work offsets or coordinates are incorrect, causing the tool to attempt to move outside the allowed envelope",
+      "symptoms": "The machine halts and displays a soft\u2011limit alarm for the relevant axis. The axis stops before reaching the programmed position and the cycle will not resume until the alarm is cleared.",
+      "operator_action": "Switch to jog or manual mode and use the axis jog keys to move the axis back within its travel range. Review the program and work offsets and correct any positions that exceed the machine\u2019s limits. Use single\u2011block or dry\u2011run to verify the corrected path before resuming production.",
+      "when_to_escalate": "If the alarm repeats after correcting the program or if soft\u2011limit parameters seem incorrect, involve a lead operator or maintenance. Contact Mazak support if the limit parameters require adjustment.",
+      "safety_concerns": "Never force an axis against a hard stop. Keep hands and tools clear of moving parts when jogging the machine and ensure the guards and doors are closed during axis movement.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "113",
+        "125"
+      ],
+      "common_mistakes": "Mis\u2011calculating program coordinates, ignoring tool length or offsets and entering data without verifying that it stays within the machine\u2019s travels.",
+      "prevention": "Check work coordinate settings and the program\u2019s maximum positions before cutting. Run a dry run or tool\u2011path check and keep machine parameters and offsets updated to avoid exceeding software limits."
+    },
+    {
+      "code": "109",
+      "name": "SOFT LIMIT +5th",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Soft Limit",
+      "severity": "yellow",
+      "cause": "The program commanded the axis to move beyond the software\u2011defined travel limit. This usually happens when work offsets or coordinates are incorrect, causing the tool to attempt to move outside the allowed envelope",
+      "symptoms": "The machine halts and displays a soft\u2011limit alarm for the relevant axis. The axis stops before reaching the programmed position and the cycle will not resume until the alarm is cleared.",
+      "operator_action": "Switch to jog or manual mode and use the axis jog keys to move the axis back within its travel range. Review the program and work offsets and correct any positions that exceed the machine\u2019s limits. Use single\u2011block or dry\u2011run to verify the corrected path before resuming production.",
+      "when_to_escalate": "If the alarm repeats after correcting the program or if soft\u2011limit parameters seem incorrect, involve a lead operator or maintenance. Contact Mazak support if the limit parameters require adjustment.",
+      "safety_concerns": "Never force an axis against a hard stop. Keep hands and tools clear of moving parts when jogging the machine and ensure the guards and doors are closed during axis movement.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "113",
+        "125"
+      ],
+      "common_mistakes": "Mis\u2011calculating program coordinates, ignoring tool length or offsets and entering data without verifying that it stays within the machine\u2019s travels.",
+      "prevention": "Check work coordinate settings and the program\u2019s maximum positions before cutting. Run a dry run or tool\u2011path check and keep machine parameters and offsets updated to avoid exceeding software limits."
+    },
+    {
+      "code": "110",
+      "name": "SOFT LIMIT -5th",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Soft Limit",
+      "severity": "yellow",
+      "cause": "The program commanded the axis to move beyond the software\u2011defined travel limit. This usually happens when work offsets or coordinates are incorrect, causing the tool to attempt to move outside the allowed envelope",
+      "symptoms": "The machine halts and displays a soft\u2011limit alarm for the relevant axis. The axis stops before reaching the programmed position and the cycle will not resume until the alarm is cleared.",
+      "operator_action": "Switch to jog or manual mode and use the axis jog keys to move the axis back within its travel range. Review the program and work offsets and correct any positions that exceed the machine\u2019s limits. Use single\u2011block or dry\u2011run to verify the corrected path before resuming production.",
+      "when_to_escalate": "If the alarm repeats after correcting the program or if soft\u2011limit parameters seem incorrect, involve a lead operator or maintenance. Contact Mazak support if the limit parameters require adjustment.",
+      "safety_concerns": "Never force an axis against a hard stop. Keep hands and tools clear of moving parts when jogging the machine and ensure the guards and doors are closed during axis movement.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "113",
+        "125"
+      ],
+      "common_mistakes": "Mis\u2011calculating program coordinates, ignoring tool length or offsets and entering data without verifying that it stays within the machine\u2019s travels.",
+      "prevention": "Check work coordinate settings and the program\u2019s maximum positions before cutting. Run a dry run or tool\u2011path check and keep machine parameters and offsets updated to avoid exceeding software limits."
+    },
+    {
+      "code": "111",
+      "name": "SOFT LIMIT +6th",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Soft Limit",
+      "severity": "yellow",
+      "cause": "The program commanded the axis to move beyond the software\u2011defined travel limit. This usually happens when work offsets or coordinates are incorrect, causing the tool to attempt to move outside the allowed envelope",
+      "symptoms": "The machine halts and displays a soft\u2011limit alarm for the relevant axis. The axis stops before reaching the programmed position and the cycle will not resume until the alarm is cleared.",
+      "operator_action": "Switch to jog or manual mode and use the axis jog keys to move the axis back within its travel range. Review the program and work offsets and correct any positions that exceed the machine\u2019s limits. Use single\u2011block or dry\u2011run to verify the corrected path before resuming production.",
+      "when_to_escalate": "If the alarm repeats after correcting the program or if soft\u2011limit parameters seem incorrect, involve a lead operator or maintenance. Contact Mazak support if the limit parameters require adjustment.",
+      "safety_concerns": "Never force an axis against a hard stop. Keep hands and tools clear of moving parts when jogging the machine and ensure the guards and doors are closed during axis movement.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "113",
+        "125"
+      ],
+      "common_mistakes": "Mis\u2011calculating program coordinates, ignoring tool length or offsets and entering data without verifying that it stays within the machine\u2019s travels.",
+      "prevention": "Check work coordinate settings and the program\u2019s maximum positions before cutting. Run a dry run or tool\u2011path check and keep machine parameters and offsets updated to avoid exceeding software limits."
+    },
+    {
+      "code": "112",
+      "name": "SOFT LIMIT -6th",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Soft Limit",
+      "severity": "yellow",
+      "cause": "The program commanded the axis to move beyond the software\u2011defined travel limit. This usually happens when work offsets or coordinates are incorrect, causing the tool to attempt to move outside the allowed envelope",
+      "symptoms": "The machine halts and displays a soft\u2011limit alarm for the relevant axis. The axis stops before reaching the programmed position and the cycle will not resume until the alarm is cleared.",
+      "operator_action": "Switch to jog or manual mode and use the axis jog keys to move the axis back within its travel range. Review the program and work offsets and correct any positions that exceed the machine\u2019s limits. Use single\u2011block or dry\u2011run to verify the corrected path before resuming production.",
+      "when_to_escalate": "If the alarm repeats after correcting the program or if soft\u2011limit parameters seem incorrect, involve a lead operator or maintenance. Contact Mazak support if the limit parameters require adjustment.",
+      "safety_concerns": "Never force an axis against a hard stop. Keep hands and tools clear of moving parts when jogging the machine and ensure the guards and doors are closed during axis movement.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "113",
+        "125"
+      ],
+      "common_mistakes": "Mis\u2011calculating program coordinates, ignoring tool length or offsets and entering data without verifying that it stays within the machine\u2019s travels.",
+      "prevention": "Check work coordinate settings and the program\u2019s maximum positions before cutting. Run a dry run or tool\u2011path check and keep machine parameters and offsets updated to avoid exceeding software limits."
+    },
+    {
+      "code": "113",
+      "name": "OVER TRAVEL +X",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Over\u2011travel",
+      "severity": "green",
+      "cause": "The axis has reached its physical stroke limit (hard limit) in the indicated direction.",
+      "symptoms": "The machine stops with an over\u2011travel alarm. The affected axis will not move further and an alarm message appears on the display.",
+      "operator_action": "Place the machine in jog or manual mode. Use the jog keys to move the axis away from the mechanical end of travel. Check the program and offsets to ensure future moves stay within the allowable range.",
+      "when_to_escalate": "If the axis cannot be moved manually or there is a mechanical jam at the stroke limit, stop the machine and contact maintenance.",
+      "safety_concerns": "Do not try to override or bypass the mechanical limit. Avoid being near the axis when moving it away from the stop.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "101",
+        "102"
+      ],
+      "common_mistakes": "Attempting to continue in automatic mode without clearing the over\u2011travel or misreading axis limits.",
+      "prevention": "Verify work offsets and program positions before running. Keep the machine properly homed, and ensure stroke limit switches and soft limits are functioning."
+    },
+    {
+      "code": "114",
+      "name": "OVER TRAVEL -X",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Over\u2011travel",
+      "severity": "green",
+      "cause": "The axis has reached its physical stroke limit (hard limit) in the indicated direction.",
+      "symptoms": "The machine stops with an over\u2011travel alarm. The affected axis will not move further and an alarm message appears on the display.",
+      "operator_action": "Place the machine in jog or manual mode. Use the jog keys to move the axis away from the mechanical end of travel. Check the program and offsets to ensure future moves stay within the allowable range.",
+      "when_to_escalate": "If the axis cannot be moved manually or there is a mechanical jam at the stroke limit, stop the machine and contact maintenance.",
+      "safety_concerns": "Do not try to override or bypass the mechanical limit. Avoid being near the axis when moving it away from the stop.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "101",
+        "102"
+      ],
+      "common_mistakes": "Attempting to continue in automatic mode without clearing the over\u2011travel or misreading axis limits.",
+      "prevention": "Verify work offsets and program positions before running. Keep the machine properly homed, and ensure stroke limit switches and soft limits are functioning."
+    },
+    {
+      "code": "115",
+      "name": "OVER TRAVEL +Y",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Over\u2011travel",
+      "severity": "green",
+      "cause": "The axis has reached its physical stroke limit (hard limit) in the indicated direction.",
+      "symptoms": "The machine stops with an over\u2011travel alarm. The affected axis will not move further and an alarm message appears on the display.",
+      "operator_action": "Place the machine in jog or manual mode. Use the jog keys to move the axis away from the mechanical end of travel. Check the program and offsets to ensure future moves stay within the allowable range.",
+      "when_to_escalate": "If the axis cannot be moved manually or there is a mechanical jam at the stroke limit, stop the machine and contact maintenance.",
+      "safety_concerns": "Do not try to override or bypass the mechanical limit. Avoid being near the axis when moving it away from the stop.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "101",
+        "102"
+      ],
+      "common_mistakes": "Attempting to continue in automatic mode without clearing the over\u2011travel or misreading axis limits.",
+      "prevention": "Verify work offsets and program positions before running. Keep the machine properly homed, and ensure stroke limit switches and soft limits are functioning."
+    },
+    {
+      "code": "116",
+      "name": "OVER TRAVEL -Y",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Over\u2011travel",
+      "severity": "green",
+      "cause": "The axis has reached its physical stroke limit (hard limit) in the indicated direction.",
+      "symptoms": "The machine stops with an over\u2011travel alarm. The affected axis will not move further and an alarm message appears on the display.",
+      "operator_action": "Place the machine in jog or manual mode. Use the jog keys to move the axis away from the mechanical end of travel. Check the program and offsets to ensure future moves stay within the allowable range.",
+      "when_to_escalate": "If the axis cannot be moved manually or there is a mechanical jam at the stroke limit, stop the machine and contact maintenance.",
+      "safety_concerns": "Do not try to override or bypass the mechanical limit. Avoid being near the axis when moving it away from the stop.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "101",
+        "102"
+      ],
+      "common_mistakes": "Attempting to continue in automatic mode without clearing the over\u2011travel or misreading axis limits.",
+      "prevention": "Verify work offsets and program positions before running. Keep the machine properly homed, and ensure stroke limit switches and soft limits are functioning."
+    },
+    {
+      "code": "117",
+      "name": "OVER TRAVEL +Z",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Over\u2011travel",
+      "severity": "green",
+      "cause": "The axis has reached its physical stroke limit (hard limit) in the indicated direction.",
+      "symptoms": "The machine stops with an over\u2011travel alarm. The affected axis will not move further and an alarm message appears on the display.",
+      "operator_action": "Place the machine in jog or manual mode. Use the jog keys to move the axis away from the mechanical end of travel. Check the program and offsets to ensure future moves stay within the allowable range.",
+      "when_to_escalate": "If the axis cannot be moved manually or there is a mechanical jam at the stroke limit, stop the machine and contact maintenance.",
+      "safety_concerns": "Do not try to override or bypass the mechanical limit. Avoid being near the axis when moving it away from the stop.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "101",
+        "102"
+      ],
+      "common_mistakes": "Attempting to continue in automatic mode without clearing the over\u2011travel or misreading axis limits.",
+      "prevention": "Verify work offsets and program positions before running. Keep the machine properly homed, and ensure stroke limit switches and soft limits are functioning."
+    },
+    {
+      "code": "118",
+      "name": "OVER TRAVEL -Z",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Over\u2011travel",
+      "severity": "green",
+      "cause": "The axis has reached its physical stroke limit (hard limit) in the indicated direction.",
+      "symptoms": "The machine stops with an over\u2011travel alarm. The affected axis will not move further and an alarm message appears on the display.",
+      "operator_action": "Place the machine in jog or manual mode. Use the jog keys to move the axis away from the mechanical end of travel. Check the program and offsets to ensure future moves stay within the allowable range.",
+      "when_to_escalate": "If the axis cannot be moved manually or there is a mechanical jam at the stroke limit, stop the machine and contact maintenance.",
+      "safety_concerns": "Do not try to override or bypass the mechanical limit. Avoid being near the axis when moving it away from the stop.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "101",
+        "102"
+      ],
+      "common_mistakes": "Attempting to continue in automatic mode without clearing the over\u2011travel or misreading axis limits.",
+      "prevention": "Verify work offsets and program positions before running. Keep the machine properly homed, and ensure stroke limit switches and soft limits are functioning."
+    },
+    {
+      "code": "119",
+      "name": "OVER TRAVEL +4th",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Over\u2011travel",
+      "severity": "green",
+      "cause": "The axis has reached its physical stroke limit (hard limit) in the indicated direction.",
+      "symptoms": "The machine stops with an over\u2011travel alarm. The affected axis will not move further and an alarm message appears on the display.",
+      "operator_action": "Place the machine in jog or manual mode. Use the jog keys to move the axis away from the mechanical end of travel. Check the program and offsets to ensure future moves stay within the allowable range.",
+      "when_to_escalate": "If the axis cannot be moved manually or there is a mechanical jam at the stroke limit, stop the machine and contact maintenance.",
+      "safety_concerns": "Do not try to override or bypass the mechanical limit. Avoid being near the axis when moving it away from the stop.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "101",
+        "102"
+      ],
+      "common_mistakes": "Attempting to continue in automatic mode without clearing the over\u2011travel or misreading axis limits.",
+      "prevention": "Verify work offsets and program positions before running. Keep the machine properly homed, and ensure stroke limit switches and soft limits are functioning."
+    },
+    {
+      "code": "120",
+      "name": "OVER TRAVEL -4th",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Over\u2011travel",
+      "severity": "green",
+      "cause": "The axis has reached its physical stroke limit (hard limit) in the indicated direction.",
+      "symptoms": "The machine stops with an over\u2011travel alarm. The affected axis will not move further and an alarm message appears on the display.",
+      "operator_action": "Place the machine in jog or manual mode. Use the jog keys to move the axis away from the mechanical end of travel. Check the program and offsets to ensure future moves stay within the allowable range.",
+      "when_to_escalate": "If the axis cannot be moved manually or there is a mechanical jam at the stroke limit, stop the machine and contact maintenance.",
+      "safety_concerns": "Do not try to override or bypass the mechanical limit. Avoid being near the axis when moving it away from the stop.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "101",
+        "102"
+      ],
+      "common_mistakes": "Attempting to continue in automatic mode without clearing the over\u2011travel or misreading axis limits.",
+      "prevention": "Verify work offsets and program positions before running. Keep the machine properly homed, and ensure stroke limit switches and soft limits are functioning."
+    },
+    {
+      "code": "121",
+      "name": "OVER TRAVEL +5th",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Over\u2011travel",
+      "severity": "green",
+      "cause": "The axis has reached its physical stroke limit (hard limit) in the indicated direction.",
+      "symptoms": "The machine stops with an over\u2011travel alarm. The affected axis will not move further and an alarm message appears on the display.",
+      "operator_action": "Place the machine in jog or manual mode. Use the jog keys to move the axis away from the mechanical end of travel. Check the program and offsets to ensure future moves stay within the allowable range.",
+      "when_to_escalate": "If the axis cannot be moved manually or there is a mechanical jam at the stroke limit, stop the machine and contact maintenance.",
+      "safety_concerns": "Do not try to override or bypass the mechanical limit. Avoid being near the axis when moving it away from the stop.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "101",
+        "102"
+      ],
+      "common_mistakes": "Attempting to continue in automatic mode without clearing the over\u2011travel or misreading axis limits.",
+      "prevention": "Verify work offsets and program positions before running. Keep the machine properly homed, and ensure stroke limit switches and soft limits are functioning."
+    },
+    {
+      "code": "122",
+      "name": "OVER TRAVEL -5th",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Over\u2011travel",
+      "severity": "green",
+      "cause": "The axis has reached its physical stroke limit (hard limit) in the indicated direction.",
+      "symptoms": "The machine stops with an over\u2011travel alarm. The affected axis will not move further and an alarm message appears on the display.",
+      "operator_action": "Place the machine in jog or manual mode. Use the jog keys to move the axis away from the mechanical end of travel. Check the program and offsets to ensure future moves stay within the allowable range.",
+      "when_to_escalate": "If the axis cannot be moved manually or there is a mechanical jam at the stroke limit, stop the machine and contact maintenance.",
+      "safety_concerns": "Do not try to override or bypass the mechanical limit. Avoid being near the axis when moving it away from the stop.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "101",
+        "102"
+      ],
+      "common_mistakes": "Attempting to continue in automatic mode without clearing the over\u2011travel or misreading axis limits.",
+      "prevention": "Verify work offsets and program positions before running. Keep the machine properly homed, and ensure stroke limit switches and soft limits are functioning."
+    },
+    {
+      "code": "123",
+      "name": "OVER TRAVEL +6th",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Over\u2011travel",
+      "severity": "green",
+      "cause": "The axis has reached its physical stroke limit (hard limit) in the indicated direction.",
+      "symptoms": "The machine stops with an over\u2011travel alarm. The affected axis will not move further and an alarm message appears on the display.",
+      "operator_action": "Place the machine in jog or manual mode. Use the jog keys to move the axis away from the mechanical end of travel. Check the program and offsets to ensure future moves stay within the allowable range.",
+      "when_to_escalate": "If the axis cannot be moved manually or there is a mechanical jam at the stroke limit, stop the machine and contact maintenance.",
+      "safety_concerns": "Do not try to override or bypass the mechanical limit. Avoid being near the axis when moving it away from the stop.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "101",
+        "102"
+      ],
+      "common_mistakes": "Attempting to continue in automatic mode without clearing the over\u2011travel or misreading axis limits.",
+      "prevention": "Verify work offsets and program positions before running. Keep the machine properly homed, and ensure stroke limit switches and soft limits are functioning."
+    },
+    {
+      "code": "124",
+      "name": "OVER TRAVEL -6th",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Axis Over\u2011travel",
+      "severity": "green",
+      "cause": "The axis has reached its physical stroke limit (hard limit) in the indicated direction.",
+      "symptoms": "The machine stops with an over\u2011travel alarm. The affected axis will not move further and an alarm message appears on the display.",
+      "operator_action": "Place the machine in jog or manual mode. Use the jog keys to move the axis away from the mechanical end of travel. Check the program and offsets to ensure future moves stay within the allowable range.",
+      "when_to_escalate": "If the axis cannot be moved manually or there is a mechanical jam at the stroke limit, stop the machine and contact maintenance.",
+      "safety_concerns": "Do not try to override or bypass the mechanical limit. Avoid being near the axis when moving it away from the stop.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "101",
+        "102"
+      ],
+      "common_mistakes": "Attempting to continue in automatic mode without clearing the over\u2011travel or misreading axis limits.",
+      "prevention": "Verify work offsets and program positions before running. Keep the machine properly homed, and ensure stroke limit switches and soft limits are functioning."
+    },
+    {
+      "code": "125",
+      "name": "ILLEGAL AXIS EXISTS",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Reference Return Error",
+      "severity": "red",
+      "cause": "During reference\u2011point return the proximity\u2011point limit switch passed beyond the watchdog position, indicating that the reference sensor or limit switch is out of position",
+      "symptoms": "While homing, the axis fails to find its reference point and the CNC displays an illegal axis alarm.",
+      "operator_action": "Stop the reference return. Check the proximity sensor and watchdog positioning. Increase the length of the watchdog or reduce the reference return speed so that the sensor is detected in time, then perform the zero return again",
+      "when_to_escalate": "If adjusting the sensor or return speed doesn\u2019t clear the alarm, call maintenance to inspect the sensors and wiring.",
+      "safety_concerns": "Keep clear of the axis when testing reference return. Do not bypass safety switches.",
+      "estimated_fix_time": "10-20 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "126",
+        "127"
+      ],
+      "common_mistakes": "Running a high\u2011speed reference return without verifying limit\u2011switch alignment.",
+      "prevention": "Regularly inspect proximity switches and reference markers. Use appropriate reference return speed during homing."
+    },
+    {
+      "code": "126",
+      "name": "Z AXIS NOT AT HOME",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Reference Return Error",
+      "severity": "yellow",
+      "cause": "After powering on, the axis did not pass the Z\u2011phase pulse of the encoder during initial reference return",
+      "symptoms": "The machine cannot complete homing; a Z axis not at home alarm appears.",
+      "operator_action": "Use the handwheel or jog mode to move the axis slightly away from the home position in the opposite direction, then perform the reference return again until the Z\u2011phase pulse is detected.",
+      "when_to_escalate": "If the axis still fails to home or encoder feedback is lost, involve maintenance or Mazak support.",
+      "safety_concerns": "Move the axis slowly when searching for the home position; keep hands and objects clear of moving parts.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "125",
+        "127"
+      ],
+      "common_mistakes": "Attempting to home the machine without first moving off the home switch.",
+      "prevention": "Perform homing at a moderate feed and ensure the encoder and home switches are functioning correctly."
+    },
+    {
+      "code": "127",
+      "name": "ILLEGAL DIR. FOR ORIGIN RETURN",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Reference Return Error",
+      "severity": "green",
+      "cause": "The axis movement direction selected with the axis selector buttons is wrong for the reference\u2011point return",
+      "symptoms": "Homing fails immediately and the control reports an illegal direction alarm.",
+      "operator_action": "Select the correct direction (+ or \u2013) on the axis selector and then perform the reference return again.",
+      "when_to_escalate": "If the alarm persists despite selecting the correct direction, check for wiring issues or call maintenance.",
+      "safety_concerns": "Ensure the axis moves away from mechanical stops during homing; avoid rapid movement until direction is verified.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "125",
+        "126"
+      ],
+      "common_mistakes": "Not verifying the reference return direction after a program change or service.",
+      "prevention": "Familiarize yourself with the correct homing direction for each axis and label controls clearly."
+    },
+    {
+      "code": "128",
+      "name": "OUTSIDE INTERLOCK AXIS",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Interlock Error",
+      "severity": "yellow",
+      "cause": "An axis interlock input is active, causing the axis to be locked and preventing movement",
+      "symptoms": "The axis will not move and the control shows an outside interlock alarm.",
+      "operator_action": "Clear the interlock condition: check that all guards and safety switches are closed, reset any emergency stops, and confirm that the interlock signal is enabled. Once cleared, try the movement again.",
+      "when_to_escalate": "If the interlock circuit cannot be cleared or a switch is faulty, call maintenance.",
+      "safety_concerns": "Do not bypass interlock circuits; ensure guards and covers are secure before enabling motion.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "129",
+        "130"
+      ],
+      "common_mistakes": "Attempting to jog an interlocked axis without checking safety switches.",
+      "prevention": "Before moving an axis, make sure all safety interlocks are satisfied; regularly inspect switches and wiring."
+    },
+    {
+      "code": "129",
+      "name": "INSIDE INTERLOCK AXIS",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Interlock Error",
+      "severity": "yellow",
+      "cause": "The manual skip function is effective in the commanded direction or the servo\u2011off function is active",
+      "symptoms": "The axis will not move and an inside interlock alarm is displayed.",
+      "operator_action": "Deactivate the servo\u2011off function and ensure that manual skip is not engaged. Reset any axis skip or measurement modes and then retry the movement.",
+      "when_to_escalate": "If the servo amplifier does not enable or the alarm persists, contact maintenance.",
+      "safety_concerns": "Keep hands clear when re\u2011enabling servo power; ensure the axis will not move unexpectedly.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "128",
+        "130"
+      ],
+      "common_mistakes": "Leaving the servo off or skip function engaged after a measurement routine.",
+      "prevention": "After using measurement or manual skip functions, return controls to their normal state before running programs."
+    },
+    {
+      "code": "130",
+      "name": "NO OPERATION MODE",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Mode Selection Error",
+      "severity": "yellow",
+      "cause": "An incorrect or undefined operation mode was selected or the mode selector switch is malfunctioning",
+      "symptoms": "The machine refuses to start a cycle and displays a no operation mode alarm.",
+      "operator_action": "Verify the selector switch is set to a valid mode (manual, automatic, MDI, etc.). If the switch feels loose or the mode does not change, check wiring or contact maintenance.",
+      "when_to_escalate": "If the selector switch hardware is faulty or wiring problems are suspected, call maintenance or Mazak service.",
+      "safety_concerns": "Do not force the mode selector; a broken switch could cause unexpected machine behavior.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "131",
+        "132"
+      ],
+      "common_mistakes": "Switching modes too quickly or leaving the switch between positions.",
+      "prevention": "Operate the mode selector deliberately. Replace worn or faulty switches promptly."
+    },
+    {
+      "code": "131",
+      "name": "CUTTING FEED OVERRIDE ZERO",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Feed Override Error",
+      "severity": "green",
+      "cause": "The cutting\u2011feed override knob is set to zero on the control panel",
+      "symptoms": "When starting a program, the machine does not feed and an override zero alarm appears.",
+      "operator_action": "Adjust the feed override knob to a value above zero. If the override is not zero yet the alarm appears, check wiring for shorts or faulty potentiometers.",
+      "when_to_escalate": "If adjusting the knob does not clear the alarm, have maintenance inspect the override circuit.",
+      "safety_concerns": "Changing feed overrides during cutting can affect part quality; adjust carefully.",
+      "estimated_fix_time": "2 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "132"
+      ],
+      "common_mistakes": "Accidentally setting feed override to zero or bumping the knob during operation.",
+      "prevention": "Ensure the override knob is set to a reasonable value before starting and avoid bumping the control during machining."
+    },
+    {
+      "code": "132",
+      "name": "FEEDRATE ZERO",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Feed Override Error",
+      "severity": "green",
+      "cause": "A manual feedrate of zero was selected when trying to execute an axis movement in cutting feed mode or during a dry\u2011run",
+      "symptoms": "Machine does not move the axis during dry\u2011run or feed mode and displays a feedrate zero alarm.",
+      "operator_action": "Set the manual feedrate to a value greater than zero. If the alarm persists when the dial is not at zero, inspect wiring for a short circuit.",
+      "when_to_escalate": "If changing the feedrate dial does not resolve the issue, maintenance should check the potentiometer and wiring.",
+      "safety_concerns": "Start with a low feedrate and gradually increase to avoid abrupt movements.",
+      "estimated_fix_time": "2 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "131"
+      ],
+      "common_mistakes": "Leaving the feedrate knob at zero during a dry\u2011run or failing to check it after power\u2011on.",
+      "prevention": "Always set the feedrate dial to an appropriate value before running a program; incorporate this into pre\u2011start checks."
+    },
+    {
+      "code": "133",
+      "name": "STOP SPINDLE",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Spindle Error",
+      "severity": "red",
+      "cause": "The spindle failed to start when a rotation command was issued, indicating a problem with the spindle amplifier or encoder",
+      "symptoms": "Upon issuing a spindle start command, the spindle does not rotate and a stop spindle alarm is displayed.",
+      "operator_action": "Verify that the spindle is clear and not mechanically jammed. Attempt to restart. If it still doesn\u2019t rotate, stop the machine and have the spindle amplifier and encoder checked by qualified maintenance.",
+      "when_to_escalate": "This alarm requires maintenance or Mazak service since it involves the spindle drive. Do not attempt to repair the amplifier without proper training.",
+      "safety_concerns": "Do not run the spindle if it will not rotate; attempting to force rotation could cause damage or injury.",
+      "estimated_fix_time": "30-60 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "134"
+      ],
+      "common_mistakes": "Ignoring alarms and repeatedly attempting to start the spindle without diagnosing the cause.",
+      "prevention": "Regularly maintain the spindle drive and ensure the encoder and amplifier are functioning. Monitor spindle load and temperature for early signs of failure."
+    },
+    {
+      "code": "134",
+      "name": "SPINDLE ROTATION EXCEEDED",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Spindle Error",
+      "severity": "red",
+      "cause": "The commanded spindle speed exceeded the spindle\u2019s maximum speed limit",
+      "symptoms": "The control stops the spindle command and displays a spindle rotation exceeded alarm.",
+      "operator_action": "Reduce the commanded spindle speed to within the machine\u2019s specification. Then attempt to start the spindle again. Have maintenance check the amplifier if overspeed conditions persist.",
+      "when_to_escalate": "If reducing the speed does not clear the alarm or the overspeed condition appears incorrectly, call maintenance or Mazak service.",
+      "safety_concerns": "Running the spindle above its rated speed can cause catastrophic failure. Always verify speed limits for tools and workpieces.",
+      "estimated_fix_time": "10-20 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "133"
+      ],
+      "common_mistakes": "Programming spindle speeds that exceed machine or tool capability.",
+      "prevention": "Verify spindle speed limits in the program and monitor override settings. Use appropriate speed for each tool."
+    },
+    {
+      "code": "135",
+      "name": "BLOCK START INTERLOCK",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Interlock Error",
+      "severity": "red",
+      "cause": "An interlock signal preventing program start is active; the control has locked the start of the program block",
+      "symptoms": "The machine will not start a program block and displays a block start interlock alarm.",
+      "operator_action": "Check the PLC sequence and interlock conditions: ensure doors are closed, chucks are clamped and required signals are present. Clear any interlocks and reset. If the alarm appears without obvious cause, call maintenance.",
+      "when_to_escalate": "When the interlock circuitry cannot be cleared or there is a logic fault, contact Mazak service.",
+      "safety_concerns": "Never bypass safety interlocks. Ensure all protective devices are functioning before starting a program.",
+      "estimated_fix_time": "10-20 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "136"
+      ],
+      "common_mistakes": "Attempting to start a cycle with safety doors open or chuck unclamped.",
+      "prevention": "Follow machine pre\u2011start checklist; check all interlock devices and signals before pressing cycle start."
+    },
+    {
+      "code": "136",
+      "name": "CUTTING BLOCK START INTERLOCK",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Interlock Error",
+      "severity": "red",
+      "cause": "The interlock signal to lock the start of a cutting block is active",
+      "symptoms": "The cutting program will not start and an interlock alarm specific to cutting appears.",
+      "operator_action": "Examine the PLC or machine sequence for active cutting interlocks. Verify that the machine is set up correctly and the required conditions (such as coolant on, spindle ready) are satisfied. If the program appears correct yet the alarm persists, contact maintenance.",
+      "when_to_escalate": "Persistent interlock alarms generally require troubleshooting by maintenance or Mazak service.",
+      "safety_concerns": "Never force the machine to start by disabling interlocks; this can lead to tool crashes or injury.",
+      "estimated_fix_time": "10-20 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "135"
+      ],
+      "common_mistakes": "Ignoring required machine states before starting a cutting block.",
+      "prevention": "Ensure all cutting conditions (spindle on, coolant, clamp) are satisfied before initiating a cutting block; verify PLC interlock logic."
+    },
+    {
+      "code": "137",
+      "name": "DYNAMIC COMPENSATION EXCEEDED",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Machine Geometry Error",
+      "severity": "yellow",
+      "cause": "The dynamic compensation amount exceeded 3\u00a0mm (0.12\u00a0in.), indicating that the workpiece zero point is not centered on the table",
+      "symptoms": "An alarm is displayed and the machine may refuse to continue rotation or compensation.",
+      "operator_action": "Ensure that the workpiece coordinate zero point is roughly centered on the workpiece. Adjust the difference between the workpiece center and rotary table center to within 3\u00a0mm and re\u2011zero the offsets.",
+      "when_to_escalate": "If compensation values remain excessive or the table is misaligned, maintenance should check alignment and parameters.",
+      "safety_concerns": "An unbalanced workpiece could come loose at high speed; always secure the part and verify centering.",
+      "estimated_fix_time": "15 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "138"
+      ],
+      "common_mistakes": "Setting the zero point far from the workpiece center or ignoring recommended compensation limits.",
+      "prevention": "Center the workpiece on the table and set the zero point properly. Check dynamic compensation parameters when switching fixtures."
+    },
+    {
+      "code": "138",
+      "name": "CANNOT ROTATE TABLE",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Table Rotation Error",
+      "severity": "yellow",
+      "cause": "There are positions where table rotation would cause interference, preventing the table from rotating",
+      "symptoms": "The control displays a cannot rotate table alarm and prevents rotary motion.",
+      "operator_action": "Modify the approach point or retract the axes to avoid interference before commanding table rotation. Check fixture and tool clearances.",
+      "when_to_escalate": "If table rotation is blocked due to mechanical issues or parameter errors, have maintenance inspect the rotary mechanism.",
+      "safety_concerns": "Ensure there is no risk of collision when rotating the table. Clear any obstructions and keep away from the rotating area.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "137"
+      ],
+      "common_mistakes": "Programming table rotation without considering clamp or fixture interference.",
+      "prevention": "Simulate rotary moves with the workpiece and tooling to confirm clearance. Adjust approach positions accordingly."
+    },
+    {
+      "code": "140",
+      "name": "ILLEGAL REFERENCE RETURN No.",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Reference Return Error",
+      "severity": "yellow",
+      "cause": "A command was issued to return to the second reference point before returning to the first reference point",
+      "symptoms": "The axis will not reference and an illegal reference return number alarm is displayed.",
+      "operator_action": "First return the axis to the first reference point. Once homed properly, you can then command a return to the second reference point if required.",
+      "when_to_escalate": "If the axis cannot be referenced or parameter settings for reference points are wrong, maintenance should inspect the system.",
+      "safety_concerns": "Do not force reference moves out of sequence; doing so can damage mechanical stops.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "126",
+        "127"
+      ],
+      "common_mistakes": "Attempting to use second reference point without completing the first reference procedure.",
+      "prevention": "Follow the correct homing sequence for each axis. Set up programs to return to the first reference point before moving on."
+    },
+    {
+      "code": "141",
+      "name": "EXCESS SIMULTANEOUS ERROR",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Synchronization Error",
+      "severity": "yellow",
+      "cause": "During synchronous control the difference between the master and slave axes exceeded the allowable synchronization error",
+      "symptoms": "The machine stops synchronized motion and reports an excess simultaneous error.",
+      "operator_action": "Move one of the axes manually in the direction that reduces the error, or adjust the allowable error tolerance parameter. Then resume synchronous control.",
+      "when_to_escalate": "If the synchronization error cannot be reduced or parameters appear incorrect, involve maintenance.",
+      "safety_concerns": "Synchronized axes can move rapidly; ensure clearances before adjusting and keep away from moving components.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "142"
+      ],
+      "common_mistakes": "Misconfigured synchronous control parameters or loads that prevent axes from moving together.",
+      "prevention": "Check synchronization parameters and ensure mechanical systems (belts, couplings) are in good condition before using synchronous control."
+    },
+    {
+      "code": "142",
+      "name": "NONE OR DUPLICATE OPERAT. MODE",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Mode Selection Error",
+      "severity": "yellow",
+      "cause": "Either no operation mode has been selected or more than one mode is selected due to a malfunctioning mode selector",
+      "symptoms": "The machine refuses to operate and displays a none or duplicate operation mode alarm.",
+      "operator_action": "Inspect the mode selector switch and verify only one mode is selected. Correct wiring issues if multiple mode signals are active.",
+      "when_to_escalate": "If the selector switch or wiring is faulty, maintenance needs to repair or replace the switch.",
+      "safety_concerns": "Operating with an ambiguous mode selection can cause unpredictable motion; confirm mode before running.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "130"
+      ],
+      "common_mistakes": "Leaving the mode switch between positions or switching too quickly.",
+      "prevention": "Select modes deliberately and verify the indicator lights. Replace worn or defective switches."
+    },
+    {
+      "code": "143",
+      "name": "ILLEGAL HANDLE FEED AXIS",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Manual Feed Error",
+      "severity": "yellow",
+      "cause": "A nonexistent axis was designated for handwheel feed, or no axis was designated",
+      "symptoms": "The handwheel will not feed the axis and an illegal handle feed axis alarm is shown.",
+      "operator_action": "Check the handwheel axis selection switch or buttons. Ensure the selected axis exists and that the number of axes matches the machine\u2019s configuration.",
+      "when_to_escalate": "If the selection switch or wiring is incorrect, maintenance should repair the circuit.",
+      "safety_concerns": "Select the correct axis before turning the handwheel to avoid unintended motion.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "142"
+      ],
+      "common_mistakes": "Selecting an unused axis letter or forgetting to select any axis before using the handwheel.",
+      "prevention": "Label the handwheel axis selector clearly and train operators on the correct selection process."
+    },
+    {
+      "code": "145",
+      "name": "REQUIRE ABSOLUTE RECOVERY",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Absolute Position Error",
+      "severity": "red",
+      "cause": "The absolute position data has been lost or the absolute position detector has failed",
+      "symptoms": "After power\u2011on or during operation the machine reports that absolute recovery is required and stops motion.",
+      "operator_action": "Do not attempt further movement. Contact Mazak service or maintenance to restore the absolute position and recalibrate the zero point.",
+      "when_to_escalate": "This alarm always requires specialist attention. Only trained technicians should perform absolute recovery.",
+      "safety_concerns": "Operating without correct absolute position data can cause collisions; do not move axes until resolved.",
+      "estimated_fix_time": "1-2 hours",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "146"
+      ],
+      "common_mistakes": "Ignoring battery replacement schedules for absolute encoders or continuing operation after data loss.",
+      "prevention": "Keep absolute encoder batteries within their service life and perform regular position backup routines."
+    },
+    {
+      "code": "146",
+      "name": "NOT AUTO MODE",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Mode Selection Error",
+      "severity": "green",
+      "cause": "The cycle start button was pressed when the machine was not in the automatic mode",
+      "symptoms": "Pressing cycle start does not begin the program and a not auto mode alarm is displayed.",
+      "operator_action": "Switch the control to automatic mode and then press cycle start again.",
+      "when_to_escalate": "If the mode cannot be changed or the selector is faulty, contact maintenance.",
+      "safety_concerns": "Ensure the proper mode is selected before starting any cycle to prevent unintended motions.",
+      "estimated_fix_time": "2 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "130"
+      ],
+      "common_mistakes": "Attempting to run a program while in manual or MDI mode.",
+      "prevention": "Check the mode indicator lights before pressing cycle start."
+    },
+    {
+      "code": "147",
+      "name": "C AXIS TURNING ANGLE OVER",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Rotary Axis Error",
+      "severity": "yellow",
+      "cause": "The commanded rotation exceeded the C\u2011axis rotational limit or the arc radius is smaller than the C\u2011axis rotation radius",
+      "symptoms": "The machine stops rotary movement and reports a C\u2011axis turning angle over alarm.",
+      "operator_action": "Review the program to ensure the commanded angle is within limits. Adjust the program or increase parameter K1 (rotational radius of the C\u2011axis) if appropriate.",
+      "when_to_escalate": "If parameter settings are unclear or mechanical limits are suspected, involve maintenance or Mazak support.",
+      "safety_concerns": "Avoid forcing the rotary axis beyond its limits; mechanical damage may occur.",
+      "estimated_fix_time": "10-15 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "148"
+      ],
+      "common_mistakes": "Programming arcs with too small a radius or forgetting to account for C\u2011axis limits.",
+      "prevention": "Verify rotary axis limits in the program and check parameters governing C\u2011axis radius."
+    },
+    {
+      "code": "148",
+      "name": "CHUCK BARRIER",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Barrier Interference",
+      "severity": "yellow",
+      "cause": "The tool path entered the chuck barrier zone; the control detected potential interference with the chuck",
+      "symptoms": "An alarm indicating chuck barrier is displayed and the machine halts before collision.",
+      "operator_action": "Review the barrier parameters and modify them if necessary. For automatic operation, correct the machining program to avoid entering the chuck barrier zone.",
+      "when_to_escalate": "If the barrier parameters are correctly set but the alarm persists, have maintenance check the sensor calibration.",
+      "safety_concerns": "Do not attempt to bypass barrier functions; they prevent collisions with the chuck.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "149",
+        "150"
+      ],
+      "common_mistakes": "Programming tool approaches that come too close to the chuck without adjusting barriers.",
+      "prevention": "Understand and set chuck barrier parameters appropriately. Simulate tool paths to ensure safe clearance."
+    },
+    {
+      "code": "149",
+      "name": "TAILSTOCK BARRIER",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Barrier Interference",
+      "severity": "yellow",
+      "cause": "The tool path entered the tailstock barrier zone, indicating a potential collision with the tailstock",
+      "symptoms": "The program stops and a tailstock barrier alarm appears.",
+      "operator_action": "Correct the machining program to avoid the tailstock barrier. If the program is already correct, review the tool data and barrier parameters for the tailstock and adjust them.",
+      "when_to_escalate": "If barrier settings are correct but the alarm still triggers, maintenance should check the tailstock barrier sensor.",
+      "safety_concerns": "Never disable tailstock barrier monitoring; the barrier protects the tailstock and spindle.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "148",
+        "150"
+      ],
+      "common_mistakes": "Underestimating the tailstock length or ignoring barrier zones in the program.",
+      "prevention": "Set up barrier parameters according to the workpiece and tailstock size. Check programs for safe tailstock clearance."
+    },
+    {
+      "code": "150",
+      "name": "WORK PIECE BARRIER",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Barrier Interference",
+      "severity": "yellow",
+      "cause": "Interference has been detected between the workpieces or fixtures on multiple spindles (or between workpiece and lower turret)",
+      "symptoms": "The machine stops and displays a workpiece barrier alarm.",
+      "operator_action": "Stop the program and check the relative positions of workpieces on each spindle. Correct the machining program if necessary. Review the barrier parameters governing workpiece interference.",
+      "when_to_escalate": "If the alarm cannot be cleared through programming adjustments, maintenance should verify barrier sensor operation.",
+      "safety_concerns": "Workpiece interference can cause serious crashes. Never ignore barrier alarms.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "148",
+        "149"
+      ],
+      "common_mistakes": "Running two spindles without coordinating workpiece positions.",
+      "prevention": "Plan multi\u2011spindle operations carefully. Set barrier parameters based on workpiece sizes and check for interference during dry\u2011run."
+    },
+    {
+      "code": "156",
+      "name": "ILLEGAL MEASURING SENSOR SIGNAL",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Measurement Error",
+      "severity": "yellow",
+      "cause": "The sensor signal for tool measurement turned on prematurely during preparation for measurement",
+      "symptoms": "An alarm is raised during measurement setup indicating the sensor signal is illegal.",
+      "operator_action": "Do not start the measurement until preparation is complete. Ensure the sensor is mounted correctly and that no chips or coolant are triggering it. Restart the measurement routine after clearing the signal.",
+      "when_to_escalate": "If the sensor signal remains on when the probe is not in contact, maintenance should inspect the wiring and sensor.",
+      "safety_concerns": "Avoid contacting the sensor with the tool inadvertently; ensure the measurement cycle is ready before starting.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "157"
+      ],
+      "common_mistakes": "Starting the measurement routine before the probe and tool are in the correct position.",
+      "prevention": "Follow proper probe setup procedures and verify sensor operation before each measurement."
+    },
+    {
+      "code": "157",
+      "name": "MEASURED RESULT MALFUNCTION",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Measurement Error",
+      "severity": "yellow",
+      "cause": "Repeated measurement results are outside the allowable tolerance, indicating unreliable measurement",
+      "symptoms": "After multiple measurement cycles the results are inconsistent and an alarm is shown.",
+      "operator_action": "Check the program for correct measurement logic. Verify that the sensor tool length or diameter is correctly registered in the tool data. Inspect the sensor mounting and condition. After correcting any issues, repeat the measurement.",
+      "when_to_escalate": "If measurement results remain unstable despite correct setup, maintenance should check the sensor and probe calibration.",
+      "safety_concerns": "Avoid pressing the probe against the work excessively; repeated incorrect measurements can damage the probe.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "156"
+      ],
+      "common_mistakes": "Ignoring tool data settings or using a damaged probe.",
+      "prevention": "Maintain probes and sensors, and ensure tool data is accurate before performing measurement cycles."
+    },
+    {
+      "code": "191",
+      "name": "FILE SYSTEM I/O ERROR",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "System Software Error",
+      "severity": "red",
+      "cause": "An internal error occurred during program or tool data changes using the file management functions",
+      "symptoms": "A file system I/O error alarm appears and the control may not save or read program data.",
+      "operator_action": "Check the program and tool data being edited for errors. Save all data via data I/O or backup to external storage. Then contact Mazak service to diagnose the internal error.",
+      "when_to_escalate": "This error generally requires service support because it involves internal software. Do not attempt to override file operations.",
+      "safety_concerns": "Corrupted program data can cause unexpected machine behavior; avoid running programs until the error is resolved.",
+      "estimated_fix_time": "1-2 hours",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "192",
+        "194"
+      ],
+      "common_mistakes": "Continuing to edit or run programs after an internal file error.",
+      "prevention": "Regularly back up program and tool data. Avoid interrupting file operations and keep the control software up to date."
+    },
+    {
+      "code": "192",
+      "name": "EXECUTION IMPOSSIBLE",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "System Software Error",
+      "severity": "red",
+      "cause": "An internal error occurred during execution of the MMS (Mazak Manufacturing System) unit",
+      "symptoms": "The system stops and reports that execution is impossible.",
+      "operator_action": "Review the program, tool data and parameters being used by the MMS unit. Save all data via data I/O and contact Mazak service.",
+      "when_to_escalate": "Internal execution errors require support from Mazak or qualified maintenance.",
+      "safety_concerns": "Do not run programs while execution errors exist; internal faults can lead to unpredictable behavior.",
+      "estimated_fix_time": "1-2 hours",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "191",
+        "194"
+      ],
+      "common_mistakes": "Ignoring internal execution errors and attempting to continue machining.",
+      "prevention": "Keep system software maintained and avoid corrupting files during execution. Back up data regularly."
+    },
+    {
+      "code": "193",
+      "name": "NO TOOL IN MAGAZINE",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Tool Management Error",
+      "severity": "green",
+      "cause": "No tool data is registered for the pocket number currently called by the program",
+      "symptoms": "During a tool change the control reports that there is no tool in the magazine pocket.",
+      "operator_action": "Enter the tool data for the designated pocket in the tool management system. Verify that the tool is physically loaded in the magazine.",
+      "when_to_escalate": "If the magazine data cannot be updated or the pocket mechanism malfunctions, maintenance should inspect the tool changer.",
+      "safety_concerns": "Never force a tool change if the magazine reports an empty pocket; doing so can damage the changer.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "194"
+      ],
+      "common_mistakes": "Forgetting to register new tools or calling the wrong pocket number.",
+      "prevention": "Update tool data whenever tools are loaded or removed. Check tool numbers and pockets in the program."
+    },
+    {
+      "code": "194",
+      "name": "NO TOOL DATA IN PROGRAM",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Tool Management Error",
+      "severity": "red",
+      "cause": "During functions like circumferential speed or feedrate change via VFC, the program attempted to access tool data that does not exist",
+      "symptoms": "The control displays a no tool data in program alarm and stops execution.",
+      "operator_action": "Check the program and tool data for completeness. Ensure that every tool used has data registered. Save the program data via data I/O and contact Mazak service if the internal error persists.",
+      "when_to_escalate": "If tool data exists yet the alarm occurs, there may be a software fault requiring Mazak support.",
+      "safety_concerns": "Incomplete tool data can lead to incorrect feeds and speeds; always verify tool information.",
+      "estimated_fix_time": "30 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "193",
+        "191"
+      ],
+      "common_mistakes": "Running a program with missing tool definitions or corrupt tool data.",
+      "prevention": "Maintain accurate tool files and update them whenever new tools are introduced. Check program calls against tool data."
+    },
+    {
+      "code": "195",
+      "name": "WRONG MEASURING DIRECTION",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Measurement Error",
+      "severity": "yellow",
+      "cause": "During the second or subsequent manual measurement, the program attempted to skip in a direction not available for measurement",
+      "symptoms": "The measurement routine halts and a wrong measuring direction alarm is displayed.",
+      "operator_action": "Restart the manual measurement and follow the correct direction of measurement. Ensure the skip direction matches the probe\u2019s orientation.",
+      "when_to_escalate": "If the probe or measurement logic seems faulty, maintenance should check the probe and measurement parameters.",
+      "safety_concerns": "Incorrect measurement direction may cause the probe to collide with the workpiece; always verify movement directions.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "196"
+      ],
+      "common_mistakes": "Unintentionally reversing the probe direction between measurement cycles.",
+      "prevention": "Train operators on the correct measurement sequence and mark directions clearly in the program and setup sheets."
+    },
+    {
+      "code": "196",
+      "name": "WRONG MEASURING POINT",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Measurement Error",
+      "severity": "yellow",
+      "cause": "During manual measurement the program attempted to measure a point that is not valid or outside the allowable area",
+      "symptoms": "The measurement sequence stops with a wrong measuring point alarm.",
+      "operator_action": "Review the measurement routine and ensure the probe is targeting valid points. Adjust the program or operator action to measure the correct locations.",
+      "when_to_escalate": "If valid points are being rejected, maintenance may need to check probe calibration and parameters.",
+      "safety_concerns": "Avoid probing unsupported or unknown surfaces; incorrect points can damage the probe.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "195"
+      ],
+      "common_mistakes": "Programming measurement points incorrectly or accidentally jogging to the wrong location during measurement.",
+      "prevention": "Verify all measurement points in the program and use guides or fixtures to position the probe accurately."
+    },
+    {
+      "code": "197",
+      "name": "UNREGISTERED HEAD DATA",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Machine Configuration Error",
+      "severity": "red",
+      "cause": "Head data for the specified head number does not exist when using MMS or MDI\u2011MMS manual measurement",
+      "symptoms": "The system reports unregistered head data and cannot proceed.",
+      "operator_action": "Contact Mazak service or qualified maintenance to create or register the head data. Do not continue without proper head configuration.",
+      "when_to_escalate": "This alarm always requires technical support because head data is configured by service.",
+      "safety_concerns": "Operating with unregistered head data could result in crashes or misalignment.",
+      "estimated_fix_time": "1 hour",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "198"
+      ],
+      "common_mistakes": "Attempting to use a head configuration that has not been set up in the control.",
+      "prevention": "Ensure head numbers and data are correctly registered during machine setup and modifications."
+    },
+    {
+      "code": "198",
+      "name": "NO HEAD DATA",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Machine Configuration Error",
+      "severity": "red",
+      "cause": "The head data for the specified head number is partly missing",
+      "symptoms": "A no head data alarm appears and the machine cannot proceed with measurement or machining.",
+      "operator_action": "Do not attempt to continue operation. Contact Mazak service to restore the head data.",
+      "when_to_escalate": "Always call service when head data is missing; operators cannot create this data themselves.",
+      "safety_concerns": "Missing head data makes axis positioning unreliable. Operation should be stopped until resolved.",
+      "estimated_fix_time": "1 hour",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "197"
+      ],
+      "common_mistakes": "Deleting or corrupting head data during maintenance or upgrades.",
+      "prevention": "Back up head data before software updates and ensure maintenance follows proper procedures."
+    },
+    {
+      "code": "199",
+      "name": "DIVISION BY ZERO",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Calculation Error",
+      "severity": "yellow",
+      "cause": "During straightness measurement a calculation attempted to divide by zero within the NC system",
+      "symptoms": "A division by zero alarm appears during measurement. The measurement result cannot be completed.",
+      "operator_action": "Check the touch sensor for faults or misalignment. If the sensor is functioning, restart the measurement routine. Avoid configurations that result in zero denominators.",
+      "when_to_escalate": "If the sensor and program are correct but the alarm recurs, maintenance should investigate the measurement function and software.",
+      "safety_concerns": "Ensure the probe is not damaged and do not continue measurement until the cause is corrected.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "195",
+        "196"
+      ],
+      "common_mistakes": "Allowing the probe to lose contact with the measurement surface, causing zero distance readings.",
+      "prevention": "Verify probe contact and avoid measuring zero\u2011length segments. Follow proper measurement procedures."
+    },
+    {
+      "code": "401",
+      "name": "ILLEGAL FORMAT",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "green",
+      "cause": "The input data format is invalid \u2013 for example, a negative value is entered where only positive values are allowed",
+      "symptoms": "The control beeps and displays an illegal format alarm when data is entered.",
+      "operator_action": "Press the data cancel key to clear the entry and then input the data again using the correct format.",
+      "when_to_escalate": "If valid data is repeatedly rejected, maintenance should verify the control software.",
+      "safety_concerns": "Incorrect data can lead to incorrect machining parameters; always verify entries.",
+      "estimated_fix_time": "1 minute",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "402"
+      ],
+      "common_mistakes": "Accidentally entering letters or signs in numeric fields.",
+      "prevention": "Double\u2011check data entry screens and follow input prompts carefully."
+    },
+    {
+      "code": "402",
+      "name": "ILLEGAL NUMBER INPUT",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "green",
+      "cause": "Either a program number that is protected from display was entered or a numeric value was entered that is outside the allowable range",
+      "symptoms": "An illegal number input alarm appears when selecting a program or entering data.",
+      "operator_action": "For protected programs, understand that the operation cannot be performed. Otherwise, press the clear key and enter a number within the permitted range.",
+      "when_to_escalate": "If correct numbers are not accepted, there may be a memory or parameter fault requiring maintenance.",
+      "safety_concerns": "Mis\u2011numbering a program can result in the wrong part being machined; check numbers carefully.",
+      "estimated_fix_time": "1 minute",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "401"
+      ],
+      "common_mistakes": "Inputting program numbers that are locked or using values beyond allowed limits.",
+      "prevention": "Keep a list of valid program numbers and permissible ranges for data entries."
+    },
+    {
+      "code": "403",
+      "name": "PROGRAM TOO LARGE",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "The program exceeds the maximum allowed number of lines (about 2000 lines)",
+      "symptoms": "The control will not accept or run the program and displays a program too large alarm.",
+      "operator_action": "Divide the machining program into smaller subprograms or simplify the code to reduce the total line count. Then reload and run the smaller program.",
+      "when_to_escalate": "If the control incorrectly calculates program length or memory errors occur, maintenance should inspect the control memory.",
+      "safety_concerns": "Large programs may slow down the control or cause unexpected stops; ensure programs are within limits.",
+      "estimated_fix_time": "30 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "404"
+      ],
+      "common_mistakes": "Not considering the controller\u2019s program size limit when generating CAM output.",
+      "prevention": "Break complex machining operations into multiple programs and stay within controller line limits."
+    },
+    {
+      "code": "404",
+      "name": "MEMORY CAPACITY EXCEEDED",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "The control\u2019s program memory or process control data storage is full, preventing new programs or data from being created",
+      "symptoms": "An alarm is displayed when trying to create or save a program because there is no remaining memory.",
+      "operator_action": "Delete unnecessary programs or process control data from the control memory or save them to an external storage device to free space. Then create or load the new program.",
+      "when_to_escalate": "If memory usage seems abnormal or memory cannot be cleared, maintenance should evaluate the control\u2019s storage.",
+      "safety_concerns": "Running with a nearly full memory could lead to data corruption; manage storage proactively.",
+      "estimated_fix_time": "15-30 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "403"
+      ],
+      "common_mistakes": "Saving multiple versions of programs without cleaning up unused files.",
+      "prevention": "Regularly archive old programs and clear memory space. Maintain a backup of important data."
+    },
+    {
+      "code": "405",
+      "name": "PROGRAM No. NOT FOUND",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "green",
+      "cause": "A program number that has not been registered or does not exist was selected",
+      "symptoms": "The control cannot find the specified program and displays a program number not found alarm.",
+      "operator_action": "Select a registered program number or load the required program into the control before attempting to run it.",
+      "when_to_escalate": "If programs disappear unexpectedly or memory becomes corrupted, maintenance should check the control.",
+      "safety_concerns": "Attempting to run an unregistered program can halt production; verify program numbers in the schedule.",
+      "estimated_fix_time": "1 minute",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "407"
+      ],
+      "common_mistakes": "Mis\u2011typing program numbers or forgetting to load the program.",
+      "prevention": "Verify program numbers and maintain an organized program list; load programs before scheduling jobs."
+    },
+    {
+      "code": "406",
+      "name": "MEMORY PROTECT",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "The operation attempted is prohibited because the program is edit\u2011protected, the PROGRAM LOCK switch is set to LOCK or a tool name order was attempted while a tool is still in the spindle",
+      "symptoms": "An alarm indicates that memory protect is active and the operation cannot proceed.",
+      "operator_action": "If the program is protected, note that it cannot be edited. If the PROGRAM LOCK switch is engaged, switch it to ENABLE. Remove any tools from the spindle before performing TOOL NAME ORDER operations.",
+      "when_to_escalate": "If switches are working but the alarm persists, maintenance may need to troubleshoot the lock circuit.",
+      "safety_concerns": "Do not force edit\u2011protected programs; unauthorized changes can compromise safety and quality.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "427",
+        "428"
+      ],
+      "common_mistakes": "Leaving the PROGRAM LOCK in the locked position when intending to edit.",
+      "prevention": "Understand the purpose of the PROGRAM LOCK. Only unlock when editing is required; keep track of protected programs."
+    },
+    {
+      "code": "407",
+      "name": "DESIGNATED DATA NOT FOUND",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "The number or character string designated does not exist in the program",
+      "symptoms": "A search or command fails and the control displays a designated data not found alarm.",
+      "operator_action": "Verify that the correct data, such as a line number or label, has been specified. Enter a data value that actually exists in the program.",
+      "when_to_escalate": "If data seems to disappear from programs, maintenance should examine memory integrity.",
+      "safety_concerns": "Incorrect data references may cause the machine to operate unpredictably; always use valid labels and numbers.",
+      "estimated_fix_time": "2 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "405"
+      ],
+      "common_mistakes": "Entering the wrong line number or label when editing.",
+      "prevention": "Double\u2011check line numbers, labels and variable names before using them in search or edit commands."
+    },
+    {
+      "code": "408",
+      "name": "PROGRAM ERROR",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "red",
+      "cause": "The contents of the machining\u2011program data storage area have been destroyed",
+      "symptoms": "When accessing a program the control cannot execute it and reports a program error.",
+      "operator_action": "Delete the corrupted program from memory. Recover the program from a backup or rewrite it.",
+      "when_to_escalate": "If programs are being corrupted regularly, maintenance must examine the control memory and software.",
+      "safety_concerns": "Corrupt programs can cause unpredictable machine movements. Do not attempt to run a program after this alarm.",
+      "estimated_fix_time": "30 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "409",
+        "410"
+      ],
+      "common_mistakes": "Turning power off during program editing or failing to back up programs.",
+      "prevention": "Always back up important programs and avoid interrupting power during edits. Use the proper shutdown procedure."
+    },
+    {
+      "code": "409",
+      "name": "ILLEGAL INSERTION",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "Program data insertion is not possible at the specified location, typically before the common unit",
+      "symptoms": "The control rejects the insertion and displays an illegal insertion alarm.",
+      "operator_action": "Move the cursor to an appropriate location in the program (after the common unit) and perform the insertion there.",
+      "when_to_escalate": "If the control refuses insertion in valid locations, maintenance should check the program structure.",
+      "safety_concerns": "Inserting data in the wrong place can change program flow unexpectedly; follow insertion rules.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "410"
+      ],
+      "common_mistakes": "Attempting to insert code before the common unit or header.",
+      "prevention": "Understand the program structure and insert code only in permissible sections."
+    },
+    {
+      "code": "410",
+      "name": "ILLEGAL DELETION",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "Program deletion is not allowed \u2013 for example, attempting to delete the common unit or using the wrong cursor position",
+      "symptoms": "The control beeps and shows an illegal deletion alarm when deletion is attempted.",
+      "operator_action": "Do not attempt to delete the common unit. Move the cursor to the data you wish to delete and then use the delete function. Edit only within permissible areas.",
+      "when_to_escalate": "If deletion errors occur in normal areas, maintenance may need to check for memory corruption.",
+      "safety_concerns": "Deleting essential program sections can cause machine crashes; ensure the correct section is selected.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "409"
+      ],
+      "common_mistakes": "Accidentally deleting key program units or editing outside permissible zones.",
+      "prevention": "Review the program structure before deleting and ensure the cursor is positioned on the correct data."
+    },
+    {
+      "code": "411",
+      "name": "POWER OFF DURING PROGRAM EDIT",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "Power was turned off while a program was being edited, potentially destroying part of the program",
+      "symptoms": "When restarting the control, the program may be corrupted and an alarm is displayed.",
+      "operator_action": "Check the affected program for missing or incorrect data. Edit or restore the program from a backup.",
+      "when_to_escalate": "Frequent power interruptions or repeated corruption should be investigated by maintenance.",
+      "safety_concerns": "Always follow the proper shutdown procedure; abrupt power loss can damage programs and hardware.",
+      "estimated_fix_time": "20 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "408"
+      ],
+      "common_mistakes": "Switching off the control or losing power during program editing.",
+      "prevention": "Use an uninterruptible power supply if necessary and always exit editing before powering down."
+    },
+    {
+      "code": "412",
+      "name": "SUB PROGRAM NESTING EXCEEDED",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "The program calls subprograms more than nine levels deep, exceeding the allowable nesting depth",
+      "symptoms": "During execution the control stops and displays a sub program nesting exceeded alarm.",
+      "operator_action": "Modify the program so that subprogram nesting does not exceed nine levels. Split routines into separate programs if necessary.",
+      "when_to_escalate": "If the control interprets nesting incorrectly, maintenance may need to check software versions.",
+      "safety_concerns": "Deeply nested calls can be hard to follow; program logic errors could cause crashes.",
+      "estimated_fix_time": "30 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "411"
+      ],
+      "common_mistakes": "Generating CAM post\u2011processors that inadvertently nest subprograms too deeply.",
+      "prevention": "Understand the controller\u2019s nesting limitations and plan program structure accordingly."
+    },
+    {
+      "code": "413",
+      "name": "MAX. No. OF REGIST PROG EXCEEDED",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "The total number of registered programs in the control memory exceeds the allowable maximum",
+      "symptoms": "When trying to register a new program the control reports that the maximum number of programs has been exceeded.",
+      "operator_action": "Delete unused programs or archive them externally to reduce the number of registered programs. Then register the new program.",
+      "when_to_escalate": "If program registration counts appear incorrect or memory management fails, maintenance should examine the memory.",
+      "safety_concerns": "An overloaded memory may slow down the control; manage program inventory carefully.",
+      "estimated_fix_time": "15 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "404"
+      ],
+      "common_mistakes": "Saving too many versions of programs without clearing old ones.",
+      "prevention": "Maintain a program management policy to remove or archive unused programs regularly."
+    },
+    {
+      "code": "414",
+      "name": "AUTO CALCULATION IMPOSSIBLE",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "Automatic calculation of circumferential speed and feedrate is not possible due to missing or mismatched tool/material data",
+      "symptoms": "The control cannot compute cutting parameters automatically and displays an auto calculation impossible alarm.",
+      "operator_action": "Check and correct the tool sequence data or machining unit data. Ensure that tool materials and workpiece materials are correctly set and that required files for the navigation function exist.",
+      "when_to_escalate": "If the calculation function fails despite correct data, maintenance should verify software files.",
+      "safety_concerns": "Incorrect material or tool data may lead to improper cutting conditions; do not rely on auto settings when errors are present.",
+      "estimated_fix_time": "20 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "415",
+        "416"
+      ],
+      "common_mistakes": "Leaving material or tool fields blank or using wrong material codes.",
+      "prevention": "Enter correct tool and workpiece materials and verify that all navigation files are available before using auto calculation."
+    },
+    {
+      "code": "415",
+      "name": "MIS-SET G CODE",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "A G code not supported by the controller or machine specification was programmed",
+      "symptoms": "The control stops program execution and displays a mis\u2011set G code alarm.",
+      "operator_action": "Review the program and replace the unsupported G code with a valid one. Consult the machine\u2019s programming manual for the correct G codes.",
+      "when_to_escalate": "If the program appears correct and the alarm persists, maintenance should verify the controller options.",
+      "safety_concerns": "Using unsupported G codes can cause unpredictable behavior; check posts and macros carefully.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "414",
+        "416"
+      ],
+      "common_mistakes": "Copying G codes from another machine without confirming compatibility.",
+      "prevention": "Use the correct post\u2011processor for the Mazak control and cross\u2011check all G codes."
+    },
+    {
+      "code": "416",
+      "name": "AUTO PROCESS IMPOSSIBLE",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "Automatic tool development or machining cannot proceed because errors exist in the machining unit data",
+      "symptoms": "An alarm appears indicating the auto process is impossible.",
+      "operator_action": "Inspect the machining unit data in the program. Correct any missing or incorrect entries. Reattempt the auto process after fixing the data.",
+      "when_to_escalate": "If correct data still causes this alarm, maintenance may need to inspect the control\u2019s process logic.",
+      "safety_concerns": "Do not force auto processes; missing data may lead to collisions or poor machining.",
+      "estimated_fix_time": "15 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "414",
+        "415"
+      ],
+      "common_mistakes": "Leaving placeholders or blank fields in machining unit definitions.",
+      "prevention": "Complete all required data fields when creating machining units and verify them during program checks."
+    },
+    {
+      "code": "417",
+      "name": "EDITING PROHIBITED",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "An attempt has been made to modify a program that is protected from editing by a parameter setting",
+      "symptoms": "The control prevents edits and shows an editing prohibited alarm.",
+      "operator_action": "Cancel the parameter that prohibits editing if modifications are necessary. Otherwise, leave the program as read\u2011only.",
+      "when_to_escalate": "If the program is unintentionally locked or parameters cannot be changed, maintenance should assist.",
+      "safety_concerns": "Editing protected programs without authorization can lead to unsafe modifications.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "406"
+      ],
+      "common_mistakes": "Forgetting that edit protection is enabled and trying to modify the program.",
+      "prevention": "Document which programs are protected and adjust parameters intentionally when editing is required."
+    },
+    {
+      "code": "418",
+      "name": "EIA/ISO CONVERTING",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "During EIA/ISO conversion an attempt was made to erase or edit the source program or select the tool path check display",
+      "symptoms": "The control displays an EIA/ISO converting alarm and refuses the requested action.",
+      "operator_action": "Wait until the conversion is complete before performing any edits, deletions or tool path checks. Do not interrupt conversion processes.",
+      "when_to_escalate": "If conversion operations hang or repeatedly fail, maintenance should inspect the software.",
+      "safety_concerns": "Interrupting file conversion can corrupt programs; always allow operations to finish.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "419",
+        "420"
+      ],
+      "common_mistakes": "Trying to modify programs while they are being converted.",
+      "prevention": "Schedule conversions for times when no other editing is needed, and inform operators not to disturb them."
+    },
+    {
+      "code": "419",
+      "name": "AUTO TAP PROCESS IMPOSSIBLE",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "The tapping unit data contains an incorrect pitch or nominal diameter, or the pipe tap auto\u2011setting file (Pipescdt.txt) is missing or incorrect",
+      "symptoms": "When attempting to set tapping parameters automatically, the control displays an auto tap process impossible alarm.",
+      "operator_action": "Verify and correct the tapping unit data and tapping tool sequence. If using pipe tap auto\u2011setting, check that the Pipescdt.txt file exists and contains correct data.",
+      "when_to_escalate": "If the auto tap process cannot be executed after correcting data and files, maintenance should examine the control.",
+      "safety_concerns": "Incorrect tapping data can cause broken taps and scrap parts; always validate parameters.",
+      "estimated_fix_time": "15 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "418",
+        "420"
+      ],
+      "common_mistakes": "Leaving default pitch values or missing the tap database file.",
+      "prevention": "Maintain accurate tapping databases and verify tool and thread specifications in the program."
+    },
+    {
+      "code": "420",
+      "name": "SAME DATA EXISTS",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "green",
+      "cause": "The input matches data that is already registered, such as pocket numbers, program numbers or machining priority numbers",
+      "symptoms": "The control refuses to register duplicate data and shows a same data exists alarm.",
+      "operator_action": "Check which data items are being duplicated and assign unique numbers or identifiers.",
+      "when_to_escalate": "If duplicates appear for no reason or data cannot be modified, maintenance should investigate memory integrity.",
+      "safety_concerns": "Duplicate identifiers can lead to confusion and incorrect tool selection.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "421"
+      ],
+      "common_mistakes": "Entering the same pocket or program number twice without checking existing entries.",
+      "prevention": "Keep a record of tool pockets and program numbers. Use systematic numbering conventions."
+    },
+    {
+      "code": "421",
+      "name": "DATA NOT FOUND",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "green",
+      "cause": "A designated data item does not exist in the program or table",
+      "symptoms": "When referencing a piece of data the control cannot find it and displays a data not found alarm.",
+      "operator_action": "Verify the data item exists and is spelled or numbered correctly. Enter or select a valid data item.",
+      "when_to_escalate": "If valid data cannot be found or appears to be missing, maintenance should check for data corruption.",
+      "safety_concerns": "Missing data could cause the program to skip steps; always verify data before execution.",
+      "estimated_fix_time": "2 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "420"
+      ],
+      "common_mistakes": "Referring to data that has not been created or imported.",
+      "prevention": "Make sure all necessary data is created and confirm its presence before referencing it."
+    },
+    {
+      "code": "422",
+      "name": "MEMORY PROTECT (I/O BUSY)",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "An attempt was made to edit or input data while an I/O operation (such as saving or loading) was still in progress",
+      "symptoms": "The control rejects the edit and displays a memory protect I/O busy alarm.",
+      "operator_action": "Wait until the I/O operation is complete before editing or entering data, then repeat the operation.",
+      "when_to_escalate": "If the control remains busy indefinitely or I/O operations hang, maintenance should check the I/O system.",
+      "safety_concerns": "Interrupting data transfer can corrupt files; never attempt edits during I/O.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "406",
+        "427"
+      ],
+      "common_mistakes": "Starting to edit immediately after initiating a save or load operation.",
+      "prevention": "Wait for I/O operations to finish and monitor the status indicators before editing."
+    },
+    {
+      "code": "423",
+      "name": "MAX NUMBER OF TOOLS EXCEEDED",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "The number of tools used in the designated program exceeds the maximum number allowed",
+      "symptoms": "During tool layout or program creation the control warns that too many tools are defined.",
+      "operator_action": "Reduce the number of tools used in the program or split the operations into multiple programs so that each stays within the tool limit.",
+      "when_to_escalate": "If the tool limit seems incorrect or cannot be modified, maintenance should review the machine\u2019s configuration.",
+      "safety_concerns": "Over\u2011complicated tool layouts increase the chance of collisions; keep tool lists manageable.",
+      "estimated_fix_time": "15 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "424"
+      ],
+      "common_mistakes": "Assigning too many tools without considering the machine\u2019s capacity.",
+      "prevention": "Plan tooling ahead of time and optimize tool changes to keep within the maximum tool count."
+    },
+    {
+      "code": "424",
+      "name": "ALL POCKET NUMBERS NOT ASSIGNED",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "Not all necessary pocket numbers have been assigned during tool layout",
+      "symptoms": "The tool layout cannot be completed and an alarm indicates missing pocket assignments.",
+      "operator_action": "Assign pocket numbers to all tools required for the job and then complete the tool layout.",
+      "when_to_escalate": "If the control cannot assign pocket numbers or the magazine has faults, maintenance should inspect the tool changer.",
+      "safety_concerns": "Unassigned pockets lead to misloads; always verify pocket assignments.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "423"
+      ],
+      "common_mistakes": "Skipping pocket assignments when planning tool lists.",
+      "prevention": "Allocate pocket numbers for each tool as part of the setup procedure and check them off."
+    },
+    {
+      "code": "425",
+      "name": "DATA MISSING",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "A required piece of data is missing during save/load operations or restart operations",
+      "symptoms": "The control reports data missing and cannot proceed with the operation.",
+      "operator_action": "Input the missing data \u2013 such as work numbers, restart information or other required fields \u2013 before retrying the operation.",
+      "when_to_escalate": "If the system continues to report missing data despite complete input, maintenance should check for software faults.",
+      "safety_concerns": "Missing data can cause incomplete programs or incorrect operations; double\u2011check entries.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "426"
+      ],
+      "common_mistakes": "Leaving required fields blank when saving or loading data.",
+      "prevention": "Follow prompts carefully and make sure all required information is entered before proceeding."
+    },
+    {
+      "code": "426",
+      "name": "PROGRAM DATA MISSING",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "Some machining unit data is missing, preventing the automatic development of the tool sequence",
+      "symptoms": "The control cannot develop the tool sequence and displays a program data missing alarm.",
+      "operator_action": "Fill in all required machining unit data fields and ensure that each unit is completely defined.",
+      "when_to_escalate": "If data fields appear complete but the alarm remains, maintenance may need to verify the software.",
+      "safety_concerns": "Incomplete unit data can lead to incorrect tool paths; ensure all details are entered.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "425"
+      ],
+      "common_mistakes": "Omitting parameters when setting up machining units.",
+      "prevention": "Use checklists to ensure that every required parameter is filled out when creating units."
+    },
+    {
+      "code": "427",
+      "name": "MEMORY PROTECT (AUTO MODE)",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "An attempt was made to input unallowable data while the control was in automatic operation mode",
+      "symptoms": "The control prevents data input and displays a memory protect (auto mode) alarm.",
+      "operator_action": "Switch the control to manual or edit mode before entering data.",
+      "when_to_escalate": "If mode switching does not allow data entry, maintenance should inspect the mode circuits.",
+      "safety_concerns": "Do not attempt to change data during automatic operation; it could disrupt the program.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "428"
+      ],
+      "common_mistakes": "Trying to modify settings while the machine is running.",
+      "prevention": "Always stop the machine and change to an appropriate mode before editing data."
+    },
+    {
+      "code": "428",
+      "name": "MEMORY PROTECT (AUTO OPERATION)",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "An attempt was made to input unallowable data on a display \u2013 such as TOOL DATA \u2013 during automatic operation",
+      "symptoms": "Data entry is blocked and a memory protect (auto operation) alarm appears.",
+      "operator_action": "Reset the NC unit or change modes to a state where data entry is allowed before trying again.",
+      "when_to_escalate": "If memory protect alarms occur despite being in the correct mode, maintenance should examine control parameters.",
+      "safety_concerns": "Changing data during auto operation can cause unexpected tool movement; always reset before editing.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "427"
+      ],
+      "common_mistakes": "Attempting to change tool data while a program is running.",
+      "prevention": "Educate operators on the need to be in the correct mode for data entry; lock out edits during cycles."
+    },
+    {
+      "code": "429",
+      "name": "CANNOT PERFORM MEASUREMENT",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "The conditions required for coordinate or tool\u2011length measurement were not satisfied \u2013 for example, automatic operation was active or the spindle lacked a mounted tool or tool data",
+      "symptoms": "The measurement function cannot start and an alarm appears.",
+      "operator_action": "Stop automatic operation, mount the appropriate tool in the spindle and ensure its tool data is registered. Then restart the measurement procedure.",
+      "when_to_escalate": "If all conditions are met and the alarm still occurs, maintenance should check the measurement function.",
+      "safety_concerns": "Measurements should not be performed while the machine is running; stop the machine first.",
+      "estimated_fix_time": "5-10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "430"
+      ],
+      "common_mistakes": "Attempting to measure without mounting the probe or while in automatic cycle.",
+      "prevention": "Follow proper measurement setup steps, ensuring automatic operation is stopped and the correct tool is loaded."
+    },
+    {
+      "code": "430",
+      "name": "ILLEGAL TOOL DESIGNATED",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "green",
+      "cause": "A tool name not available for the particular program unit was designated in the tool sequence",
+      "symptoms": "The program will not accept the designated tool and displays an illegal tool alarm.",
+      "operator_action": "Specify a tool that is valid for the current machining unit according to the program manual and tool list.",
+      "when_to_escalate": "If the tool list appears correct, maintenance should ensure the controller has the appropriate options.",
+      "safety_concerns": "Using an incorrect tool can cause poor machining or crashes; always verify tool compatibility.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "431"
+      ],
+      "common_mistakes": "Entering a turning tool for a milling unit or similar mismatch.",
+      "prevention": "Understand the tool requirements for each unit type and validate tool names before entry."
+    },
+    {
+      "code": "431",
+      "name": "ILLEGAL PALLET No.",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "green",
+      "cause": "A nonexistent or unavailable pallet number was designated",
+      "symptoms": "The control cannot accept the pallet number and displays an illegal pallet alarm.",
+      "operator_action": "Enter a valid pallet number as defined in the pallet schedule or table.",
+      "when_to_escalate": "If valid pallet numbers are rejected, maintenance should check pallet management settings.",
+      "safety_concerns": "Selecting the wrong pallet could result in incorrect part loading; verify numbers.",
+      "estimated_fix_time": "2 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "432"
+      ],
+      "common_mistakes": "Typing errors in pallet numbers or using outdated pallet configurations.",
+      "prevention": "Maintain an up\u2011to\u2011date pallet table and double\u2011check numbers during program setup."
+    },
+    {
+      "code": "432",
+      "name": "ILLEGAL TOOL No.",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "green",
+      "cause": "A nonexistent tool number was designated",
+      "symptoms": "The control displays an illegal tool number alarm when selecting the tool.",
+      "operator_action": "Check the tool list and enter a valid tool number that has been registered.",
+      "when_to_escalate": "If the correct tool number still causes an alarm, maintenance should check tool file integrity.",
+      "safety_concerns": "Mis\u2011identifying tool numbers can lead to incorrect tools being used; verify numbers carefully.",
+      "estimated_fix_time": "2 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "431"
+      ],
+      "common_mistakes": "Attempting to call a tool that is not loaded or registered.",
+      "prevention": "Keep tool numbers consistent and register tools properly when loaded."
+    },
+    {
+      "code": "433",
+      "name": "SAME PROGRAM EXISTS",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "green",
+      "cause": "The machining program number designated for reading from an external unit already exists in memory",
+      "symptoms": "The control will not import the program and displays a same program exists alarm.",
+      "operator_action": "Change the program number to a unique value or delete the existing program from memory before reloading.",
+      "when_to_escalate": "If duplicates cannot be cleared due to memory corruption, maintenance should assist.",
+      "safety_concerns": "Duplicate programs can cause confusion and scheduling errors; maintain unique numbering.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "405"
+      ],
+      "common_mistakes": "Forgetting to change program numbers when copying or importing programs.",
+      "prevention": "Adopt a numbering convention to avoid duplication and track programs carefully."
+    },
+    {
+      "code": "434",
+      "name": "NO ASSIGNED TOOL IN TOOL FILE",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "The program references milling tools (face\u2011mills, end\u2011mills, chamfering cutters, ball end\u2011mills) that are not registered in the TOOL FILE display",
+      "symptoms": "The program cannot be completed and an alarm indicates missing tool assignments.",
+      "operator_action": "Register the required tools in the TOOL FILE display before running the program.",
+      "when_to_escalate": "If tools cannot be registered or the file is corrupted, maintenance should intervene.",
+      "safety_concerns": "Missing tool data can cause the wrong tool to be selected; ensure all tools are properly registered.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "433"
+      ],
+      "common_mistakes": "Assuming a tool is registered when it has not been added to the tool file.",
+      "prevention": "Update the tool file whenever new tools are introduced. Verify tool registration during setup."
+    },
+    {
+      "code": "435",
+      "name": "PROGRAM CHECK NOT ALLOWED",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "A restart or tool path check was attempted from the TOOL PATH display while the tool path check mode is active",
+      "symptoms": "The control prevents the restart and displays a program check not allowed alarm.",
+      "operator_action": "Stop the tool path check and return to edit or automatic mode before restarting the program.",
+      "when_to_escalate": "If the control does not exit tool path check mode properly, maintenance should inspect the software.",
+      "safety_concerns": "Restarting from within a tool path check could cause unexpected movements; always exit checks properly.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "434"
+      ],
+      "common_mistakes": "Attempting to restart the program while still viewing the tool path check display.",
+      "prevention": "Understand the tool path check workflow: exit the check before restarting or editing."
+    },
+    {
+      "code": "436",
+      "name": "UNREGISTERED TNo.",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "green",
+      "cause": "An unmeasurable tool number was designated for automatic tool length or diameter measurement",
+      "symptoms": "The measurement routine stops and an unregistered TNo alarm is displayed.",
+      "operator_action": "Specify a tool number that is registered and measurable for the measurement mode. Update the tool data as needed.",
+      "when_to_escalate": "If the tool is registered yet still not accepted, maintenance should verify the tool measurement parameters.",
+      "safety_concerns": "Attempting to measure with an incorrect tool number can damage the probe or tool.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "437"
+      ],
+      "common_mistakes": "Entering a tool number that is not in the measurement list.",
+      "prevention": "Maintain a list of tools that are measurable and ensure only those are selected for automatic measurement."
+    },
+    {
+      "code": "437",
+      "name": "NO NOM-\u03c6 DATA IN PROGRAM",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "A tool without a nominal diameter was detected during tool layout",
+      "symptoms": "The control warns that a tool lacks nominal diameter data and stops tool layout.",
+      "operator_action": "Assign nominal diameters to all tools used in the program via the TOOL DATA display.",
+      "when_to_escalate": "If nominal diameters cannot be entered or are not recognized, maintenance should check the data fields.",
+      "safety_concerns": "Incorrect or missing diameters lead to incorrect cutter compensation and scrap parts.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "436"
+      ],
+      "common_mistakes": "Failing to input nominal diameters for milling tools when creating the program.",
+      "prevention": "Always fill out tool diameter fields during tool setup; verify data during the program review."
+    },
+    {
+      "code": "438",
+      "name": "END UNIT NOT FOUND",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "The end unit (end of program marker) is missing from the machining program",
+      "symptoms": "The control reports that the end unit is not found and refuses to finish program layout.",
+      "operator_action": "Insert the end unit or program terminator at the end of the program.",
+      "when_to_escalate": "If the program structure seems correct yet the alarm persists, maintenance should verify the programming software.",
+      "safety_concerns": "Programs without proper termination can execute unintended code; always end programs correctly.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "437"
+      ],
+      "common_mistakes": "Omitting the end block when creating or editing programs.",
+      "prevention": "Always include an end block or end unit when writing programs. Use templates to ensure proper structure."
+    },
+    {
+      "code": "439",
+      "name": "MAZATROL PROGRAM DESIGNATED",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "A Mazatrol program was designated for copying during EIA/ISO program editing, which is not allowed",
+      "symptoms": "The control stops the copy operation and displays a Mazatrol program designated alarm.",
+      "operator_action": "Do not select a Mazatrol program when performing copy operations in EIA/ISO editing. Use only EIA/ISO programs for these operations.",
+      "when_to_escalate": "If program types are confused or the control misidentifies programs, maintenance may need to update the software.",
+      "safety_concerns": "Using the wrong program type for copying can lead to format errors and lost data.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "440"
+      ],
+      "common_mistakes": "Selecting the wrong program type when copying or converting.",
+      "prevention": "Keep program types organized and clearly labeled. Understand which operations apply to each type."
+    },
+    {
+      "code": "440",
+      "name": "EIA/ISO PROGRAM DESIGNATED",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "An EIA/ISO program was designated on displays meant for Mazatrol programs or for operations that require a Mazatrol program",
+      "symptoms": "The control displays an EIA/ISO program designated alarm and stops the operation.",
+      "operator_action": "Use Mazatrol programs for Mazatrol displays and operations. Do not designate EIA/ISO programs when writing coordinate values, copying programs or converting formats that require Mazatrol.",
+      "when_to_escalate": "If the software misidentifies program types or prohibits valid operations, maintenance should review the control options.",
+      "safety_concerns": "Mixing program types can cause unpredictable results; ensure the correct format is used.",
+      "estimated_fix_time": "5 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "439"
+      ],
+      "common_mistakes": "Attempting to use an EIA/ISO program on a Mazatrol screen or function.",
+      "prevention": "Separate Mazatrol and EIA/ISO programs clearly and select the correct type for each operation."
+    },
+    {
+      "code": "441",
+      "name": "UNREGISTERED HEAD DATA",
+      "machine_types": [
+        "Matrix",
+        "Integrex",
+        "Quick Turn"
+      ],
+      "category": "Screen Operation Error",
+      "severity": "yellow",
+      "cause": "The head number designated during MDI\u2011MMS setting does not exist in the head data",
+      "symptoms": "An alarm appears and the system refuses further operation until a valid head is selected.",
+      "operator_action": "Check the designated head number against the registered head data. Select a valid head or register the head data via qualified service.",
+      "when_to_escalate": "If head data cannot be registered or is missing, maintenance or Mazak service must update the configuration.",
+      "safety_concerns": "Incorrect head settings can misalign the machine; ensure head data is accurate.",
+      "estimated_fix_time": "10 minutes",
+      "tools_required": [
+        "none"
+      ],
+      "related_alarms": [
+        "197",
+        "198"
+      ],
+      "common_mistakes": "Selecting a head that has not been set up in the control.",
+      "prevention": "Register all heads used on the machine and verify their numbers before selection."
+    }
+  ]
+}
