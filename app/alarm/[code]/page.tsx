@@ -12,7 +12,8 @@ export default function AlarmPage() {
 
   useEffect(() => {
     let off = false;
-    fetch('/full-alarms.json', { cache: 'no-store' })
+    fetch('/web_alarms.json', { cache: 'no-store' })
+
       .then(r => r.json())
       .then(data => {
         if (off) return;
