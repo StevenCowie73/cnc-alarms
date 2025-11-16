@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { useState, useMemo } from 'react';
@@ -23,16 +24,16 @@ const UI_COPY: Record<
     noResultsTitle: string;
     noResultsText: string;
     causeTitle: string;
-    causeSubtitle: string;
     actionTitle: string;
-    actionSubtitle: string;
     techTitle: string;
-    techSubtitle: string;
     errorTypeLabel: string;
     machineStopLabel: string;
     clearLegendLabel: string;
     displayColorLabel: string;
     displayExplainer: string;
+    speakButton: string;
+    markSolvedButton: string;
+    markSolvedComingSoon: string;
   }
 > = {
   en: {
@@ -52,17 +53,17 @@ const UI_COPY: Record<
     noResultsTitle: 'No alarms found',
     noResultsText: 'Try adjusting your search or filters',
     causeTitle: "Cause (What's happening?)",
-    causeSubtitle: '',
     actionTitle: 'What to do (Operator steps)',
-    actionSubtitle: '',
     techTitle: 'Technical Details (for lead / maintenance)',
-    techSubtitle: '',
     errorTypeLabel: 'Error Type',
     machineStopLabel: 'Machine Stop Status',
     clearLegendLabel: 'How to Clear Alarm (Legend)',
     displayColorLabel: 'Display Color on Control',
     displayExplainer:
       'Red = serious / machine-stopping alarm. Blue = caution or operator action needed.',
+    speakButton: 'Speak Solution',
+    markSolvedButton: 'Mark Solved',
+    markSolvedComingSoon: 'Maintenance tracking feature coming soon.',
   },
   es: {
     title: 'Centro de Inteligencia de Alarmas',
@@ -82,17 +83,18 @@ const UI_COPY: Record<
     noResultsTitle: 'No se encontraron alarmas',
     noResultsText: 'Prueba ajustando tu búsqueda o filtros',
     causeTitle: 'Causa (¿Qué está pasando?)',
-    causeSubtitle: '',
     actionTitle: 'Qué hacer (Pasos del operador)',
-    actionSubtitle: '',
     techTitle: 'Detalles técnicos (para líder / mantenimiento)',
-    techSubtitle: '',
     errorTypeLabel: 'Tipo de error',
     machineStopLabel: 'Estado de parada de la máquina',
     clearLegendLabel: 'Cómo borrar la alarma (Leyenda)',
     displayColorLabel: 'Color en la pantalla del control',
     displayExplainer:
       'Rojo = alarma grave que detiene la máquina. Azul = precaución o acción del operador necesaria.',
+    speakButton: 'Leer solución',
+    markSolvedButton: 'Marcar resuelta',
+    markSolvedComingSoon:
+      'La función de seguimiento de mantenimiento estará disponible próximamente.',
   },
 };
 
@@ -143,7 +145,6 @@ export default function Home() {
 
   const copy = UI_COPY[language];
 
-  // Convert alarm data to our display format
   const alarms = useMemo(() => {
     return (alarmsData as any[])
       .filter((alarm: any) => alarm['No.'] && String(alarm['No.']).trim() !== '')
@@ -174,7 +175,6 @@ export default function Home() {
       .sort((a, b) => Number(a.code) - Number(b.code));
   }, []);
 
-  // SAFE search + severity filter
   const filteredAlarms = useMemo(() => {
     const searchLower = (search || '').toLowerCase();
 
@@ -431,7 +431,7 @@ export default function Home() {
                           </div>
                         )}
 
-                        {/* TECHNICAL DETAILS – more readable layout */}
+                        {/* TECHNICAL DETAILS */}
                         <div className="bg-gray-100 rounded-xl p-4 md:p-5 space-y-4">
                           <h4 className="font-bold text-gray-800 mb-2 flex items-center gap-2">
                             <span className="text-lg">📘</span>
@@ -541,22 +541,17 @@ export default function Home() {
                             }}
                             className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-4 px-6 rounded-xl transition flex items-center justify-center gap-2 text-lg shadow-lg"
                           >
-                            🔊 {language === 'es' ? 'Leer solución' : 'Speak Solution'}
+                            🔊 {copy.speakButton}
                           </button>
 
-                          {/* CHANGED BUTTON: now shows "coming soon" popup */}
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
-                              alert(
-                                language === 'es'
-                                  ? 'La función de seguimiento de mantenimiento estará disponible próximamente.'
-                                  : 'Maintenance tracking feature coming soon.'
-                              );
+                              alert(copy.markSolvedComingSoon);
                             }}
                             className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-4 px-6 rounded-xl transition flex items-center justify-center gap-2 text-lg"
                           >
-                            ✓ {language === 'es' ? 'Marcar resuelta' : 'Mark Solved'}
+                            ✓ {copy.markSolvedButton}
                           </button>
                         </div>
                       </div>
