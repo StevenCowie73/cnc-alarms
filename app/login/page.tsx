@@ -1,94 +1,73 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabaseClient";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { supabase } from "../../lib/supabaseClient";
 
 export default function LoginPage() {
-  const router = useRouter();
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("");
+  const [sent, setSent] = useState(false);
 
-  // If already logged in → go straight to dashboard
-  useEffect(() => {
-    async function checkSession() {
-      const { data } = await supabase.auth.getSession();
-      if (data.session) {
-        router.replace("/dashboard");
-      }
-    }
-    checkSession();
-  }, [router]);
-
-  async function sendMagicLink(e: React.FormEvent) {
-    e.preventDefault();
-    setStatus("Sending magic link…");
-
+  const sendMagicLink = async () => {
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: `${window.location.origin}/dashboard`,
-      },
+        emailRedirectTo: "https://alarms.cowie.ai/"
+      }
     });
 
-    if (error) {
-      setStatus("Error sending link. Try again.");
+    if (!error) {
+      setSent(true);
     } else {
-      setStatus("Magic link sent! Check your email.");
+      alert("Error: " + error.message);
     }
-  }
+  };
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-[#0B1622] px-4">
-      <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
-        <h1 className="text-3xl font-bold mb-6 text-gray-900">Login</h1>
+    <div style={{
+      padding: "40px",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      marginTop: "100px"
+    }}>
+      <h1 style={{ marginBottom: "20px", fontSize: "28px" }}>Login</h1>
 
-        <form onSubmit={sendMagicLink} className="space-y-4">
+      {sent ? (
+        <p style={{ fontSize: "18px" }}>Check your email for the magic link.</p>
+      ) : (
+        <>
           <input
             type="email"
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
-            className="
-              w-full 
-              p-4 
-              rounded-xl 
-              text-gray-900 
-              placeholder-gray-600
-              border border-gray-400
-              focus:outline-none 
-              focus:ring-2 
-              focus:ring-blue-500 
-              focus:border-blue-500
-              text-lg
-            "
+            style={{
+              padding: "14px 18px",
+              width: "100%",
+              maxWidth: "320px",
+              border: "2px solid #ccc",
+              borderRadius: "8px",
+              fontSize: "18px",
+              marginBottom: "14px"
+            }}
           />
 
           <button
-            type="submit"
-            className="
-              w-full 
-              bg-blue-600 
-              hover:bg-blue-700 
-              text-white 
-              font-semibold 
-              py-4 
-              rounded-xl 
-              text-lg 
-              transition
-            "
+            onClick={sendMagicLink}
+            style={{
+              padding: "14px 22px",
+              background: "#0070f3",
+              color: "white",
+              fontSize: "18px",
+              borderRadius: "8px",
+              border: "none",
+              cursor: "pointer"
+            }}
           >
             Send Magic Link
           </button>
-
-          {status && (
-            <p className="text-center text-gray-700 mt-3 font-medium">
-              {status}
-            </p>
-          )}
-        </form>
-      </div>
+        </>
+      )}
     </div>
   );
 }
