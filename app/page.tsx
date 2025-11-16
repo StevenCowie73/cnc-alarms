@@ -71,10 +71,10 @@ export default function Home() {
           <div className="flex justify-between items-start mb-4">
             <div>
               <h1 className="text-2xl md:text-3xl font-bold mb-2">
-                🔧 INTEGREX e-670H Alarm Database
+                🔧 CNC Alarm Database
               </h1>
               <p className="text-sm text-gray-300">
-                Serial No. 301508 • MAZATROL SmoothX Control
+                Professional Alarm Reference Tool
               </p>
             </div>
             <button className="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full text-sm font-semibold transition">
@@ -109,8 +109,8 @@ export default function Home() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="🔍 Search alarms by number, message, or keyword... (e.g., 434, servo, tool)"
-            className="w-full px-5 py-4 text-lg border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-200 outline-none transition"
+            placeholder="🔍 Search alarms by number, message, or keyword..."
+            className="w-full px-5 py-4 text-lg border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-200 outline-none transition"
           />
           
           {/* Filter Chips */}
@@ -119,7 +119,7 @@ export default function Home() {
               onClick={() => setSeverityFilter('all')}
               className={`px-5 py-2 rounded-full font-semibold text-sm transition ${
                 severityFilter === 'all'
-                  ? 'bg-purple-600 text-white'
+                  ? 'bg-blue-600 text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -229,7 +229,7 @@ export default function Home() {
                               e.stopPropagation();
                               speakAlarm(alarm);
                             }}
-                            className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-4 rounded-xl transition flex items-center justify-center gap-2"
+                            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition flex items-center justify-center gap-2"
                           >
                             🔊 Speak Solution
                           </button>
@@ -251,8 +251,8 @@ export default function Home() {
 
         {/* Footer */}
         <div className="mt-12 text-center text-white text-sm opacity-80">
-          <p>© 2024 CNC Alarm Assistant • Independent tool for Mazak machines</p>
-          <p className="mt-1">Not affiliated with Yamazaki Mazak Corporation</p>
+          <p>© 2024 CNC Alarm Reference Tool</p>
+          <p className="mt-1">Professional troubleshooting database</p>
         </div>
       </div>
     </div>
