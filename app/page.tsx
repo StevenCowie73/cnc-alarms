@@ -63,7 +63,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 to-indigo-800 p-4 md:p-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 p-4 md:p-6">
       <div className="max-w-6xl mx-auto">
         
         {/* Header */}
