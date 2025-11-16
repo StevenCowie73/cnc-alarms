@@ -16,6 +16,7 @@ type Alarm = {
 export default function Home() {
   const [search, setSearch] = useState('');
   const [severityFilter, setSeverityFilter] = useState('all');
+  const [expandedAlarm, setExpandedAlarm] = useState<string | null>(null);
 
   const alarms: Alarm[] = alarmData;
 
@@ -34,18 +35,18 @@ export default function Home() {
     });
   }, [search, severityFilter, alarms]);
 
-  const getSeverityColor = (severity?: string) => {
+  const getSeverityBadge = (severity?: string) => {
     switch (severity) {
-      case 'green':
-        return 'bg-green-100 border-green-500 text-green-800';
-      case 'yellow':
-        return 'bg-yellow-100 border-yellow-500 text-yellow-800';
       case 'red':
-        return 'bg-red-100 border-red-500 text-red-800';
+        return { bg: 'bg-red-50', text: 'text-red-700', label: '🔴 CRITICAL', border: 'border-red-500' };
+      case 'yellow':
+        return { bg: 'bg-yellow-50', text: 'text-yellow-700', label: '🟡 WARNING', border: 'border-yellow-500' };
+      case 'green':
+        return { bg: 'bg-green-50', text: 'text-green-700', label: '🟢 INFO', border: 'border-green-500' };
       case 'blue':
-        return 'bg-blue-100 border-blue-500 text-blue-800';
+        return { bg: 'bg-blue-50', text: 'text-blue-700', label: '🔵 INFO', border: 'border-blue-500' };
       default:
-        return 'bg-gray-100 border-gray-500 text-gray-800';
+        return { bg: 'bg-gray-50', text: 'text-gray-700', label: 'INFO', border: 'border-gray-500' };
     }
   };
 
@@ -54,176 +55,204 @@ export default function Home() {
     return alarms.filter(a => a.severity === severity).length;
   };
 
+  const speakAlarm = (alarm: Alarm) => {
+    const text = `Alarm ${alarm.code}: ${alarm.name}. ${alarm.cause ? 'Cause: ' + alarm.cause + '. ' : ''}Action: ${alarm.action || 'See manual'}`;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 0.85;
+    speechSynthesis.speak(utterance);
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-purple-600 to-indigo-800 p-4 md:p-6">
       <div className="max-w-6xl mx-auto">
+        
         {/* Header */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+        <div className="bg-black/90 text-white rounded-2xl shadow-2xl p-6 md:p-8 mb-6">
+          <div className="flex justify-between items-start mb-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                Mazak CNC Alarm Database
+              <h1 className="text-2xl md:text-3xl font-bold mb-2">
+                🔧 INTEGREX e-670H Alarm Database
               </h1>
-              <p className="text-gray-600">
-                Search {alarms.length} alarm codes for instant troubleshooting
+              <p className="text-sm text-gray-300">
+                Serial No. 301508 • MAZATROL SmoothX Control
               </p>
             </div>
-            <a 
-              href="tel:+13184089163"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 md:px-6 rounded-lg transition-colors flex items-center gap-2 w-full md:w-auto justify-center md:justify-start"
+            <button className="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full text-sm font-semibold transition">
+              EN | ES
+            </button>
+          </div>
+          
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6">
+            <div className="bg-white/10 rounded-xl p-4 text-center">
+              <div className="text-3xl font-bold text-green-400">{alarms.length}</div>
+              <div className="text-xs text-gray-300 mt-1">Total Alarms</div>
+            </div>
+            <div className="bg-white/10 rounded-xl p-4 text-center">
+              <div className="text-3xl font-bold text-red-400">{getSeverityCount('red')}</div>
+              <div className="text-xs text-gray-300 mt-1">Critical</div>
+            </div>
+            <div className="bg-white/10 rounded-xl p-4 text-center">
+              <div className="text-3xl font-bold text-yellow-400">{getSeverityCount('yellow')}</div>
+              <div className="text-xs text-gray-300 mt-1">Warning</div>
+            </div>
+            <div className="bg-white/10 rounded-xl p-4 text-center">
+              <div className="text-3xl font-bold text-blue-400">{getSeverityCount('blue') + getSeverityCount('green')}</div>
+              <div className="text-xs text-gray-300 mt-1">Info</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Search Container */}
+        <div className="bg-white rounded-2xl shadow-xl p-6 mb-6">
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="🔍 Search alarms by number, message, or keyword... (e.g., 434, servo, tool)"
+            className="w-full px-5 py-4 text-lg border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-200 outline-none transition"
+          />
+          
+          {/* Filter Chips */}
+          <div className="flex gap-2 flex-wrap mt-4">
+            <button
+              onClick={() => setSeverityFilter('all')}
+              className={`px-5 py-2 rounded-full font-semibold text-sm transition ${
+                severityFilter === 'all'
+                  ? 'bg-purple-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
             >
-              <span className="text-2xl">📞</span>
-              <div className="text-left">
-                <div className="text-sm">24/7 AI Support</div>
-                <div className="text-base md:text-lg">+1 (318) 408-9163</div>
-              </div>
-            </a>
+              All Alarms
+            </button>
+            <button
+              onClick={() => setSeverityFilter('red')}
+              className={`px-5 py-2 rounded-full font-semibold text-sm transition ${
+                severityFilter === 'red'
+                  ? 'bg-red-500 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              🔴 Critical
+            </button>
+            <button
+              onClick={() => setSeverityFilter('yellow')}
+              className={`px-5 py-2 rounded-full font-semibold text-sm transition ${
+                severityFilter === 'yellow'
+                  ? 'bg-yellow-500 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              🟡 Warning
+            </button>
+            <button
+              onClick={() => setSeverityFilter('blue')}
+              className={`px-5 py-2 rounded-full font-semibold text-sm transition ${
+                severityFilter === 'blue'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              🟢 Info
+            </button>
           </div>
-        </div>
-
-        {/* Search & Filters */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Search by code or keyword
-              </label>
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Enter alarm code (e.g. 1485) or keyword..."
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg text-gray-900 placeholder-gray-400"
-              />
-            </div>
-
-            <div className="flex gap-2 flex-wrap">
-              <button
-                onClick={() => setSeverityFilter('all')}
-                className={`px-4 py-2 rounded-lg font-medium ${
-                  severityFilter === 'all'
-                    ? 'bg-gray-600 text-white'
-                    : 'bg-gray-200 text-gray-700'
-                }`}
-              >
-                All ({getSeverityCount('all')})
-              </button>
-              <button
-                onClick={() => setSeverityFilter('red')}
-                className={`px-4 py-2 rounded-lg font-medium ${
-                  severityFilter === 'red'
-                    ? 'bg-red-500 text-white'
-                    : 'bg-gray-200 text-gray-700'
-                }`}
-              >
-                🔴 Red ({getSeverityCount('red')})
-              </button>
-              <button
-                onClick={() => setSeverityFilter('blue')}
-                className={`px-4 py-2 rounded-lg font-medium ${
-                  severityFilter === 'blue'
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-gray-200 text-gray-700'
-                }`}
-              >
-                🔵 Blue ({getSeverityCount('blue')})
-              </button>
-              <button
-                onClick={() => setSeverityFilter('yellow')}
-                className={`px-4 py-2 rounded-lg font-medium ${
-                  severityFilter === 'yellow'
-                    ? 'bg-yellow-500 text-white'
-                    : 'bg-gray-200 text-gray-700'
-                }`}
-              >
-                🟡 Yellow ({getSeverityCount('yellow')})
-              </button>
-              <button
-                onClick={() => setSeverityFilter('green')}
-                className={`px-4 py-2 rounded-lg font-medium ${
-                  severityFilter === 'green'
-                    ? 'bg-green-500 text-white'
-                    : 'bg-gray-200 text-gray-700'
-                }`}
-              >
-                🟢 Green ({getSeverityCount('green')})
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Results Count */}
-        <div className="mb-4 text-sm text-gray-600">
-          Found {filteredAlarms.length} alarm{filteredAlarms.length !== 1 ? 's' : ''}
         </div>
 
         {/* Results */}
         <div className="space-y-4">
           {filteredAlarms.length === 0 ? (
-            <div className="bg-white rounded-lg shadow-sm p-8 text-center">
-              <p className="text-gray-500">No alarms found matching your search</p>
+            <div className="bg-white rounded-2xl shadow-xl p-12 text-center">
+              <h3 className="text-2xl font-semibold text-gray-600 mb-2">No Alarms Found</h3>
+              <p className="text-gray-500">Try adjusting your search or filters</p>
             </div>
           ) : (
-            filteredAlarms.map((alarm) => (
-              <div
-                key={alarm.code}
-                className={`border-l-4 rounded-lg shadow-sm p-6 ${getSeverityColor(
-                  alarm.severity
-                )}`}
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="text-2xl font-bold">Alarm {alarm.code}</h3>
-                    <h4 className="text-lg font-semibold mt-1">{alarm.name}</h4>
+            filteredAlarms.map((alarm) => {
+              const badge = getSeverityBadge(alarm.severity);
+              const isExpanded = expandedAlarm === alarm.code;
+              
+              return (
+                <div
+                  key={alarm.code}
+                  onClick={() => setExpandedAlarm(isExpanded ? null : alarm.code)}
+                  className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all cursor-pointer overflow-hidden border-l-4 ${badge.border}`}
+                >
+                  <div className="p-6">
+                    {/* Alarm Header */}
+                    <div className="flex justify-between items-start mb-3">
+                      <div className="text-4xl md:text-5xl font-bold text-gray-900">
+                        {alarm.code}
+                      </div>
+                      <span className={`px-4 py-2 rounded-full text-xs font-bold uppercase ${badge.bg} ${badge.text}`}>
+                        {badge.label}
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-3">
+                      {alarm.name}
+                    </h3>
+                    
+                    <div className="flex gap-4 flex-wrap text-sm text-gray-600">
+                      <span className="flex items-center gap-1">
+                        🔧 {alarm.severity?.toUpperCase() || 'INFO'}
+                      </span>
+                    </div>
+
+                    {/* Expanded Details */}
+                    {isExpanded && (
+                      <div className="mt-6 pt-6 border-t space-y-4">
+                        {alarm.cause && (
+                          <div>
+                            <div className="text-xs font-bold uppercase text-gray-500 mb-2">
+                              🔍 Cause
+                            </div>
+                            <div className="text-sm leading-relaxed text-gray-700">
+                              {alarm.cause}
+                            </div>
+                          </div>
+                        )}
+                        
+                        {alarm.action && (
+                          <div>
+                            <div className="text-xs font-bold uppercase text-gray-500 mb-2">
+                              🔧 What To Do
+                            </div>
+                            <div className="text-sm leading-relaxed text-gray-700">
+                              {alarm.action}
+                            </div>
+                          </div>
+                        )}
+                        
+                        {/* Action Buttons */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-4">
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              speakAlarm(alarm);
+                            }}
+                            className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-4 rounded-xl transition flex items-center justify-center gap-2"
+                          >
+                            🔊 Speak Solution
+                          </button>
+                          <button
+                            onClick={(e) => e.stopPropagation()}
+                            className="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-3 px-4 rounded-xl transition flex items-center justify-center gap-2"
+                          >
+                            ✓ Mark Solved
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  {alarm.severity && (
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${
-                        alarm.severity === 'red'
-                          ? 'bg-red-500 text-white'
-                          : alarm.severity === 'yellow'
-                          ? 'bg-yellow-500 text-white'
-                          : alarm.severity === 'green'
-                          ? 'bg-green-500 text-white'
-                          : alarm.severity === 'blue'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-gray-500 text-white'
-                      }`}
-                    >
-                      {alarm.severity}
-                    </span>
-                  )}
                 </div>
-
-                <div className="space-y-3">
-                  {alarm.cause && (
-                    <div>
-                      <p className="text-sm font-semibold mb-1">Cause:</p>
-                      <p className="text-sm">{alarm.cause}</p>
-                    </div>
-                  )}
-                  {alarm.action && (
-                    <div>
-                      <p className="text-sm font-semibold mb-1">Action:</p>
-                      <p className="text-sm">{alarm.action}</p>
-                    </div>
-                  )}
-                </div>
-
-                <div className="mt-4 pt-4 border-t border-gray-300">
-                  <p className="text-xs text-gray-500">
-                    💡 Need help? Call our 24/7 AI support: +1 (318) 408-9163
-                  </p>
-                </div>
-              </div>
-            ))
+              );
+            })
           )}
         </div>
 
         {/* Footer */}
-        <div className="mt-8 text-center text-sm text-gray-500">
-          <p>Independent third-party service • Not affiliated with Yamazaki Mazak Corporation</p>
-          <p className="mt-2">For official support: Mazak Technical Center 859-342-1700</p>
+        <div className="mt-12 text-center text-white text-sm opacity-80">
+          <p>© 2024 CNC Alarm Assistant • Independent tool for Mazak machines</p>
+          <p className="mt-1">Not affiliated with Yamazaki Mazak Corporation</p>
         </div>
       </div>
     </div>
