@@ -1,11 +1,6 @@
 @import "tailwindcss";
 
 :root {
-  /* Type — provided by next/font as CSS variables */
-  --font-serif: "Source Serif 4", "Iowan Old Style", Georgia, serif;
-  --font-sans:  "Inter Tight", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
-
   /* Bone & ink */
   --paper:   #f1ede4;
   --paper-2: #ebe6db;
@@ -57,9 +52,6 @@
   --color-critical: var(--critical);
   --color-warning:  var(--warning);
   --color-notice:   var(--notice);
-  --font-serif: var(--font-serif);
-  --font-sans:  var(--font-sans);
-  --font-mono:  var(--font-mono);
 }
 
 * { box-sizing: border-box; }
