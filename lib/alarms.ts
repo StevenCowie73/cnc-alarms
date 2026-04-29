@@ -2,13 +2,20 @@ export type Severity = "critical" | "warning" | "notice";
 
 export interface RawAlarm {
   "No.": number | string;
-  Message: string;
+  Message: string | string[] | null;
   "Type of error": string | null;
   "Stopped status": string | null;
   "Clearing procedure": string | null;
   Display: string | null;
-  Cause: string | null;
-  Action: string | null;
+  Cause: string | string[] | null;
+  Action: string | string[] | null;
+}
+
+function toText(v: unknown): string {
+  if (typeof v === "string") return v;
+  if (Array.isArray(v)) return v.map((x) => toText(x)).join(" ");
+  if (v == null) return "";
+  return String(v);
 }
 
 export interface Alarm {
@@ -82,13 +89,13 @@ export function classifySeverity(a: RawAlarm): Severity {
 export function normalizeAlarm(a: RawAlarm): Alarm {
   return {
     code: Number(a["No."]),
-    message: a.Message || "",
-    cause: a.Cause || "",
-    action: a.Action || "",
-    typeCode: (a["Type of error"] || "").trim(),
-    stopCode: (a["Stopped status"] || "").trim(),
-    clearCode: (a["Clearing procedure"] || "").trim(),
-    display: (a.Display || "").trim(),
+    message: toText(a.Message),
+    cause: toText(a.Cause),
+    action: toText(a.Action),
+    typeCode: toText(a["Type of error"]).trim(),
+    stopCode: toText(a["Stopped status"]).trim(),
+    clearCode: toText(a["Clearing procedure"]).trim(),
+    display: toText(a.Display).trim(),
     severity: classifySeverity(a),
   };
 }
