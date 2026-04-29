@@ -32,6 +32,25 @@ function HubInner() {
   const [speaking, setSpeaking] = useState(false);
   const [lang, setLang] = useState<"en" | "es">("en");
   const [now, setNow] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
+  const [pickerOpen, setPickerOpen] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 760px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (!pickerOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [pickerOpen]);
 
   useEffect(() => {
     const stored = window.localStorage.getItem("hub.lang");
@@ -166,23 +185,100 @@ function HubInner() {
       </div>
 
       <div className="body">
-        <IndexColumn
-          alarms={alarms}
-          selected={selected}
-          onSelect={setSelected}
-          query={query}
-          onQuery={setQuery}
-          sevFilter={sevFilter}
-          onSevFilter={setSevFilter}
-        />
+        {isMobile && alarm && (
+          <button
+            type="button"
+            className="picker"
+            onClick={() => setPickerOpen(true)}
+            aria-label="Browse alarm codes"
+          >
+            <div className="picker__bar">
+              <span
+                className={`picker__bar-bar picker__bar-bar--${alarm.severity}`}
+                aria-hidden
+              />
+              <span className="picker__bar-code">
+                {String(alarm.code).padStart(4, "0")}
+              </span>
+              <span className="picker__bar-text">
+                <span className="picker__bar-meta">
+                  Tap to browse · {alarms.length} codes
+                </span>
+                <span className="picker__bar-msg">{alarm.message}</span>
+              </span>
+              <span className="picker__bar-chev" aria-hidden>
+                ▾
+              </span>
+            </div>
+          </button>
+        )}
+
+        {!isMobile && (
+          <IndexColumn
+            alarms={alarms}
+            selected={selected}
+            onSelect={setSelected}
+            query={query}
+            onQuery={setQuery}
+            sevFilter={sevFilter}
+            onSevFilter={setSevFilter}
+          />
+        )}
         <Readout
           alarm={alarm}
           lang={lang}
           onSpeak={speak}
           speaking={speaking}
+          isMobile={isMobile}
         />
-        <Ledger alarm={alarm} alarms={alarms} onSelect={setSelected} />
+        {!isMobile && (
+          <Ledger alarm={alarm} alarms={alarms} onSelect={setSelected} />
+        )}
       </div>
+
+      {isMobile && pickerOpen && (
+        <div className="picker__sheet" role="dialog" aria-label="Alarm code picker">
+          <div className="picker__sheet-head">
+            <span className="picker__sheet-title">Browse codes</span>
+            <button
+              type="button"
+              className="picker__sheet-close"
+              onClick={() => setPickerOpen(false)}
+            >
+              Close ✕
+            </button>
+          </div>
+          <IndexColumn
+            alarms={alarms}
+            selected={selected}
+            onSelect={(code) => {
+              setSelected(code);
+              setPickerOpen(false);
+            }}
+            query={query}
+            onQuery={setQuery}
+            sevFilter={sevFilter}
+            onSevFilter={setSevFilter}
+          />
+        </div>
+      )}
+
+      {isMobile && alarm && (
+        <div className="phonebar">
+          <a href="tel:+13184089163">
+            <span className="phonebar__icon" aria-hidden>
+              ☏
+            </span>
+            <span>
+              <span className="phonebar__lbl">Call cowie.ai · 24/7</span>
+              <span className="phonebar__num">+1 318 408 9163</span>
+            </span>
+            <span className="phonebar__quote">
+              Quote {String(alarm.code).padStart(4, "0")}
+            </span>
+          </a>
+        </div>
+      )}
 
       <footer className="footer">
         <span className="mono-label">
