@@ -36,11 +36,13 @@ export function Readout({
   lang,
   onSpeak,
   speaking,
+  isMobile = false,
 }: {
   alarm: Alarm | null;
   lang: "en" | "es";
   onSpeak: (text: string) => void;
   speaking: boolean;
+  isMobile?: boolean;
 }) {
   const transcript = useMemo(() => {
     if (!alarm) return "";
@@ -200,6 +202,47 @@ export function Readout({
             ))}
         </div>
       </div>
+
+      {/* Mobile-only inline rail (replaces desktop ledger Record/Severity blocks) */}
+      {isMobile && (
+        <div className="mobile-rail">
+          <div className="mobile-rail__block">
+            <div className="mono-label muted">Record</div>
+            <div className="mobile-rail__kv">
+              <span>Code</span>
+              <span className="num">{String(alarm.code).padStart(4, "0")}</span>
+            </div>
+            <div className="mobile-rail__kv">
+              <span>Type</span>
+              <span className="num">{alarm.typeCode || "—"}</span>
+            </div>
+            <div className="mobile-rail__kv">
+              <span>Stop</span>
+              <span className="num">{alarm.stopCode || "—"}</span>
+            </div>
+            <div className="mobile-rail__kv">
+              <span>Clear</span>
+              <span className="num">{alarm.clearCode || "—"}</span>
+            </div>
+            <div className="mobile-rail__kv">
+              <span>Panel</span>
+              <span className="num">{alarm.display || "—"}</span>
+            </div>
+          </div>
+          <div className="mobile-rail__block">
+            <div className="mono-label muted">Severity</div>
+            <SevTag severity={alarm.severity} />
+            <p className="mobile-rail__note">
+              {alarm.severity === "critical" &&
+                "Machine is fully stopped. Recover before resuming."}
+              {alarm.severity === "warning" &&
+                "Feed paused. Resolve and reset to continue."}
+              {alarm.severity === "notice" &&
+                "Operation may continue. Inspect at next opportunity."}
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
