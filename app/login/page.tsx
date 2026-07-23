@@ -35,11 +35,8 @@ export default function LoginPage() {
     <div className="min-h-screen flex flex-col bg-[var(--paper)] text-[var(--ink)]">
       <header className="border-b border-[var(--ink-15)]">
         <div className="px-8 py-4 flex items-center justify-between">
-          <Link
-            href="/"
-            className="font-[family-name:var(--font-serif)] text-[22px] font-medium"
-          >
-            <span className="text-[var(--critical)] mr-1">·</span>cowie · alarms
+          <Link href="/" className="brandmark">
+            cowie · alarms
           </Link>
           <span className="font-[family-name:var(--font-mono)] text-[10.5px] tracking-[0.16em] uppercase text-[var(--ink-50)]">
             Sign in
@@ -49,19 +46,27 @@ export default function LoginPage() {
 
       <main className="flex-1 flex items-center justify-center px-6 py-16">
         <div className="w-full max-w-[380px]">
-          <span className="mono-label muted block mb-3">§ Operator access</span>
-          <h1 className="font-[family-name:var(--font-serif)] text-[44px] leading-[1.05] tracking-[-0.022em] mb-3">
+          <div className="flex flex-col items-center text-center mb-10">
+            <span className="brandmark brandmark--stack">ALARMS</span>
+            <span className="font-[family-name:var(--font-mono)] text-[11px] tracking-[0.14em] uppercase text-[var(--ink-50)] mt-2">
+              CNC fault lookup
+            </span>
+          </div>
+
+          <h1 className="text-[28px] font-semibold tracking-[-0.015em] mb-3">
             Sign in
           </h1>
-          <p className="font-[family-name:var(--font-serif)] text-[16px] text-[var(--ink-70)] mb-10 max-w-[40ch]">
+          <p className="text-[15px] leading-[1.55] text-[var(--ink-70)] mb-8 max-w-[42ch]">
             Enter your email and we&rsquo;ll send a one-time magic link. No password,
             no sign-up form.
           </p>
 
           {sent ? (
-            <div className="border border-[var(--ink-15)] p-5 bg-[var(--paper-2)]">
-              <div className="mono-label mb-2">Magic link sent</div>
-              <p className="font-[family-name:var(--font-serif)] text-[15px] text-[var(--ink-90)]">
+            <div className="surface-card p-5">
+              <div className="mono-label mb-2 text-[var(--notice)]">
+                Magic link sent
+              </div>
+              <p className="text-[15px] leading-[1.55] text-[var(--ink-90)]">
                 Check <span className="font-[family-name:var(--font-mono)]">{email}</span>{" "}
                 for a sign-in link. It expires in 60 minutes.
               </p>
@@ -72,18 +77,18 @@ export default function LoginPage() {
                 e.preventDefault();
                 sendMagicLink();
               }}
-              className="flex flex-col gap-6"
+              className="flex flex-col gap-5"
             >
-              <label className="flex flex-col gap-2">
-                <span className="mono-label muted">Email</span>
+              <label className="flex flex-col gap-2.5">
+                <span className="field-label">Shop email</span>
                 <input
                   type="email"
                   autoComplete="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="operator@shop.example"
-                  className="bg-transparent border-0 border-b border-[var(--ink-30)] focus:border-[var(--ink)] focus:outline-none py-2 font-[family-name:var(--font-serif)] text-[16px] text-[var(--ink)] placeholder:italic placeholder:text-[var(--ink-40)]"
+                  placeholder="you@shop.com"
+                  className="field-input"
                 />
               </label>
 
@@ -93,17 +98,13 @@ export default function LoginPage() {
                 </p>
               )}
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="bg-[var(--ink)] text-[var(--paper)] py-3 px-5 font-[family-name:var(--font-mono)] text-[10.5px] tracking-[0.16em] uppercase hover:bg-[var(--ink-90)] disabled:opacity-60 disabled:cursor-wait transition-colors"
-              >
+              <button type="submit" disabled={loading} className="btn-accent">
                 {loading ? "Sending…" : "Send magic link"}
               </button>
             </form>
           )}
 
-          <div className="mt-12 pt-6 border-t border-[var(--ink-15)] flex justify-between items-center">
+          <div className="mt-10 pt-6 border-t border-[var(--ink-15)] flex justify-between items-center">
             <Link
               href="/"
               className="mono-label text-[var(--ink-50)] hover:text-[var(--ink)] no-underline"
@@ -117,6 +118,14 @@ export default function LoginPage() {
               Call support
             </a>
           </div>
+
+          <p className="mt-8 text-center text-[13px] leading-[1.5] text-[var(--ink-40)]">
+            Faulted right now and locked out?
+            <br />
+            <a href="tel:+13184089163" className="font-semibold">
+              Call support — no login needed
+            </a>
+          </p>
         </div>
       </main>
     </div>

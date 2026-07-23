@@ -40,11 +40,8 @@ export default function Dashboard() {
     <div className="min-h-screen flex flex-col bg-[var(--paper)] text-[var(--ink)]">
       <header className="border-b border-[var(--ink-15)]">
         <div className="px-8 py-4 flex items-center justify-between">
-          <Link
-            href="/"
-            className="font-[family-name:var(--font-serif)] text-[22px] font-medium"
-          >
-            <span className="text-[var(--critical)] mr-1">·</span>cowie · alarms
+          <Link href="/" className="brandmark">
+            cowie · alarms
           </Link>
           <span className="mono-label muted">Account</span>
         </div>
@@ -53,10 +50,10 @@ export default function Dashboard() {
       <main className="flex-1 flex items-start justify-center px-6 py-16">
         <div className="w-full max-w-[560px]">
           <span className="mono-label muted block mb-3">§ Account</span>
-          <h1 className="font-[family-name:var(--font-serif)] text-[44px] leading-[1.05] tracking-[-0.022em] mb-3">
+          <h1 className="text-[40px] font-semibold leading-[1.1] tracking-[-0.02em] mb-3">
             Dashboard
           </h1>
-          <p className="font-[family-name:var(--font-serif)] text-[16px] text-[var(--ink-70)] mb-10 max-w-[60ch]">
+          <p className="text-[16px] leading-[1.55] text-[var(--ink-70)] mb-10 max-w-[60ch]">
             Signed in as{" "}
             <span className="font-[family-name:var(--font-mono)] text-[var(--ink)]">
               {email}
@@ -66,16 +63,16 @@ export default function Dashboard() {
           </p>
 
           <div className="border-t border-[var(--ink-15)] pt-6 mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--ink-15)]">
-              <div className="bg-[var(--paper-2)] p-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="surface-card p-5">
                 <span className="mono-label muted block mb-2">Saved alarms</span>
-                <span className="font-[family-name:var(--font-mono)] text-[28px] font-medium tabular-nums">
+                <span className="font-[family-name:var(--font-mono)] text-[28px] font-semibold tabular-nums">
                   00
                 </span>
               </div>
-              <div className="bg-[var(--paper-2)] p-5">
+              <div className="surface-card p-5">
                 <span className="mono-label muted block mb-2">Notes</span>
-                <span className="font-[family-name:var(--font-mono)] text-[28px] font-medium tabular-nums">
+                <span className="font-[family-name:var(--font-mono)] text-[28px] font-semibold tabular-nums">
                   00
                 </span>
               </div>
@@ -83,16 +80,13 @@ export default function Dashboard() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3">
-            <Link
-              href="/"
-              className="flex-1 bg-[var(--ink)] text-[var(--paper)] py-3 px-5 font-[family-name:var(--font-mono)] text-[10.5px] tracking-[0.16em] uppercase text-center hover:bg-[var(--ink-90)] transition-colors"
-            >
+            <Link href="/" className="btn-accent flex-1">
               Enter alarm hub
             </Link>
             <button
               type="button"
               onClick={handleSignOut}
-              className="flex-1 border border-[var(--ink-15)] py-3 px-5 font-[family-name:var(--font-mono)] text-[10.5px] tracking-[0.16em] uppercase hover:border-[var(--ink)] transition-colors"
+              className="btn-ghost flex-1"
             >
               Sign out
             </button>

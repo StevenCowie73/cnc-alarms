@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, Inter_Tight, JetBrains_Mono } from "next/font/google";
+import { Archivo, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const serif = Source_Serif_4({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
-
-const sans = Inter_Tight({
+// The redesign uses a two-face system: Archivo for everything textual,
+// JetBrains Mono for codes, labels, and numerics. There is no serif in
+// the design, so --font-serif is mapped onto Archivo as well — this
+// keeps every existing `var(--font-serif)` reference working without
+// touching markup across the app.
+const sans = Archivo({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const display = Archivo({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const mono = JetBrains_Mono({
@@ -34,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${serif.variable} ${sans.variable} ${mono.variable} antialiased`}
+        className={`${display.variable} ${sans.variable} ${mono.variable} antialiased`}
       >
         {children}
       </body>
