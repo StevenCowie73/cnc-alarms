@@ -1,100 +1,110 @@
 "use client";
 
-import { Suspense, useEffect, useMemo, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import alarmsRaw from "../public/alarms.json";
-import { loadAlarms, type RawAlarm, type Severity } from "@/lib/alarms";
-import { IndexColumn } from "./components/IndexColumn";
-import { Readout } from "./components/Readout";
-import { Ledger } from "./components/Ledger";
+import { loadAlarms, type RawAlarm } from "@/lib/alarms";
+import { AlarmCard } from "./components/AlarmCard";
+import { AlarmDetail } from "./components/AlarmDetail";
 
-type SevFilter = "all" | Severity;
+const RECENT_KEY = "hub.recent";
 
 function HubInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  // Unchanged data path: alarms.json, normalized and sorted client-side.
   const alarms = useMemo(() => loadAlarms(alarmsRaw as RawAlarm[]), []);
+  const byCode = useMemo(() => {
+    const m = new Map<number, ReturnType<typeof loadAlarms>[number]>();
+    alarms.forEach((a) => m.set(a.code, a));
+    return m;
+  }, [alarms]);
 
-  const initialCode = (() => {
-    const param = searchParams.get("code");
-    const parsed = param ? parseInt(param, 10) : NaN;
-    if (!Number.isNaN(parsed) && alarms.find((a) => a.code === parsed)) {
-      return parsed;
-    }
-    return alarms[0]?.code ?? null;
-  })();
+  // Detail selection stays tied to the ?code= param, preserving the existing
+  // route contract and shareable URLs.
+  const codeParam = searchParams.get("code");
+  const parsedCode = codeParam ? parseInt(codeParam, 10) : NaN;
+  const selected = !Number.isNaN(parsedCode) ? byCode.get(parsedCode) ?? null : null;
 
-  const [selected, setSelected] = useState<number | null>(initialCode);
   const [query, setQuery] = useState("");
-  const [sevFilter, setSevFilter] = useState<SevFilter>("all");
-  const [speaking, setSpeaking] = useState(false);
+  const [view, setView] = useState<"search" | "results">("search");
+  const [recentCodes, setRecentCodes] = useState<number[]>([]);
   const [lang, setLang] = useState<"en" | "es">("en");
-  const [now, setNow] = useState("");
-  const [isMobile, setIsMobile] = useState(false);
-  const [pickerOpen, setPickerOpen] = useState(false);
+  const [speaking, setSpeaking] = useState(false);
 
   useEffect(() => {
-    const mq = window.matchMedia("(max-width: 760px)");
-    const update = () => setIsMobile(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-
-  useEffect(() => {
-    if (!pickerOpen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [pickerOpen]);
-
-  useEffect(() => {
-    const stored = window.localStorage.getItem("hub.lang");
-    if (stored === "en" || stored === "es") setLang(stored);
+    const storedLang = window.localStorage.getItem("hub.lang");
+    if (storedLang === "en" || storedLang === "es") setLang(storedLang);
+    try {
+      const raw = window.localStorage.getItem(RECENT_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      if (Array.isArray(parsed)) {
+        setRecentCodes(parsed.filter((x) => typeof x === "number"));
+      }
+    } catch {
+      /* ignore malformed recent list */
+    }
   }, []);
 
   useEffect(() => {
     window.localStorage.setItem("hub.lang", lang);
   }, [lang]);
 
-  useEffect(() => {
-    if (selected === null) return;
-    const current = searchParams.get("code");
-    if (current !== String(selected)) {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set("code", String(selected));
-      router.replace(`/?${params.toString()}`, { scroll: false });
-    }
-  }, [selected, router, searchParams]);
-
-  useEffect(() => {
-    const tick = () => {
-      const d = new Date();
-      setNow(d.toISOString().slice(0, 16).replace("T", " "));
-    };
-    tick();
-    const id = window.setInterval(tick, 60_000);
-    return () => window.clearInterval(id);
+  const pushRecent = useCallback((code: number) => {
+    setRecentCodes((prev) => {
+      const next = [code, ...prev.filter((c) => c !== code)].slice(0, 5);
+      try {
+        window.localStorage.setItem(RECENT_KEY, JSON.stringify(next));
+      } catch {
+        /* ignore quota / privacy-mode errors */
+      }
+      return next;
+    });
   }, []);
 
-  const alarm = useMemo(
-    () => alarms.find((a) => a.code === selected) ?? null,
-    [alarms, selected]
+  const openCode = useCallback(
+    (code: number) => {
+      pushRecent(code);
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("code", String(code));
+      router.push(`/?${params.toString()}`, { scroll: false });
+      if (typeof window !== "undefined") window.scrollTo(0, 0);
+    },
+    [router, searchParams, pushRecent]
   );
 
-  const stats = useMemo(
-    () => ({
-      total: alarms.length,
-      critical: alarms.filter((a) => a.severity === "critical").length,
-      warning: alarms.filter((a) => a.severity === "warning").length,
-      notice: alarms.filter((a) => a.severity === "notice").length,
-    }),
-    [alarms]
-  );
+  const clearCode = useCallback(() => {
+    router.push("/", { scroll: false });
+  }, [router]);
+
+  // Same client-side filter predicate as before: code, message, or cause.
+  const results = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
+    return alarms.filter(
+      (a) =>
+        String(a.code).includes(q) ||
+        a.message.toLowerCase().includes(q) ||
+        a.cause.toLowerCase().includes(q)
+    );
+  }, [alarms, query]);
+
+  // Recent = last viewed codes; before anything has been viewed, seed with a
+  // representative sample so the list is never empty.
+  const recentAlarms = useMemo(() => {
+    const fromStore = recentCodes
+      .map((c) => byCode.get(c))
+      .filter((a): a is NonNullable<typeof a> => Boolean(a));
+    if (fromStore.length > 0) return fromStore.slice(0, 5);
+    const sample: typeof alarms = [];
+    for (const sev of ["critical", "warning", "notice"] as const) {
+      const hit = alarms.find((a) => a.severity === sev);
+      if (hit) sample.push(hit);
+    }
+    return sample;
+  }, [recentCodes, byCode, alarms]);
 
   function speak(text: string) {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
@@ -112,197 +122,148 @@ function HubInner() {
     setSpeaking(true);
   }
 
-  return (
-    <div className="shell">
-      <header className="masthead">
-        <div className="masthead__inner">
-          <div className="masthead__brand">
-            <span className="masthead__wordmark">cowie · alarms</span>
-            <span className="masthead__tagline">Alarm Intelligence Hub</span>
-          </div>
-          <div className="masthead__center">
-            <span className="pulse" />
-            <span className="mono-label">
-              Session <strong>UTC {now || "—"}</strong>
-            </span>
-          </div>
-          <nav className="masthead__nav">
-            <div className="lang">
-              <button
-                type="button"
-                className={lang === "en" ? "is-on" : ""}
-                onClick={() => setLang("en")}
-              >
-                EN
-              </button>
-              <button
-                type="button"
-                className={lang === "es" ? "is-on" : ""}
-                onClick={() => setLang("es")}
-              >
-                ES
-              </button>
-            </div>
-            <Link href="/login" className="auth-link">
-              Sign in
-            </Link>
-            <a href="tel:+13184089163">Call support</a>
-          </nav>
-        </div>
-      </header>
+  function runSearch() {
+    setView("results");
+    if (typeof window !== "undefined") window.scrollTo(0, 0);
+  }
 
-      <div className="status">
-        <div className="status__cell">
-          <span className="mono-label muted">Codes catalogued</span>
-          <span className="status__num">
-            {stats.total.toString().padStart(4, "0")}
-          </span>
-        </div>
-        <div className="status__cell">
-          <span className="mono-label muted">Critical</span>
-          <span className="status__num status__num--crit">
-            {stats.critical.toString().padStart(2, "0")}
-          </span>
-        </div>
-        <div className="status__cell">
-          <span className="mono-label muted">Warning</span>
-          <span className="status__num status__num--warn">
-            {stats.warning.toString().padStart(2, "0")}
-          </span>
-        </div>
-        <div className="status__cell">
-          <span className="mono-label muted">Notice</span>
-          <span className="status__num status__num--note">
-            {stats.notice.toString().padStart(2, "0")}
-          </span>
-        </div>
-        <div className="status__cell">
-          <span className="mono-label muted">Now viewing</span>
-          <span className="status__num">
-            {alarm ? String(alarm.code).padStart(4, "0") : "----"}
-          </span>
-        </div>
-      </div>
-
-      <div className="body">
-        {isMobile && alarm && (
-          <button
-            type="button"
-            className="picker"
-            onClick={() => setPickerOpen(true)}
-            aria-label="Browse alarm codes"
-          >
-            <div className="picker__bar">
-              <span
-                className={`picker__bar-bar picker__bar-bar--${alarm.severity}`}
-                aria-hidden
-              />
-              <span className="picker__bar-code">
-                {String(alarm.code).padStart(4, "0")}
-              </span>
-              <span className="picker__bar-text">
-                <span className="picker__bar-meta">
-                  Tap to browse · {alarms.length} codes
-                </span>
-                <span className="picker__bar-msg">{alarm.message}</span>
-              </span>
-              <span className="picker__bar-chev" aria-hidden>
-                ▾
-              </span>
-            </div>
-          </button>
-        )}
-
-        {!isMobile && (
-          <IndexColumn
-            alarms={alarms}
-            selected={selected}
-            onSelect={setSelected}
-            query={query}
-            onQuery={setQuery}
-            sevFilter={sevFilter}
-            onSevFilter={setSevFilter}
-          />
-        )}
-        <Readout
-          alarm={alarm}
+  // ── Detail ──────────────────────────────────────────────
+  if (selected) {
+    return (
+      <main className="flow">
+        <AlarmDetail
+          alarm={selected}
           lang={lang}
+          onLang={setLang}
           onSpeak={speak}
           speaking={speaking}
-          isMobile={isMobile}
+          onBack={clearCode}
         />
-        {!isMobile && (
-          <Ledger alarm={alarm} alarms={alarms} onSelect={setSelected} />
-        )}
-      </div>
+        <FlowFooter />
+      </main>
+    );
+  }
 
-      {isMobile && pickerOpen && (
-        <div className="picker__sheet" role="dialog" aria-label="Alarm code picker">
-          <div className="picker__sheet-head">
-            <span className="picker__sheet-title">Browse codes</span>
-            <button
-              type="button"
-              className="picker__sheet-close"
-              onClick={() => setPickerOpen(false)}
-            >
-              Close ✕
-            </button>
+  // ── Results ─────────────────────────────────────────────
+  if (view === "results") {
+    return (
+      <main className="flow">
+        <div className="flow-searchbar">
+          <button
+            type="button"
+            className="flow-searchbar__back"
+            onClick={() => setView("search")}
+            aria-label="Back to search"
+          >
+            ‹
+          </button>
+          <div className="search-field search-field--sm">
+            <span className="search-field__icon" aria-hidden>
+              ⌕
+            </span>
+            <input
+              autoFocus
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") runSearch();
+              }}
+              placeholder="Code or keyword"
+            />
           </div>
-          <IndexColumn
-            alarms={alarms}
-            selected={selected}
-            onSelect={(code) => {
-              setSelected(code);
-              setPickerOpen(false);
-            }}
-            query={query}
-            onQuery={setQuery}
-            sevFilter={sevFilter}
-            onSevFilter={setSevFilter}
-          />
         </div>
-      )}
 
-      {isMobile && alarm && (
-        <div className="phonebar">
-          <a href="tel:+13184089163">
-            <span className="phonebar__icon" aria-hidden>
-              ☏
-            </span>
-            <span>
-              <span className="phonebar__lbl">Call cowie.ai · 24/7</span>
-              <span className="phonebar__num">+1 318 408 9163</span>
-            </span>
-            <span className="phonebar__quote">
-              Quote {String(alarm.code).padStart(4, "0")}
-            </span>
-          </a>
+        <div className="flow-label flow-results__count">
+          {results.length} {results.length === 1 ? "match" : "matches"}
         </div>
-      )}
 
-      <footer className="footer">
-        <span className="mono-label">
-          cowie.ai · independent third-party · not affiliated with Yamazaki Mazak
+        <div className="card-list">
+          {results.map((a) => (
+            <AlarmCard key={a.code} alarm={a} onOpen={openCode} />
+          ))}
+          {results.length === 0 && (
+            <p className="flow-empty">— no codes match —</p>
+          )}
+        </div>
+        <FlowFooter />
+      </main>
+    );
+  }
+
+  // ── Search (landing) ────────────────────────────────────
+  return (
+    <main className="flow">
+      <header className="flow-header">
+        <span className="brandmark">
+          <span className="flow-header__names">
+            ALARMS
+            <span className="flow-header__tag">CNC fault lookup</span>
+          </span>
         </span>
-        <div className="footer__links">
-          <Link href="/landing" className="mono-label">
-            About
+        <nav className="flow-header__nav">
+          <Link href="/login" className="flow-header__link">
+            Sign in
           </Link>
-          <Link href="/" className="mono-label">
-            Privacy
-          </Link>
-          <a href="mailto:info@cowie.ai" className="mono-label">
-            Contact
-          </a>
-        </div>
-      </footer>
-    </div>
+          <span className="flow-header__chip">MAZAK</span>
+        </nav>
+      </header>
+
+      <h1 className="flow-hero">
+        What alarm is on
+        <br />
+        the screen?
+      </h1>
+
+      <div className="search-field">
+        <span className="search-field__icon" aria-hidden>
+          ⌕
+        </span>
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") runSearch();
+          }}
+          placeholder="Code or keyword"
+        />
+      </div>
+      <button type="button" className="btn-accent flow-lookup" onClick={runSearch}>
+        Look up alarm
+      </button>
+
+      <div className="flow-label flow-recent__label">Recent</div>
+      <div className="card-list">
+        {recentAlarms.map((a) => (
+          <AlarmCard key={a.code} alarm={a} onOpen={openCode} />
+        ))}
+      </div>
+      <FlowFooter />
+    </main>
+  );
+}
+
+function FlowFooter() {
+  return (
+    <footer className="flow-footer">
+      <a href="tel:+13184089163" className="flow-footer__call">
+        Faulted right now? Call support — 24/7
+      </a>
+      <span className="mono-label muted">
+        cowie.ai · independent third-party · not affiliated with Yamazaki Mazak
+      </span>
+    </footer>
   );
 }
 
 export default function Home() {
   return (
-    <Suspense fallback={<div className="readout readout--empty"><p className="muted">Loading…</p></div>}>
+    <Suspense
+      fallback={
+        <main className="flow">
+          <p className="flow-empty">Loading…</p>
+        </main>
+      }
+    >
       <HubInner />
     </Suspense>
   );
