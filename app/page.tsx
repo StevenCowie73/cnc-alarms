@@ -171,6 +171,12 @@ function HubInner() {
               placeholder="Code or keyword"
             />
           </div>
+          <a
+            href="https://mazatrol-assistant.vercel.app"
+            className="flow-header__link flow-headlink"
+          >
+            Mazatrol
+          </a>
         </div>
 
         <div className="flow-label flow-results__count">
@@ -201,6 +207,12 @@ function HubInner() {
           </span>
         </span>
         <nav className="flow-header__nav">
+          <a
+            href="https://mazatrol-assistant.vercel.app"
+            className="flow-header__link"
+          >
+            Mazatrol Assistant
+          </a>
           <Link href="/login" className="flow-header__link">
             Sign in
           </Link>

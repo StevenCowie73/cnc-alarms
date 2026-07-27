@@ -60,6 +60,12 @@ export function AlarmDetail({
           ‹
         </button>
         <span className="brandmark detail__brand">ALARMS</span>
+        <a
+          href="https://mazatrol-assistant.vercel.app"
+          className="flow-header__link flow-headlink"
+        >
+          Mazatrol Assistant
+        </a>
       </div>
 
       <div className="detail__head">
@@ -148,6 +154,16 @@ export function AlarmDetail({
           <a href="tel:+13184089163">call support</a>.
         </span>
       </div>
+
+      {/* Hand-off to the sibling Mazatrol assistant, carrying the alarm code
+          so the machinist doesn't retype context. Secondary style on purpose —
+          it must not compete with the manual's own steps above. */}
+      <a
+        href={`https://mazatrol-assistant.vercel.app?alarm=${alarm.code}`}
+        className="btn-ghost detail__mazatrol"
+      >
+        Still stuck? Ask the Mazatrol assistant →
+      </a>
     </div>
   );
 }

@@ -1379,6 +1379,22 @@ em { font-style: italic; }
 }
 .detail__callout a { font-weight: 600; }
 
+/* ── Cross-product nav link (→ Mazatrol assistant) ─────
+   Quiet secondary item: reuses .flow-header__link type styles;
+   this modifier only right-aligns it inside searchbar/topbar rows. */
+.flow-headlink {
+  margin-left: auto;
+  flex: none;
+  white-space: nowrap;
+}
+
+/* "Still stuck?" hand-off under the detail callout — secondary
+   ghost button, deliberately quieter than the content above it. */
+.detail__mazatrol {
+  margin-top: 14px;
+  font-size: 15px;
+}
+
 /* ── Flow footer ─────────────────────────────────────── */
 .flow-footer {
   margin-top: auto;
