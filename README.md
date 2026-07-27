@@ -1,5 +1,15 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Environment (`.env.local`)
+
+```
+ELEVENLABS_API_KEY=   # SECRET — /api/tts read-aloud (falls back to Web Speech if absent)
+```
+
+Set the same variable in Vercel → Project Settings → Environment Variables.
+(Supabase URL/anon key are currently hard-coded in `lib/supabaseClient.ts` —
+they are public values that ship to the browser.)
+
 ## Getting Started
 
 First, run the development server:

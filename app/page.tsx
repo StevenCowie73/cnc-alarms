@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import alarmsRaw from "../public/alarms.json";
@@ -106,10 +106,25 @@ function HubInner() {
     return sample;
   }, [recentCodes, byCode, alarms]);
 
-  function speak(text: string) {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    if (speaking) {
+  // Read aloud: ElevenLabs TTS via /api/tts (voice "Daniel", streamed),
+  // falling back silently to the browser's Web Speech API if the call
+  // fails. Mirrors the mazatrol-assistant implementation.
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const stopSpeaking = useCallback(() => {
+    audioRef.current?.pause();
+    if (audioRef.current) {
+      URL.revokeObjectURL(audioRef.current.src);
+      audioRef.current = null;
+    }
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
+    }
+    setSpeaking(false);
+  }, []);
+
+  function speakWebSpeech(text: string) {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
       setSpeaking(false);
       return;
     }
@@ -119,7 +134,32 @@ function HubInner() {
     u.onend = () => setSpeaking(false);
     u.onerror = () => setSpeaking(false);
     window.speechSynthesis.speak(u);
+  }
+
+  async function speak(text: string) {
+    if (speaking) {
+      stopSpeaking();
+      return;
+    }
     setSpeaking(true);
+    try {
+      const res = await fetch("/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      const blob = await res.blob();
+      const audio = new Audio(URL.createObjectURL(blob));
+      audioRef.current = audio;
+      audio.onended = () => stopSpeaking();
+      audio.onerror = () => stopSpeaking();
+      await audio.play();
+    } catch {
+      // ElevenLabs unavailable — fall back to the browser voice, silently.
+      audioRef.current = null;
+      speakWebSpeech(text);
+    }
   }
 
   function runSearch() {
@@ -172,7 +212,7 @@ function HubInner() {
             />
           </div>
           <a
-            href="https://mazatrol-assistant.vercel.app"
+            href="https://mazatrol.cowie.ai"
             className="flow-header__link flow-headlink"
           >
             Mazatrol
@@ -208,7 +248,7 @@ function HubInner() {
         </span>
         <nav className="flow-header__nav">
           <a
-            href="https://mazatrol-assistant.vercel.app"
+            href="https://mazatrol.cowie.ai"
             className="flow-header__link"
           >
             Mazatrol Assistant

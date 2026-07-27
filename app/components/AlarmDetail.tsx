@@ -61,7 +61,7 @@ export function AlarmDetail({
         </button>
         <span className="brandmark detail__brand">ALARMS</span>
         <a
-          href="https://mazatrol-assistant.vercel.app"
+          href="https://mazatrol.cowie.ai"
           className="flow-header__link flow-headlink"
         >
           Mazatrol Assistant
@@ -159,7 +159,7 @@ export function AlarmDetail({
           so the machinist doesn't retype context. Secondary style on purpose —
           it must not compete with the manual's own steps above. */}
       <a
-        href={`https://mazatrol-assistant.vercel.app?alarm=${alarm.code}`}
+        href={`https://mazatrol.cowie.ai?alarm=${alarm.code}`}
         className="btn-ghost detail__mazatrol"
       >
         Still stuck? Ask the Mazatrol assistant →
