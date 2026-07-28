@@ -1421,3 +1421,10 @@ em { font-style: italic; }
   .detail__codebook-label { grid-column: 2; }
   .detail__codebook-value { grid-column: 1 / -1; padding-left: 50px; }
 }
+/* ── Cowie.ai suite micro-header ──────────────────────────────── */
+.suite-bar{position:sticky;top:0;z-index:1000;display:flex;align-items:center;gap:2px;height:38px;padding:0 16px;background:var(--paper-2);border-bottom:1px solid var(--ink-08);font-family:var(--font-mono);font-size:12px;letter-spacing:.02em;overflow-x:auto;}
+.suite-bar__brand{color:var(--ink);font-weight:600;white-space:nowrap;}
+.suite-bar__sep{color:var(--ink-30);margin:0 6px;}
+.suite-bar a{color:var(--ink-50);text-decoration:none;padding:4px 8px;border-radius:var(--r-badge);transition:color .15s ease,background .15s ease;white-space:nowrap;}
+.suite-bar a:hover{color:var(--ink);background:var(--paper-3);}
+.suite-bar a[aria-current="page"]{color:var(--accent);font-weight:600;}

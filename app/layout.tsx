@@ -41,6 +41,14 @@ export default function RootLayout({
       <body
         className={`${display.variable} ${sans.variable} ${mono.variable} antialiased`}
       >
+        <nav className="suite-bar" aria-label="Cowie.ai suite">
+          <span className="suite-bar__brand">Cowie.ai</span>
+          <span className="suite-bar__sep">—</span>
+          <a href="https://alarms.cowie.ai" aria-current="page">Alarms</a>
+          <a href="https://mazatrol.cowie.ai">Mazatrol</a>
+          <a href="https://maintenance.cowie.ai">Maintenance</a>
+          <a href="https://forklifts.cowie.ai">Forklifts</a>
+        </nav>
         {children}
       </body>
     </html>
