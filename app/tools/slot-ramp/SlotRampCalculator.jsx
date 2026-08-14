@@ -677,6 +677,12 @@ export default function SlotRampCalculator() {
                 </div>
               </div>
             )}
+
+            <div style={{ marginTop: 12, padding: "0 2px" }}>
+              <span style={{ fontFamily: sans, fontSize: 11.5, color: C.dim, lineHeight: 1.5 }}>
+                Values are computed exact. Legacy tools may show ±0.0001 differences from rounded readouts.
+              </span>
+            </div>
           </>
         )}
       </div>
