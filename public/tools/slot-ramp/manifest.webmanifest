@@ -1,0 +1,32 @@
+{
+  "name": "Slot Ramp Calculator — cowie.ai",
+  "short_name": "Slot Ramp",
+  "description": "Tangent ramp start position, pass table, and Mazatrol sub program from three print numbers. Works offline-light: pure client-side math, no backend.",
+  "id": "/tools/slot-ramp",
+  "start_url": "/tools/slot-ramp",
+  "scope": "/tools/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0B0D11",
+  "theme_color": "#0B0D11",
+  "icons": [
+    {
+      "src": "/tools/slot-ramp/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/tools/slot-ramp/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/tools/slot-ramp/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
