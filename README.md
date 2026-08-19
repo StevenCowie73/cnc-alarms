@@ -12,11 +12,11 @@ When a Mazak control throws an alarm, the official reference is a dense PDF on a
 
 ## What it does
 
-- **Instant lookup** across 1,204 alarm codes — search by code, message text, or cause. All client-side: the full dataset ships to the browser, so search is instant and works on a phone at the machine with a weak shop-floor signal.
+- **Instant lookup** across 1,197 alarm codes — search by code, message text, or cause. All client-side: the full dataset ships to the browser, so search is instant and works on a phone at the machine with a weak shop-floor signal.
 - **Severity classification derived from the manual itself** — `critical / warning / notice` is decoded from Mazak's *Stopped status* and *Display* fields, not guessed. The manual's A–S legend codes (error type, stop behavior, clearing procedure) are decoded into plain English on every detail view.
 - **Actionable steps** — the manual's free-text *Action* field is split into a numbered "what to do" checklist.
 - **Read-aloud** — ElevenLabs TTS through a server-side proxy (`/api/tts`, key never reaches the browser), with a silent Web Speech API fallback so audio always works. EN/ES voice locale toggle.
-- **Deep links** — every alarm is shareable via `?code=`, and recent lookups persist locally.
+- **Crawlable, static alarm pages** — every alarm lives at `/alarms/{code}`, pre-rendered at build time (SSG) with a unique title, meta description, canonical URL, and FAQPage/TechArticle JSON-LD, so the cause and fix are in the raw HTML for search engines — no JavaScript needed. `/alarms` is a server-rendered index of every code; `/sitemap.xml` and `/robots.txt` are generated from the same data. Legacy `?code=` links 308-redirect to the new pages. Recent lookups persist locally.
 - **AI handoff** — "Still stuck?" sends the alarm code to [Mazatrol Assistant](https://mazatrol.cowie.ai) (`?alarm=CODE`) for a grounded AI diagnosis.
 - **Accounts** — passwordless magic-link auth via Supabase.
 

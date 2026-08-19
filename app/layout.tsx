@@ -26,9 +26,18 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Alarm Intelligence Hub — cowie.ai",
+  metadataBase: new URL("https://alarms.cowie.ai"),
+  title: "Mazak Alarm Codes — cause, fix & clearing procedure | Cowie.ai",
   description:
-    "Searchable Mazak CNC alarm reference with cause, recovery, and 24/7 phone support. Independent third-party service from cowie.ai.",
+    "Searchable Mazak CNC alarm reference: every alarm code with its cause, recovery steps, severity, and clearing procedure, plus 24/7 phone support. Independent third-party service from cowie.ai.",
+  openGraph: {
+    siteName: "Cowie.ai Alarms",
+    type: "website",
+    url: "https://alarms.cowie.ai",
+    title: "Mazak Alarm Codes — cause, fix & clearing procedure | Cowie.ai",
+    description:
+      "Searchable Mazak CNC alarm reference with cause, recovery steps, and 24/7 phone support.",
+  },
 };
 
 export default function RootLayout({

@@ -1,42 +1,33 @@
 "use client";
 
-import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import alarmsRaw from "../public/alarms.json";
-import { loadAlarms, type RawAlarm } from "@/lib/alarms";
+import { getAllAlarms } from "@/lib/alarmData";
 import { AlarmCard } from "./components/AlarmCard";
-import { AlarmDetail } from "./components/AlarmDetail";
+import { FlowFooter } from "./components/FlowFooter";
 
 const RECENT_KEY = "hub.recent";
 
-function HubInner() {
+// The search hub. Alarm detail now lives at /alarms/[code] (statically
+// generated, crawlable); this page is the fast search front door and is
+// itself server-rendered on first request — there is no searchParams
+// dependency, so no client-side bailout / "Loading…" shell.
+export default function Home() {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
-  // Unchanged data path: alarms.json, normalized and sorted client-side.
-  const alarms = useMemo(() => loadAlarms(alarmsRaw as RawAlarm[]), []);
+  const alarms = useMemo(() => getAllAlarms(), []);
   const byCode = useMemo(() => {
-    const m = new Map<number, ReturnType<typeof loadAlarms>[number]>();
+    const m = new Map<number, (typeof alarms)[number]>();
     alarms.forEach((a) => m.set(a.code, a));
     return m;
   }, [alarms]);
 
-  // Detail selection stays tied to the ?code= param, preserving the existing
-  // route contract and shareable URLs.
-  const codeParam = searchParams.get("code");
-  const parsedCode = codeParam ? parseInt(codeParam, 10) : NaN;
-  const selected = !Number.isNaN(parsedCode) ? byCode.get(parsedCode) ?? null : null;
-
   const [query, setQuery] = useState("");
   const [view, setView] = useState<"search" | "results">("search");
   const [recentCodes, setRecentCodes] = useState<number[]>([]);
-  const [lang, setLang] = useState<"en" | "es">("en");
-  const [speaking, setSpeaking] = useState(false);
 
   useEffect(() => {
-    const storedLang = window.localStorage.getItem("hub.lang");
-    if (storedLang === "en" || storedLang === "es") setLang(storedLang);
     try {
       const raw = window.localStorage.getItem(RECENT_KEY);
       const parsed = raw ? JSON.parse(raw) : [];
@@ -47,10 +38,6 @@ function HubInner() {
       /* ignore malformed recent list */
     }
   }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem("hub.lang", lang);
-  }, [lang]);
 
   const pushRecent = useCallback((code: number) => {
     setRecentCodes((prev) => {
@@ -64,20 +51,8 @@ function HubInner() {
     });
   }, []);
 
-  const openCode = useCallback(
-    (code: number) => {
-      pushRecent(code);
-      const params = new URLSearchParams(searchParams.toString());
-      params.set("code", String(code));
-      router.push(`/?${params.toString()}`, { scroll: false });
-      if (typeof window !== "undefined") window.scrollTo(0, 0);
-    },
-    [router, searchParams, pushRecent]
-  );
-
-  const clearCode = useCallback(() => {
-    router.push("/", { scroll: false });
-  }, [router]);
+  // Cards are real links to /alarms/[code]; this just records the lookup.
+  const openCode = useCallback((code: number) => pushRecent(code), [pushRecent]);
 
   // Same client-side filter predicate as before: code, message, or cause.
   const results = useMemo(() => {
@@ -106,82 +81,15 @@ function HubInner() {
     return sample;
   }, [recentCodes, byCode, alarms]);
 
-  // Read aloud: ElevenLabs TTS via /api/tts (voice "Daniel", streamed),
-  // falling back silently to the browser's Web Speech API if the call
-  // fails. Mirrors the mazatrol-assistant implementation.
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  const stopSpeaking = useCallback(() => {
-    audioRef.current?.pause();
-    if (audioRef.current) {
-      URL.revokeObjectURL(audioRef.current.src);
-      audioRef.current = null;
-    }
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-    }
-    setSpeaking(false);
-  }, []);
-
-  function speakWebSpeech(text: string) {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-      setSpeaking(false);
-      return;
-    }
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = lang === "es" ? "es-MX" : "en-US";
-    u.rate = 0.92;
-    u.onend = () => setSpeaking(false);
-    u.onerror = () => setSpeaking(false);
-    window.speechSynthesis.speak(u);
-  }
-
-  async function speak(text: string) {
-    if (speaking) {
-      stopSpeaking();
-      return;
-    }
-    setSpeaking(true);
-    try {
-      const res = await fetch("/api/tts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text }),
-      });
-      if (!res.ok) throw new Error(String(res.status));
-      const blob = await res.blob();
-      const audio = new Audio(URL.createObjectURL(blob));
-      audioRef.current = audio;
-      audio.onended = () => stopSpeaking();
-      audio.onerror = () => stopSpeaking();
-      await audio.play();
-    } catch {
-      // ElevenLabs unavailable — fall back to the browser voice, silently.
-      audioRef.current = null;
-      speakWebSpeech(text);
-    }
-  }
-
   function runSearch() {
+    const exact = parseInt(query.trim(), 10);
+    if (/^\d{1,4}$/.test(query.trim()) && byCode.has(exact)) {
+      pushRecent(exact);
+      router.push(`/alarms/${exact}`);
+      return;
+    }
     setView("results");
-    if (typeof window !== "undefined") window.scrollTo(0, 0);
-  }
-
-  // ── Detail ──────────────────────────────────────────────
-  if (selected) {
-    return (
-      <main className="flow">
-        <AlarmDetail
-          alarm={selected}
-          lang={lang}
-          onLang={setLang}
-          onSpeak={speak}
-          speaking={speaking}
-          onBack={clearCode}
-        />
-        <FlowFooter />
-      </main>
-    );
+    window.scrollTo(0, 0);
   }
 
   // ── Results ─────────────────────────────────────────────
@@ -289,34 +197,10 @@ function HubInner() {
           <AlarmCard key={a.code} alarm={a} onOpen={openCode} />
         ))}
       </div>
+      <p className="flow-browse">
+        <Link href="/alarms">Browse all {alarms.length.toLocaleString()} alarm codes →</Link>
+      </p>
       <FlowFooter />
     </main>
-  );
-}
-
-function FlowFooter() {
-  return (
-    <footer className="flow-footer">
-      <a href="tel:+13184089163" className="flow-footer__call">
-        Faulted right now? Call support — 24/7
-      </a>
-      <span className="mono-label muted">
-        cowie.ai · independent third-party · not affiliated with Yamazaki Mazak
-      </span>
-    </footer>
-  );
-}
-
-export default function Home() {
-  return (
-    <Suspense
-      fallback={
-        <main className="flow">
-          <p className="flow-empty">Loading…</p>
-        </main>
-      }
-    >
-      <HubInner />
-    </Suspense>
   );
 }

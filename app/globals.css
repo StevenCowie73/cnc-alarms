@@ -1209,6 +1209,31 @@ em { font-style: italic; }
   transition: border-color 120ms ease, background 120ms ease;
 }
 .alarm-card:hover { border-color: var(--ink-30); background: var(--paper-3); }
+/* AlarmCard is an <a> now (crawlable), so neutralise link defaults. */
+a.alarm-card { text-decoration: none; color: inherit; box-sizing: border-box; }
+
+.flow-browse { margin: 18px 0 0; font-size: 14px; }
+.flow-browse a { color: var(--ink-50); text-decoration: none; font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .02em; }
+.flow-browse a:hover { color: var(--accent); }
+
+/* ── Alarm index (/alarms) ───────────────────────────── */
+.index-intro { margin: 8px 0 18px; font-size: 14.5px; line-height: 1.5; color: var(--ink-50); max-width: 56ch; }
+.index-search { margin: 0 0 12px; }
+.index-search .flow-results__count { margin-top: 10px; }
+.index-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.index-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 13px;
+  background: var(--paper-2);
+  border: 1px solid var(--ink-08);
+  border-radius: var(--r-card);
+  text-decoration: none; color: inherit;
+  transition: border-color 120ms ease, background 120ms ease;
+}
+.index-row:hover { border-color: var(--ink-30); background: var(--paper-3); }
+.index-row__code { font-family: var(--font-mono); font-size: 16px; font-weight: 600; color: var(--ink); flex: none; min-width: 4ch; }
+.index-row__msg { flex: 1; min-width: 0; font-size: 14px; line-height: 1.25; color: var(--ink-70); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.index-row .sev { flex: none; }
 .alarm-card__code {
   font-family: var(--font-mono);
   font-size: 19px;
