@@ -151,7 +151,7 @@ export function AlarmDetail({
         <span aria-hidden>⚠</span>
         <span>
           Still faulted after these steps? Do not restart under load —{" "}
-          <a href="tel:+13184089163">call support</a>.
+          <a href={`https://mazatrol.cowie.ai?alarm=${alarm.code}`}>ask the Mazatrol assistant</a>.
         </span>
       </div>
 

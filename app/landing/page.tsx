@@ -36,22 +36,23 @@ export default function LandingPage() {
       <section className="border-b border-[var(--ink-15)]">
         <div className="max-w-[1100px] mx-auto px-8 py-24 md:py-32 grid md:grid-cols-12 gap-12 items-end">
           <div className="md:col-span-8">
-            <span className="mono-label muted block mb-5">§ 24/7 phone support · cowie.ai</span>
+            <span className="mono-label muted block mb-5">§ Mazak reference + AI assistant · cowie.ai</span>
             <h1 className="text-[clamp(42px,5.4vw,72px)] font-semibold leading-[1.06] tracking-[-0.025em] mb-8">
               CNC down at 2 a.m.<br />
-              <span className="text-[var(--ink-50)]">Pick up the phone.</span>
+              <span className="text-[var(--ink-50)]">Look it up. Then ask.</span>
             </h1>
             <p className="text-[18px] leading-[1.55] text-[var(--ink-70)] max-w-[60ch] mb-10">
-              An AI phone line that knows every Mazak alarm code by heart, paired
-              with a searchable reference of 1,200+ codes — so an operator never
-              has to thumb through a manual with greasy hands again.
+              A searchable reference of every Mazak alarm and SmoothX parameter,
+              paired with a grounded AI Mazatrol assistant for when lookup isn&rsquo;t
+              enough — so an operator never has to thumb through a manual with
+              greasy hands again.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href="tel:+13184089163"
+                href="https://mazatrol.cowie.ai"
                 className="btn-accent sm:w-auto sm:px-8"
               >
-                Call +1 318 408 9163
+                Ask the Mazatrol assistant
               </a>
               <Link href="/" className="btn-ghost sm:w-auto sm:px-8">
                 Browse alarm codes
@@ -80,12 +81,12 @@ export default function LandingPage() {
                 01
               </span>
               <h3 className="text-[21px] font-semibold leading-[1.25] tracking-[-0.015em] mb-3">
-                24/7 AI phone line
+                AI Mazatrol assistant
               </h3>
               <p className="text-[15px] leading-[1.55] text-[var(--ink-70)]">
-                Call from the shop floor and walk through the recovery while the
-                machine is still warm. The line understands alarm codes without
-                you having to spell them.
+                Describe the problem in plain language from the shop floor and get
+                a grounded, stepwise diagnosis that says what it knows versus what
+                it&rsquo;s inferring — and what to check first.
               </p>
             </div>
             <div className="surface-card p-8">
@@ -140,11 +141,11 @@ export default function LandingPage() {
                 <ul className="space-y-3">
                   <li className="text-[15px] flex gap-3">
                     <span className="font-[family-name:var(--font-mono)] text-[var(--notice)] text-[12px] mt-1">✓</span>
-                    3 AI phone calls per month
+                    3 assistant diagnoses per day
                   </li>
                   <li className="text-[15px] flex gap-3">
                     <span className="font-[family-name:var(--font-mono)] text-[var(--notice)] text-[12px] mt-1">✓</span>
-                    Access to first 50 alarm codes
+                    Full alarm &amp; parameter reference
                   </li>
                   <li className="text-[15px] flex gap-3">
                     <span className="font-[family-name:var(--font-mono)] text-[var(--notice)] text-[12px] mt-1">✓</span>
@@ -152,13 +153,13 @@ export default function LandingPage() {
                   </li>
                   <li className="text-[15px] flex gap-3 text-[var(--ink-40)]">
                     <span className="font-[family-name:var(--font-mono)] text-[12px] mt-1">—</span>
-                    Full alarm database
+                    Unlimited diagnoses
                   </li>
                 </ul>
               </div>
-              <a href="tel:+13184089163" className="btn-ghost mt-8">
-                Start free — call now
-              </a>
+              <Link href="/" className="btn-ghost mt-8">
+                Start free — search now
+              </Link>
             </div>
 
             {/* Pro — was a full ink/paper inversion; now accent-outlined,
@@ -180,7 +181,7 @@ export default function LandingPage() {
                 <ul className="space-y-3">
                   <li className="text-[15px] flex gap-3">
                     <span className="font-[family-name:var(--font-mono)] text-[var(--accent)] text-[12px] mt-1">✓</span>
-                    Unlimited AI phone calls 24/7
+                    Unlimited assistant diagnoses
                   </li>
                   <li className="text-[15px] flex gap-3">
                     <span className="font-[family-name:var(--font-mono)] text-[var(--accent)] text-[12px] mt-1">✓</span>
@@ -188,7 +189,7 @@ export default function LandingPage() {
                   </li>
                   <li className="text-[15px] flex gap-3">
                     <span className="font-[family-name:var(--font-mono)] text-[var(--accent)] text-[12px] mt-1">✓</span>
-                    Priority phone support
+                    Priority email support
                   </li>
                   <li className="text-[15px] flex gap-3">
                     <span className="font-[family-name:var(--font-mono)] text-[var(--accent)] text-[12px] mt-1">✓</span>
@@ -223,12 +224,6 @@ export default function LandingPage() {
               className="font-[family-name:var(--font-mono)] text-[18px] font-semibold border-b border-[var(--ink-30)] hover:border-[var(--accent)] transition-colors pb-1 self-start no-underline"
             >
               info@cowie.ai
-            </a>
-            <a
-              href="tel:+13184089163"
-              className="font-[family-name:var(--font-mono)] text-[18px] font-semibold border-b border-[var(--ink-30)] hover:border-[var(--accent)] transition-colors pb-1 self-start no-underline"
-            >
-              +1 318 408 9163
             </a>
           </div>
         </div>

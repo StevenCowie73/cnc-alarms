@@ -29,14 +29,14 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://alarms.cowie.ai"),
   title: "Mazak Alarm Codes — cause, fix & clearing procedure | Cowie.ai",
   description:
-    "Searchable Mazak CNC alarm reference: every alarm code with its cause, recovery steps, severity, and clearing procedure, plus 24/7 phone support. Independent third-party service from cowie.ai.",
+    "Searchable Mazak CNC alarm reference: every alarm code with its cause, recovery steps, severity, and clearing procedure, with the Mazatrol assistant for when lookup isn't enough. Independent third-party service from cowie.ai.",
   openGraph: {
     siteName: "Cowie.ai Alarms",
     type: "website",
     url: "https://alarms.cowie.ai",
     title: "Mazak Alarm Codes — cause, fix & clearing procedure | Cowie.ai",
     description:
-      "Searchable Mazak CNC alarm reference with cause, recovery steps, and 24/7 phone support.",
+      "Searchable Mazak CNC alarm reference with cause, recovery steps, and an AI Mazatrol assistant.",
   },
 };
 

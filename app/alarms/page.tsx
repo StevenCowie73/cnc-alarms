@@ -15,7 +15,7 @@ const SITE = "https://alarms.cowie.ai";
 export const metadata: Metadata = {
   title: "Mazak Alarm Codes — complete list with cause & fix | Cowie.ai",
   description:
-    "Every Mazak CNC alarm code in one searchable list. Tap any code for its meaning, cause, recovery steps, and clearing procedure from the manual. Free, mobile-first, 24/7 phone support.",
+    "Every Mazak CNC alarm code in one searchable list. Tap any code for its meaning, cause, recovery steps, and clearing procedure from the manual. Free, mobile-first, with the Mazatrol assistant when lookup isn't enough.",
   alternates: { canonical: `${SITE}/alarms` },
   openGraph: {
     title: "Mazak Alarm Codes — complete list | Cowie.ai",

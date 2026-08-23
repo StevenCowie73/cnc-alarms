@@ -112,19 +112,19 @@ export default function LoginPage() {
               ← Back to alarms
             </Link>
             <a
-              href="tel:+13184089163"
+              href="https://mazatrol.cowie.ai"
               className="mono-label text-[var(--ink-50)] hover:text-[var(--ink)] no-underline"
             >
-              Call support
+              Mazatrol assistant
             </a>
           </div>
 
           <p className="mt-8 text-center text-[13px] leading-[1.5] text-[var(--ink-40)]">
             Faulted right now and locked out?
             <br />
-            <a href="tel:+13184089163" className="font-semibold">
-              Call support — no login needed
-            </a>
+            <Link href="/" className="font-semibold">
+              The alarm reference needs no login →
+            </Link>
           </p>
         </div>
       </main>
