@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 // JS off); this component filters those rows in place by their data-q text
 // instead of re-rendering 1,200 nodes through React state. Enter on an
 // exact code jumps straight to that alarm.
-export function IndexSearch({ total }: { total: number }) {
+export function IndexSearch({ total, noun = "alarms" }: { total: number; noun?: string }) {
   const router = useRouter();
   const [q, setQ] = useState("");
   const [shown, setShown] = useState(total);
@@ -43,7 +43,7 @@ export function IndexSearch({ total }: { total: number }) {
           value={q}
           onChange={(e) => setQ(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && /^\d{1,4}$/.test(q.trim())) {
+            if (e.key === "Enter" && noun === "alarms" && /^\d{1,4}$/.test(q.trim())) {
               router.push(`/alarms/${Number(q.trim())}`);
             }
           }}
@@ -53,7 +53,7 @@ export function IndexSearch({ total }: { total: number }) {
         />
       </div>
       <div className="flow-label flow-results__count" aria-live="polite">
-        {shown} of {total} alarms
+        {shown} of {total} {noun}
       </div>
     </div>
   );
