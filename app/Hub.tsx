@@ -194,10 +194,12 @@ export function Hub({ seed }: { seed: HubSeed }) {
       <div className="card-list">
         {recent.map((r) => <ResultCard key={r.key} r={r} onOpen={onOpen} />)}
       </div>
+      {/* prefetch off: the index pages are 1,200–1,400 rows (46–55 KB RSC) and
+          rarely the next click — let the hub load light. */}
       <p className="flow-browse">
-        <Link href="/alarms">Browse all {counts.alarms.toLocaleString()} alarm codes →</Link>
+        <Link href="/alarms" prefetch={false}>Browse all {counts.alarms.toLocaleString()} alarm codes →</Link>
         <span className="flow-browse__sep"> · </span>
-        <Link href="/parameters">Browse {counts.params.toLocaleString()} parameters →</Link>
+        <Link href="/parameters" prefetch={false}>Browse {counts.params.toLocaleString()} parameters →</Link>
       </p>
       <FlowFooter />
     </main>
