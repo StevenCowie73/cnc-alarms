@@ -196,9 +196,11 @@ export function Hub({ seed }: { seed: HubSeed }) {
       </header>
 
       <h1 className="flow-hero">
-        What alarm is on
+        Every Mazak alarm,
         <br />
-        the screen?
+        parameter and M-code.
+        <br />
+        One search.
       </h1>
 
       {searchInput(false)}

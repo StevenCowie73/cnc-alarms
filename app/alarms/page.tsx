@@ -56,16 +56,19 @@ export default function AlarmIndexPage() {
         <span className="brandmark">
           <span className="flow-header__names">
             ALARMS
-            <span className="flow-header__tag">all Mazak codes</span>
+            <span className="flow-header__tag">alarm list</span>
           </span>
         </span>
         <nav className="flow-header__nav">
           <Link href="/" className="flow-header__link">
             Search
           </Link>
-          <a href="https://mazatrol.cowie.ai" className="flow-header__link">
-            Mazatrol Assistant
-          </a>
+          <Link href="/parameters" className="flow-header__link">
+            Parameters
+          </Link>
+          <Link href="/mcodes" className="flow-header__link">
+            M-codes
+          </Link>
           <span className="flow-header__chip">MAZAK</span>
         </nav>
       </header>

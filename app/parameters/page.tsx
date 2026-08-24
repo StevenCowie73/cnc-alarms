@@ -47,6 +47,7 @@ export default function ParameterIndexPage() {
         <nav className="flow-header__nav">
           <Link href="/" className="flow-header__link">Search</Link>
           <Link href="/alarms" className="flow-header__link">Alarms</Link>
+          <Link href="/mcodes" className="flow-header__link">M-codes</Link>
           <span className="flow-header__chip">MAZAK</span>
         </nav>
       </header>

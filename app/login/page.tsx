@@ -109,7 +109,7 @@ export default function LoginPage() {
               href="/"
               className="mono-label text-[var(--ink-50)] hover:text-[var(--ink)] no-underline"
             >
-              ← Back to alarms
+              ← Back to the reference
             </Link>
             <a
               href="https://mazatrol.cowie.ai"
@@ -123,7 +123,7 @@ export default function LoginPage() {
             Faulted right now and locked out?
             <br />
             <Link href="/" className="font-semibold">
-              The alarm reference needs no login →
+              The Mazak reference needs no login →
             </Link>
           </p>
         </div>

@@ -27,16 +27,16 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://alarms.cowie.ai"),
-  title: "Mazak Alarm Codes — cause, fix & clearing procedure | Cowie.ai",
+  title: "Mazak Alarms, Parameters & M-Codes — one searchable reference | Cowie.ai",
   description:
-    "Searchable Mazak CNC alarm reference: every alarm code with its cause, recovery steps, severity, and clearing procedure, with the Mazatrol assistant for when lookup isn't enough. Independent third-party service from cowie.ai.",
+    "One search across the Mazak reference: 1,197 alarm codes with cause, fix and clearing procedure, 2,244 SmoothX parameters, and 196 M-codes — with the Mazatrol assistant for when lookup isn't enough. Independent third-party service from cowie.ai.",
   openGraph: {
     siteName: "Cowie.ai Alarms",
     type: "website",
     url: "https://alarms.cowie.ai",
-    title: "Mazak Alarm Codes — cause, fix & clearing procedure | Cowie.ai",
+    title: "Mazak Alarms, Parameters & M-Codes — one searchable reference | Cowie.ai",
     description:
-      "Searchable Mazak CNC alarm reference with cause, recovery steps, and an AI Mazatrol assistant.",
+      "One search across 1,197 Mazak alarms, 2,244 SmoothX parameters and 196 M-codes, with an AI Mazatrol assistant.",
   },
 };
 

@@ -14,7 +14,7 @@ export default function LandingPage() {
               href="/"
               className="mono-label text-[var(--ink-50)] hover:text-[var(--ink)] no-underline"
             >
-              Alarm reference
+              Mazak reference
             </Link>
             <a
               href="#pricing"
@@ -42,7 +42,7 @@ export default function LandingPage() {
               <span className="text-[var(--ink-50)]">Look it up. Then ask.</span>
             </h1>
             <p className="text-[18px] leading-[1.55] text-[var(--ink-70)] max-w-[60ch] mb-10">
-              A searchable reference of every Mazak alarm and SmoothX parameter,
+              One search across every Mazak alarm, SmoothX parameter and M-code,
               paired with a grounded AI Mazatrol assistant for when lookup isn&rsquo;t
               enough — so an operator never has to thumb through a manual with
               greasy hands again.
@@ -55,7 +55,7 @@ export default function LandingPage() {
                 Ask the Mazatrol assistant
               </a>
               <Link href="/" className="btn-ghost sm:w-auto sm:px-8">
-                Browse alarm codes
+                Search the reference
               </Link>
             </div>
           </div>
@@ -94,12 +94,12 @@ export default function LandingPage() {
                 02
               </span>
               <h3 className="text-[21px] font-semibold leading-[1.25] tracking-[-0.015em] mb-3">
-                1,200+ alarm reference
+                The full Mazak reference
               </h3>
               <p className="text-[15px] leading-[1.55] text-[var(--ink-70)]">
-                Every Mazak NC code with cause, recovery steps, and a decoded
-                codebook for type / stop status / clearing procedure. Severity is
-                classified, not guessed.
+                1,197 alarms with cause, recovery steps and clearing procedure —
+                severity classified, not guessed — plus 2,244 SmoothX parameters
+                and 196 M-codes, all in one search.
               </p>
             </div>
             <div className="surface-card p-8">
