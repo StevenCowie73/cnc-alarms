@@ -9,7 +9,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Shop Tools — CNC calculators | cowie.ai",
   description:
-    "Free shop-floor calculators for CNC machinists: slot ramp tangent start position, pass tables, and Mazatrol sub programs. Pure client-side — fast on shop wifi, installable to your phone.",
+    "Free shop-floor calculators for CNC machinists: slot ramp tangent start position with Mazatrol sub programs, and chord / bolt-pattern geometry with C-axis centrelines. Pure client-side — fast on shop wifi, installable to your phone.",
   openGraph: {
     title: "Shop Tools — cowie.ai",
     description:
@@ -27,6 +27,13 @@ const TOOLS = [
     formula: "run = √(D(2R−D))",
     blurb:
       "Where the slot floor ends and the tangent ramp begins. Start position, full depth-ladder pass table, and a ready-to-key Mazatrol sub program from three print numbers. Field-validated against Machinist's Friend and a proven running sub.",
+  },
+  {
+    href: "/tools/chord",
+    name: "Chord & Bolt-Pattern Calculator",
+    formula: "angle = 2·asin(w/d)",
+    blurb:
+      "Any two of radius, chord, included angle, arc length and rise — get the other three, exact. Plus slot patterns on a diameter: the angle each feature subtends, C-axis centrelines, and leading/trailing edge angles, ready for the program.",
   },
 ];
 
@@ -118,7 +125,7 @@ export default function ToolsIndex() {
       </div>
 
       <p className="flow-empty" style={{ marginTop: 24 }}>
-        — more tools coming: chord &amp; bolt-pattern, wear comp helper —
+        — more tools coming: wear comp helper —
       </p>
     </main>
   );

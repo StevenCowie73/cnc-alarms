@@ -1,0 +1,32 @@
+{
+  "name": "Chord & Bolt-Pattern Calculator — cowie.ai",
+  "short_name": "Chord Calc",
+  "description": "Chord geometry from any two of radius, chord, angle, arc and rise — plus C-axis centrelines for slot patterns on a diameter. Works offline-light: pure client-side math, no backend.",
+  "id": "/tools/chord",
+  "start_url": "/tools/chord",
+  "scope": "/tools/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0B0D11",
+  "theme_color": "#0B0D11",
+  "icons": [
+    {
+      "src": "/tools/chord/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/tools/chord/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/tools/chord/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

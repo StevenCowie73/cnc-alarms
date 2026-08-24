@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/mcodes`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/tools`, lastModified, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE}/tools/slot-ramp`, lastModified, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE}/tools/chord`, lastModified, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE}/landing`, lastModified, changeFrequency: "monthly", priority: 0.4 },
   ];
   const alarms: MetadataRoute.Sitemap = getAllAlarms().map((a) => ({
