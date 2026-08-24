@@ -42,7 +42,7 @@ export default function LandingPage() {
               <span className="text-[var(--ink-50)]">Look it up. Then ask.</span>
             </h1>
             <p className="text-[18px] leading-[1.55] text-[var(--ink-70)] max-w-[60ch] mb-10">
-              One search across every Mazak alarm, SmoothX parameter and M-code,
+              One search across every Mazak alarm, SmoothX parameter, M-code and G-code,
               paired with a grounded AI Mazatrol assistant for when lookup isn&rsquo;t
               enough — so an operator never has to thumb through a manual with
               greasy hands again.
@@ -98,8 +98,8 @@ export default function LandingPage() {
               </h3>
               <p className="text-[15px] leading-[1.55] text-[var(--ink-70)]">
                 1,197 alarms with cause, recovery steps and clearing procedure —
-                severity classified, not guessed — plus 2,244 SmoothX parameters
-                and 196 M-codes, all in one search.
+                severity classified, not guessed — plus 2,244 SmoothX parameters,
+                196 M-codes and 163 EIA/ISO G-codes, all in one search.
               </p>
             </div>
             <div className="surface-card p-8">

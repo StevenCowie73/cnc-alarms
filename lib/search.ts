@@ -1,13 +1,13 @@
 import type { SearchIndex } from "./searchIndex";
 
-export type ResultType = "alarm" | "param" | "mcode";
+export type ResultType = "alarm" | "param" | "mcode" | "gcode";
 export type Severity = "critical" | "warning" | "notice";
 
 export interface SearchResult {
   type: ResultType;
   key: string;
   href: string;
-  code: string;          // "221", "F91" / "D91 bit 3", "M30"
+  code: string;          // "221", "F91" / "D91 bit 3", "M30", "G43.4"
   name: string;
   severity?: Severity;   // alarms
   group?: string;        // parameters
@@ -42,13 +42,20 @@ export function expandIndex(ix: SearchIndex): Entry[] {
                codeL: code.toLowerCase(), nameL: name.toLowerCase(),
                digits: String(Number(code.slice(1))) });
   }
+  for (const [code, name] of ix.g ?? []) {
+    // digits keeps the whole numeric part ("43.4" -> "434" would mislead;
+    // use the integer part so "43" finds G43/G43.x via contains)
+    out.push({ type: "gcode", key: `g${code}`, href: `/gcodes/${encodeURIComponent(code)}`, code, name,
+               codeL: code.toLowerCase(), nameL: name.toLowerCase(),
+               digits: String(Number(/G(\d+)/.exec(code)![1])) });
+  }
   return out;
 }
 
-// Rank: exact code (alarms first, then parameters, then M-codes) > code
-// prefix > code contains / numeric part match > name word-start > name
-// contains. Ties keep index order, which is ascending code within each
-// dataset.
+// Rank: exact code (alarms first, then parameters, M-codes, G-codes) >
+// code prefix > code contains / numeric part match > name word-start >
+// name contains. Ties keep index order, which is ascending code within
+// each dataset.
 // Returns every match, ranked; the caller caps what it renders (after any
 // type filter, so a filter can reach matches beyond the display cap).
 export function search(entries: Entry[], query: string): { results: SearchResult[]; total: number } {
@@ -64,7 +71,11 @@ export function search(entries: Entry[], query: string): { results: SearchResult
     else if (e.codeL.includes(q) || (isNum && e.digits.includes(q))) score = 2;
     else if (e.nameL.startsWith(q) || e.nameL.includes(" " + q)) score = 3;
     else if (e.nameL.includes(q)) score = 4;
-    if (score >= 0) scored.push([score * 3 + (e.type === "alarm" ? 0 : e.type === "param" ? 1 : 2), i, e]);
+    if (score >= 0)
+      scored.push([
+        score * 4 + (e.type === "alarm" ? 0 : e.type === "param" ? 1 : e.type === "mcode" ? 2 : 3),
+        i, e,
+      ]);
   });
   scored.sort((x, y) => x[0] - y[0] || x[1] - y[1]);
   return { results: scored.map((s) => s[2]), total: scored.length };

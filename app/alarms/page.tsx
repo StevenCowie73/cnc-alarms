@@ -69,6 +69,9 @@ export default function AlarmIndexPage() {
           <Link href="/mcodes" className="flow-header__link">
             M-codes
           </Link>
+          <Link href="/gcodes" className="flow-header__link">
+            G-codes
+          </Link>
           <span className="flow-header__chip">MAZAK</span>
         </nav>
       </header>

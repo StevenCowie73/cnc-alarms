@@ -53,6 +53,7 @@ export default function MCodeIndexPage() {
           <Link href="/" className="flow-header__link">Search</Link>
           <Link href="/alarms" className="flow-header__link">Alarms</Link>
           <Link href="/parameters" className="flow-header__link">Parameters</Link>
+          <Link href="/gcodes" className="flow-header__link">G-codes</Link>
           <span className="flow-header__chip">MAZAK</span>
         </nav>
       </header>

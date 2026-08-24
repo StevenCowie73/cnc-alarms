@@ -17,7 +17,7 @@ const RESULT_LIMIT = 200;
 // is a static file built from the same data and fetched (preloaded) on
 // load — the full datasets never reach the browser.
 export interface HubSeed {
-  counts: { alarms: number; params: number; mcodes: number };
+  counts: { alarms: number; params: number; mcodes: number; gcodes: number };
   sample: SearchResult[];
 }
 
@@ -61,6 +61,11 @@ export function Hub({ seed }: { seed: HubSeed }) {
     for (const e of entries) if (e.type === "mcode") m.set(e.code.toLowerCase(), e);
     return m;
   }, [entries]);
+  const gcodeByCode = useMemo(() => {
+    const m = new Map<string, SearchResult>();
+    for (const e of entries) if (e.type === "gcode") m.set(e.code.toLowerCase(), e);
+    return m;
+  }, [entries]);
   const counts = seed.counts;
 
   const pushRecent = useCallback((code: number) => {
@@ -74,13 +79,14 @@ export function Hub({ seed }: { seed: HubSeed }) {
 
   const found = useMemo(() => search(entries, query), [entries, query]);
   const typeCounts = useMemo(() => {
-    let a = 0, p = 0, m = 0;
+    let a = 0, p = 0, m = 0, g = 0;
     for (const r of found.results) {
       if (r.type === "alarm") a++;
       else if (r.type === "param") p++;
-      else m++;
+      else if (r.type === "mcode") m++;
+      else g++;
     }
-    return { a, p, m };
+    return { a, p, m, g };
   }, [found]);
   // Cap what is rendered AFTER the type filter, so filtering to a sparse
   // type (M-codes rank below alarms and parameters) still reaches matches
@@ -102,11 +108,13 @@ export function Hub({ seed }: { seed: HubSeed }) {
   function runSearch() {
     const q = query.trim();
     // Jump straight to a page only when the query is unambiguous: an exact
-    // alarm code, parameter address or M-code that matches nothing else.
-    // "217" (alarm 217 plus parameters containing 217) shows the mixed list.
+    // alarm code, parameter address, M-code or G-code that matches nothing
+    // else. "217" (alarm 217 plus parameters containing 217) shows the
+    // mixed list.
     const exactAlarm = /^\d{1,4}$/.test(q) ? alarmByCode.get(String(Number(q))) : undefined;
     const exactParam = paramByAddress.get(q.toLowerCase());
     const exactMCode = mcodeByCode.get(q.toLowerCase());
+    const exactGCode = gcodeByCode.get(q.toLowerCase());
     if (exactAlarm && found.total === 1) {
       pushRecent(Number(q));
       router.push(exactAlarm.href);
@@ -114,6 +122,7 @@ export function Hub({ seed }: { seed: HubSeed }) {
     }
     if (exactParam && found.total === 1) { router.push(exactParam.href); return; }
     if (exactMCode && found.total === 1) { router.push(exactMCode.href); return; }
+    if (exactGCode && found.total === 1) { router.push(exactGCode.href); return; }
     setFilter("all");
     setView("results");
     window.scrollTo(0, 0);
@@ -127,8 +136,8 @@ export function Hub({ seed }: { seed: HubSeed }) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={(e) => { if (e.key === "Enter") runSearch(); }}
-        placeholder="Alarm code, parameter, M-code or keyword"
-        aria-label="Search alarms, parameters and M-codes"
+        placeholder="Alarm, parameter, M-code, G-code or keyword"
+        aria-label="Search alarms, parameters, M-codes and G-codes"
       />
     </div>
   );
@@ -165,6 +174,7 @@ export function Hub({ seed }: { seed: HubSeed }) {
               {chip("alarm", "Alarms", typeCounts.a)}
               {chip("param", "Parameters", typeCounts.p)}
               {chip("mcode", "M-codes", typeCounts.m)}
+              {chip("gcode", "G-codes", typeCounts.g)}
             </div>
           )}
         </div>
@@ -196,9 +206,9 @@ export function Hub({ seed }: { seed: HubSeed }) {
       </header>
 
       <h1 className="flow-hero">
-        Every Mazak alarm,
+        Every Mazak alarm, parameter,
         <br />
-        parameter and M-code.
+        M-code and G-code.
         <br />
         One search.
       </h1>
@@ -220,6 +230,8 @@ export function Hub({ seed }: { seed: HubSeed }) {
         <Link href="/parameters" prefetch={false}>Browse {counts.params.toLocaleString()} parameters →</Link>
         <span className="flow-browse__sep"> · </span>
         <Link href="/mcodes" prefetch={false}>Browse {counts.mcodes.toLocaleString()} M-codes →</Link>
+        <span className="flow-browse__sep"> · </span>
+        <Link href="/gcodes" prefetch={false}>Browse {counts.gcodes.toLocaleString()} G-codes →</Link>
       </p>
       <FlowFooter />
     </main>

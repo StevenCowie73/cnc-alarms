@@ -504,6 +504,9 @@ em { font-style: italic; }
 .detail__callout--machine { border-color: var(--accent); }
 .detail__callout--machine strong { color: var(--accent); font-weight: 600; }
 .bit-table { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+/* Simple bulleted lists on detail pages (G-code address words / notes). */
+.detail__list { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+.detail__list li::marker { color: var(--ink-40); }
 .bit-row { display: flex; gap: 12px; padding: 10px 12px; background: var(--paper-2); border: 1px solid var(--ink-08); border-radius: var(--r-card); scroll-margin-top: 64px; }
 .bit-row:target { border-color: var(--accent); }
 .bit-row__bit { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--accent); flex: none; min-width: 5ch; padding-top: 2px; }

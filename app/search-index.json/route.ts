@@ -1,7 +1,8 @@
 import { getAllAlarms } from "@/lib/alarmData";
 import { getAllParameterPages } from "@/lib/parameterData";
 import { getAllMCodes } from "@/lib/mcodeData";
-import type { AlarmTuple, MCodeTuple, ParamTuple, SearchIndex } from "@/lib/searchIndex";
+import { getAllGCodes } from "@/lib/gcodeData";
+import type { AlarmTuple, GCodeTuple, MCodeTuple, ParamTuple, SearchIndex } from "@/lib/searchIndex";
 
 // Emitted as a static file at build time (like the sitemap). This is the
 // only data the browser needs for search: the 1.8 MB parameter file and
@@ -33,7 +34,8 @@ export function GET() {
   const m: MCodeTuple[] = getAllMCodes().map((x) =>
     x.notUsed ? [x.code, "Not used on this machine", 1] : [x.code, x.description],
   );
-  const body: SearchIndex = { v: 1, groups, categories, a, p, m };
+  const g: GCodeTuple[] = getAllGCodes().map((x) => [x.code, x.name]);
+  const body: SearchIndex = { v: 1, groups, categories, a, p, m, g };
   return new Response(JSON.stringify(body), {
     headers: {
       "Content-Type": "application/json; charset=utf-8",
