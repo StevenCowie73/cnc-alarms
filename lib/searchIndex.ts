@@ -8,6 +8,8 @@
 
 export type AlarmTuple = [code: number, name: string, sev: "c" | "w" | "n"];
 export type ParamTuple = [slug: string, address: string, bit: number | null, name: string, group: number, category: number];
+// u = 1 marks a "Not used" placeholder so the result card can mute it.
+export type MCodeTuple = [code: string, name: string, u?: 1];
 
 export interface SearchIndex {
   v: 1;
@@ -15,6 +17,7 @@ export interface SearchIndex {
   categories: string[];
   a: AlarmTuple[];
   p: ParamTuple[];
+  m?: MCodeTuple[]; // optional: clients may hold a cached pre-M-code index
 }
 
 export const SEARCH_INDEX_URL = "/search-index.json";

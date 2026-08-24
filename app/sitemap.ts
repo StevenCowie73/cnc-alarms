@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllAlarms } from "@/lib/alarmData";
 import { getAllParameterPages } from "@/lib/parameterData";
+import { getAllMCodes } from "@/lib/mcodeData";
 
 const SITE = "https://alarms.cowie.ai";
 
@@ -12,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/`, lastModified, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE}/alarms`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/parameters`, lastModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE}/mcodes`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/tools`, lastModified, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE}/tools/slot-ramp`, lastModified, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE}/landing`, lastModified, changeFrequency: "monthly", priority: 0.4 },
@@ -28,5 +30,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "yearly",
     priority: 0.7,
   }));
-  return [...main, ...alarms, ...parameters];
+  const mcodes: MetadataRoute.Sitemap = getAllMCodes().map((m) => ({
+    url: `${SITE}/mcodes/${m.slug}`,
+    lastModified,
+    changeFrequency: "yearly",
+    priority: 0.7,
+  }));
+  return [...main, ...alarms, ...parameters, ...mcodes];
 }

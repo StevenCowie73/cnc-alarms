@@ -1,0 +1,1649 @@
+{
+  "dataset": "Mazak INTEGREX e-670H / e-670H-S — MAZATROL SmoothX M-code list",
+  "source": {
+    "document": "PARAMETER LIST / ALARM LIST / M-CODE LIST",
+    "manual_no": "HA64HA0035E",
+    "machine": "Mazak INTEGREX e-670H / INTEGREX e-670H-S",
+    "control": "MAZATROL SmoothX",
+    "publisher": "Yamazaki Mazak Corporation (c) 2013",
+    "warning": "Parameter addresses, ranges and M-code assignments are specific to this machine model and control. Verify against the manual for your own machine before changing anything.",
+    "extracted": "2026-08-22",
+    "method": "Text-only extraction with pdfplumber; watermark glyphs removed by font; no page images saved."
+  },
+  "count": 196,
+  "footnotes": {
+    "*1": "Only for turning spindle No. 2"
+  },
+  "mcodes": [
+    {
+      "code": "M00",
+      "description": "Program Stop",
+      "detail": "When this function code is loaded, program execution will be stopped and the PROGRAM STOP indicator lamp will light up. At this time, the milling spindle and the turning spindle will also stop rotating.",
+      "notes": [],
+      "source_page": 841
+    },
+    {
+      "code": "M01",
+      "description": "Optional Stop",
+      "detail": "To use this function, select [OPTIONAL STOP]. A function similar to that of M00 will be performed. At this time, the milling spindle and the turning spindle will also stop rotating. M01 will be ignored when [OPTIONAL STOP] is deselected.",
+      "notes": [],
+      "source_page": 841
+    },
+    {
+      "code": "M02",
+      "description": "End of Program",
+      "detail": "When this function code is loaded, spindle rotation will be stopped and coolant injection, air blasting and the operation of the oil mist will also be stopped. Finally, the function of the NC unit will be reset to stop all operation. Except in tape operation mode, a function similar to that of M30 is performed (rewind operation).",
+      "notes": [],
+      "source_page": 841
+    },
+    {
+      "code": "M03",
+      "description": "Start of Forward Milling Spindle Rotation",
+      "detail": "This function code rotates the milling spindle forward.",
+      "notes": [],
+      "source_page": 841
+    },
+    {
+      "code": "M04",
+      "description": "Start of Backward Milling Spindle Rotation",
+      "detail": "This function code rotates the milling spindle backward.",
+      "notes": [],
+      "source_page": 841
+    },
+    {
+      "code": "M05",
+      "description": "Stop of Milling Spindle Rotation",
+      "detail": "This function code stops the milling spindle whose rotation was started by M03 or M04.",
+      "notes": [],
+      "source_page": 841
+    },
+    {
+      "code": "M06",
+      "description": "Tool Change",
+      "detail": "This function code mounts the specified tool in the spindle and returns the tool of the spindle to the magazine. Next time a tool is specified, it will be set on the tool carrier as the stand-by tool to be used next. Sample program 1. M06 T T   Specified tool Next tool 2. T M06 T M06 Machining program 3. T M06",
+      "notes": [],
+      "source_page": 841
+    },
+    {
+      "code": "M07",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 841
+    },
+    {
+      "code": "M08",
+      "description": "Flood Coolant ON",
+      "detail": "This function code activates the coolant injector to inject an oil or an aqueous solution from the nozzle.",
+      "notes": [],
+      "source_page": 841
+    },
+    {
+      "code": "M09",
+      "description": "All Coolants OFF",
+      "detail": "This function code turns off all machining-related fluids such as coolants and air. Although four M-codes can be specified in one block, M9 in a block must not be preceded by any other coolant command code in that block.",
+      "notes": [],
+      "source_page": 841
+    },
+    {
+      "code": "M10",
+      "description": "Mill spindle tool clamp",
+      "detail": "Clamps a tool in the mill spindle.",
+      "notes": [],
+      "source_page": 841
+    },
+    {
+      "code": "M11",
+      "description": "Mill spindle tool unclamp",
+      "detail": "Unclamps the tool in the mill spindle.",
+      "notes": [],
+      "source_page": 841
+    },
+    {
+      "code": "M15",
+      "description": "ATC Cover Close",
+      "detail": "ATC cover closes.",
+      "notes": [],
+      "source_page": 841
+    },
+    {
+      "code": "M16",
+      "description": "ATC Cover Open",
+      "detail": "ATC cover opens.",
+      "notes": [],
+      "source_page": 841
+    },
+    {
+      "code": "M17",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 841
+    },
+    {
+      "code": "M18",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 841
+    },
+    {
+      "code": "M19",
+      "description": "Milling Spindle Orientation",
+      "detail": "To perform ATC operations, the position of the keyway in the tool and the position of the key at the end of the spindle must be matched. The spindle is orientated for that position by this function code. Refer to the operating manual of the NC unit for further details of the exact stopping mode.",
+      "notes": [],
+      "source_page": 841
+    },
+    {
+      "code": "M24",
+      "description": "Error Detect OFF",
+      "detail": "This function code cancels M23.",
+      "notes": [],
+      "source_page": 842
+    },
+    {
+      "code": "M30",
+      "description": "Reset and Rewind",
+      "detail": "This function code stops the machine similarly to M02, resets the function of the NC unit, and returns control to the beginning of the program. The PROGRAM HEAD lamp on the NC screen display lights up.",
+      "notes": [],
+      "source_page": 842
+    },
+    {
+      "code": "M33",
+      "description": "Laser Tool Length Measuring Mode ON (Option)",
+      "detail": "This function code activates a laser tool length measuring amplifier and enters the machine into measuring mode.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M34",
+      "description": "Laser Tool Length Measuring Mode OFF (Option)",
+      "detail": "This function code deactivates the laser tool length measuring amplifier and cancels measuring mode.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M35",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M38",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M39",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M42",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M46",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M47",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M48",
+      "description": "Cancellation of M49",
+      "detail": "This function code cancels the M49-specified override cancel function. The override function, therefore, becomes valid.",
+      "notes": [],
+      "source_page": 842
+    },
+    {
+      "code": "M49",
+      "description": "Override Cancel",
+      "detail": "This function code cancels the override command. Therefore, the machine operates with program-specified data. Both the feed override and spindle override functions are canceled. Note : When power is switched on or after emergency stop, the NC is (re)set in the M48 mode.",
+      "notes": [],
+      "source_page": 842
+    },
+    {
+      "code": "M50",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M51",
+      "description": "Milling Spindle-Through Coolant ON",
+      "detail": null,
+      "notes": [],
+      "source_page": 842
+    },
+    {
+      "code": "M52",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M58",
+      "description": "Tool Life Check",
+      "detail": "M58 stops the machine in a block start interlock status if an alarm is displayed to indicate that the life of the spindle tool has expired. (Execution of the next block is prohibited.) The next block will be executed when the conditions for starting the next block are satisfied.",
+      "notes": [],
+      "source_page": 842
+    },
+    {
+      "code": "M68",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M69",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M71",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M72",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M73",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M74",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M75",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M76",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M90",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M91",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M92",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M93",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 842
+    },
+    {
+      "code": "M98",
+      "description": "Subprogram Call",
+      "detail": "This function code calls up a subprogram.",
+      "notes": [],
+      "source_page": 842
+    },
+    {
+      "code": "M99",
+      "description": "Return to Main Program",
+      "detail": "The M99 function code denotes the end of the called subprogram. Execution of M99 returns control to the main program. (YMUK high-pressure coolant I/F, YMC super flow)",
+      "notes": [],
+      "source_page": 842
+    },
+    {
+      "code": "M101",
+      "description": "High-pressure Coolant Pressure Selection 2 (Option)",
+      "detail": "This function code selects the 2nd step pressure for the high-pressure coolant pressure. (YMUK high-pressure coolant I/F, YMC super flow)",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 843
+    },
+    {
+      "code": "M102",
+      "description": "High-pressure Coolant Pressure Selection 3 (Option)",
+      "detail": "This function code selects the 3rd step pressure for the high-pressure coolant pressure. (YMUK high-pressure coolant I/F, YMC super flow)",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 843
+    },
+    {
+      "code": "M103",
+      "description": "High-pressure Coolant Pressure Selection 4 (Option)",
+      "detail": "This function code selects the 4th step pressure for the high-pressure coolant pressure. (YMUK high-pressure coolant I/F, YMC super flow)",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 843
+    },
+    {
+      "code": "M104",
+      "description": "High-pressure Coolant Pressure Selection 5 (Option)",
+      "detail": "This function code selects the 5th step pressure for the high-pressure coolant pressure. (YMUK high-pressure coolant I/F, YMC super flow)",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 843
+    },
+    {
+      "code": "M105",
+      "description": "High-pressure Coolant Pressure Selection 6 (Option)",
+      "detail": "This function code selects the 6th step pressure for the high-pressure coolant pressure. (YMUK high-pressure coolant I/F, YMC super flow)",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 843
+    },
+    {
+      "code": "M106",
+      "description": "High-pressure Coolant Pressure Selection 7 (Option)",
+      "detail": "This function code selects the 7th step pressure for the high-pressure coolant pressure. (YMUK high-pressure coolant I/F, YMC super flow)",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 843
+    },
+    {
+      "code": "M107",
+      "description": "B-Axis Clamping",
+      "detail": "This function code activates the clamping mechanism of the B-axis.",
+      "notes": [],
+      "source_page": 843
+    },
+    {
+      "code": "M108",
+      "description": "B-Axis Unclamping",
+      "detail": "This function code deactivates the clamping mechanism of the B-axis.",
+      "notes": [],
+      "source_page": 843
+    },
+    {
+      "code": "M110",
+      "description": "Milling Spindle Clamping",
+      "detail": "This function code activates the clamping mechanism of the milling spindle end.",
+      "notes": [],
+      "source_page": 843
+    },
+    {
+      "code": "M111",
+      "description": "Milling Spindle Unclamping",
+      "detail": "This function code deactivates the clamping mechanism of the milling spindle end.",
+      "notes": [],
+      "source_page": 843
+    },
+    {
+      "code": "M120",
+      "description": "Automatic Power Cutoff",
+      "detail": "This function code cuts off the power at the main power disconnect switch or the power ON button when the automatic power cutoff enable/disable select switch is set to the “enable” position.",
+      "notes": [],
+      "source_page": 843
+    },
+    {
+      "code": "M122",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 843
+    },
+    {
+      "code": "M123",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 843
+    },
+    {
+      "code": "M129",
+      "description": "Flood Air Blast ON (Option)",
+      "detail": "This function code blows out flood air.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 843
+    },
+    {
+      "code": "M130",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 843
+    },
+    {
+      "code": "M131",
+      "description": "High-pressure Through-mill-spindle Coolant ON",
+      "detail": "This function code discharges high-pressure through-mill-spindle coolant.",
+      "notes": [],
+      "source_page": 843
+    },
+    {
+      "code": "M132",
+      "description": "Milling Spindle-Through Air ON",
+      "detail": "This function code supplies milling spindle-through air.",
+      "notes": [],
+      "source_page": 843
+    },
+    {
+      "code": "M134",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 843
+    },
+    {
+      "code": "M137",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 843
+    },
+    {
+      "code": "M138",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 843
+    },
+    {
+      "code": "M139",
+      "description": "Heavy Tool Mode Cancel",
+      "detail": "This function code cancels heavy tool mode.",
+      "notes": [],
+      "source_page": 843
+    },
+    {
+      "code": "M140",
+      "description": "Heavy Tool Mode ON",
+      "detail": "This function code specifies heavy tool mode.",
+      "notes": [],
+      "source_page": 843
+    },
+    {
+      "code": "M149",
+      "description": "Magazine Rotation",
+      "detail": "This function code rotates the magazine to index the magazine pocket specified by “No. ” in “Magazine Select M149T”.",
+      "notes": [],
+      "source_page": 843
+    },
+    {
+      "code": "M155",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 843
+    },
+    {
+      "code": "M160",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 843
+    },
+    {
+      "code": "M163",
+      "description": "Milling Spindle-Through Coolant OFF",
+      "detail": "This function code deactivates coolant injection through the milling spindle.",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M169",
+      "description": "Cancellation of M170",
+      "detail": "This function code makes AFC valid. (AFC is usually valid.)",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M170",
+      "description": "AFC Cancel",
+      "detail": "This function code makes AFC invalid.",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M173",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 844
+    },
+    {
+      "code": "M174",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 844
+    },
+    {
+      "code": "M180",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 844
+    },
+    {
+      "code": "M181",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 844
+    },
+    {
+      "code": "M187",
+      "description": "Laser Tool Length Measuring Setup Confirmation (Option)",
+      "detail": null,
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 844
+    },
+    {
+      "code": "M195",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 844
+    },
+    {
+      "code": "M196",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 844
+    },
+    {
+      "code": "M197",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 844
+    },
+    {
+      "code": "M198",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 844
+    },
+    {
+      "code": "M199",
+      "description": "Not used.",
+      "detail": null,
+      "notes": [
+        "Not used on this machine"
+      ],
+      "source_page": 844
+    },
+    {
+      "code": "M200",
+      "description": "Turning Spindle C-Axis Connect/Milling Mode Select",
+      "detail": "This function code connects the turning spindle to the C-axis and changes the mode to milling.",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M202",
+      "description": "Turning Spindle C-Axis Disconnect/Turning Mode Select",
+      "detail": "This function code disconnects the C-axis from the turning spindle and changes the mode to turning.",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M203",
+      "description": "Start of Forward Turning Spindle Rotation",
+      "detail": "This function code rotates the turning spindle forward.",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M204",
+      "description": "Start of Backward Turning Spindle Rotation",
+      "detail": "This function code rotates the turning spindle backward.",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M205",
+      "description": "Stop of Turning Spindle Rotation",
+      "detail": "This function code stops turning spindle rotation.",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M206",
+      "description": "Turning Spindle Chuck Open",
+      "detail": "This function code opens the chuck of the turning spindle.",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M207",
+      "description": "Turning Spindle Chuck Close",
+      "detail": "This function code closes the chuck of the turning spindle.",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M210",
+      "description": "Turning Spindle C-Axis Clamping",
+      "detail": "This function code activates the C-axis clamping mechanism to clamp the C-axis when the turning spindle is connected to the C-axis. During high-speed positioning that requires high accuracy or during machining with EIA programs, apply the low-pressure brake as necessary using the relevant M codes.",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M211",
+      "description": "Turning Spindle C-Axis Braking",
+      "detail": "This function code activates the C-axis braking mechanism to brake the C-axis when the turning spindle is connected to the C-axis. During high-speed positioning that requires high accuracy or during machining with EIA programs, apply the low-pressure brake as necessary using the relevant M codes.",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M212",
+      "description": "Turning Spindle C-Axis Unclamping",
+      "detail": "This function code deactivates the C-axis clamping mechanism and braking mechanism when the turning spindle is connected to the C-axis.",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M219",
+      "description": "Turning Spindle Orientation",
+      "detail": "This function code orientates the turning spindle to a reference angle and stops it there.",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M231",
+      "description": "Tailstock Forward",
+      "detail": "This function code moves the tailstock forward.",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M232",
+      "description": "Tailstock Backward",
+      "detail": "This function code moves the tailstock backward.",
+      "notes": [],
+      "source_page": 844
+    },
+    {
+      "code": "M234",
+      "description": "Turning Spindle (No. 1) Chuck Clamp Pressure HIGH Select (Option)",
+      "detail": "This function code changes the gripping pressure of the turning spindle (No. 1) chuck to a high pressure.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 845
+    },
+    {
+      "code": "M238",
+      "description": "Putting the turning spindle gear shift mechanism into a low-speed position.",
+      "detail": null,
+      "notes": [],
+      "source_page": 845
+    },
+    {
+      "code": "M239",
+      "description": "Putting the turning spindle gear shift mechanism into a high-speed position.",
+      "detail": null,
+      "notes": [],
+      "source_page": 845
+    },
+    {
+      "code": "M240",
+      "description": "Putting the turning spindle gear shift mechanism into neutral.",
+      "detail": null,
+      "notes": [],
+      "source_page": 845
+    },
+    {
+      "code": "M241",
+      "description": "Turning Spindle Motor High-Speed Coil Select",
+      "detail": "This function code shifts the coils of the turning spindle motor to the high-speed position.",
+      "notes": [],
+      "source_page": 845
+    },
+    {
+      "code": "M243",
+      "description": "Turning Spindle Motor Low-Speed Coil Select",
+      "detail": "This function code shifts the coils of the turning spindle motor to the low-speed position. During power-on, this state is set automatically.",
+      "notes": [],
+      "source_page": 845
+    },
+    {
+      "code": "M253",
+      "description": "Chamfering OFF",
+      "detail": null,
+      "notes": [],
+      "source_page": 845
+    },
+    {
+      "code": "M254",
+      "description": "Chamfering ON",
+      "detail": null,
+      "notes": [],
+      "source_page": 845
+    },
+    {
+      "code": "M256",
+      "description": "Front Door (Top Door) Open (Option)",
+      "detail": "When a front door automatic open/close option is provided, this function code opens the front door automatically. When an optional gantry robot is provided, this function code opens the top door (overhead door) automatically.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 845
+    },
+    {
+      "code": "M258",
+      "description": "Turning Spindle Air Blast ON (Option)",
+      "detail": "This function code activates turning spindle air blasting. At this time, the turning spindle rotates at about min–1. 50 Air blasting stops after the elapse of the timer-set time. Timer setting: PLC parameter TIM75.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 845
+    },
+    {
+      "code": "M259",
+      "description": "Turning Spindle Air Blast OFF (Option)",
+      "detail": "This function code stops turning spindle air blasting.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 845
+    },
+    {
+      "code": "M264",
+      "description": "Turning Spindle Jaw Coolant ON (Option)",
+      "detail": "This function code activates turning spindle jaw coolant injection.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 845
+    },
+    {
+      "code": "M265",
+      "description": "Turning Spindle Jaw Coolant OFF (Option)",
+      "detail": "This function code stops turning spindle jaw coolant injection.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 845
+    },
+    {
+      "code": "M266",
+      "description": "Turning Spindle Shower Coolant ON (Option)",
+      "detail": "This function code activates turning spindle shower coolant injection.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 845
+    },
+    {
+      "code": "M267",
+      "description": "Turning Spindle Shower Coolant OFF (Option)",
+      "detail": "This function code deactivates turning spindle shower coolant injection",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 845
+    },
+    {
+      "code": "M268",
+      "description": "Turning Spindle-Through Coolant ON (Option)",
+      "detail": "This function code activates turning spindle-through coolant injection.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 845
+    },
+    {
+      "code": "M269",
+      "description": "Turning Spindle-Through Coolant OFF (Option)",
+      "detail": "This function code deactivates turning spindle-through coolant injection.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 845
+    },
+    {
+      "code": "M270",
+      "description": "Turning Spindle-Through Air Blast ON (Option)",
+      "detail": "This function code activates turning spindle-through air blasting.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 845
+    },
+    {
+      "code": "M271",
+      "description": "Turning Spindle-Through Air Blast OFF (Option)",
+      "detail": "This function code stops turning spindle-through air blasting.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 845
+    },
+    {
+      "code": "M272",
+      "description": "Turning Spindle (No. 1) Chuck, ID Chucking Selection",
+      "detail": "This function code sets the chucking direction of the turning spindle (No. 1) to ID chucking.",
+      "notes": [],
+      "source_page": 845
+    },
+    {
+      "code": "M273",
+      "description": "Turning Spindle (No. 1) Chuck, OD Chucking Selection",
+      "detail": "This function code sets the chucking direction of the turning spindle (No. 1) to OD chucking.",
+      "notes": [],
+      "source_page": 845
+    },
+    {
+      "code": "M281",
+      "description": "Touch probe ON (option)",
+      "detail": "This function code turns the touch type sensor probe mounted in the milling spindle ON.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 845
+    },
+    {
+      "code": "M282",
+      "description": "Touch probe OFF (option)",
+      "detail": "This function code turns the touch type sensor probe mounted in the milling spindle OFF.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 845
+    },
+    {
+      "code": "M283",
+      "description": "Tool Measurement Start (Option)",
+      "detail": "This function code extends the TOOL EYE arm for tool measurement.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 845
+    },
+    {
+      "code": "M285",
+      "description": "Work Rest 1 Coolant ON (Option)",
+      "detail": "This function code activates coolant injection for single work rest.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M286",
+      "description": "Work Rest 1 Coolant OFF (Option)",
+      "detail": "This function code deactivates coolant injection for single work rest.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M287",
+      "description": "Work Rest 2 Coolant ON (Option)",
+      "detail": "This function code activates coolant injection for double work rest.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M288",
+      "description": "Work Rest 2 Coolant OFF (Option)",
+      "detail": "This function code deactivates coolant injection for double work rest.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M292",
+      "description": "Work Rest 1 Unclamp (Option)",
+      "detail": "For single work rest (single base): This function code opens jaws of work rest 1. (Option) For double work rest (single base): This function code opens jaw 1 of work rest 1. (Option) For single work rest (double base): This function code opens jaws of work rest 1. (Option)",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M293",
+      "description": "Work Rest 1 Clamp (Option)",
+      "detail": "For single work rest (single base): This function code closes jaws of work rest 1. (Option) For double work rest (single base): This function code closes jaw 1 of work rest 1. (Option) For single work rest (double base): This function code closes jaws of work rest 1. (Option)",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M294",
+      "description": "Work Rest 2 Unclamp (Option)",
+      "detail": "For double work rest (single base): This function code opens jaw 2 of work rest 1. (Option) For single work rest (double base): This function code opens jaws of work rest 2. (Option)",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M295",
+      "description": "Work Rest 2 Clamp (Option)",
+      "detail": "For double work rest (single base): This function code closes jaw 2 of work rest 1. (Option) For single work rest (double base): This function code closes jaws of work rest 2. (Option)",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M300",
+      "description": "Turning Spindle No. 2 C-Axis Connect/Milling Mode Select",
+      "detail": "This function code connects the turning spindle No. 2 to the C-axis and changes the mode to milling.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M302",
+      "description": "Turning Spindle No. 2 C-Axis Disconnect/Turning Mode Select",
+      "detail": "This function code disconnects the C-axis from the turning spindle No. 2 and changes the mode to turning.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M303",
+      "description": "Start of Forward Turning Spindle No. 2 Rotation",
+      "detail": "This function code rotates the turning spindle No. 2 forward.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M304",
+      "description": "Start of Backward Turning Spindle No. 2 Rotation",
+      "detail": "This function code rotates the turning spindle No. 2 backward.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M305",
+      "description": "Stop of Turning Spindle No. 2 Rotation",
+      "detail": "This function code stops turning spindle No. 2 rotation.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M306",
+      "description": "Turning Spindle No. 2 Chuck Open",
+      "detail": "This function code opens the chuck of the turning spindle No. 2.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M307",
+      "description": "Turning Spindle No. 2 Chuck Close",
+      "detail": "This function code closes the chuck of the turning spindle No. 2.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M310",
+      "description": "Turning Spindle No. 2 C-Axis Clamping",
+      "detail": "This function code activates the C-axis clamping mechanism to clamp the C-axis when the turning spindle No. 2 is connected to the C-axis. During high-speed positioning that requires high accuracy or during machining with EIA programs, apply the low-pressure brake as necessary using the relevant M codes.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M311",
+      "description": "Turning Spindle No. 2 C-Axis Braking",
+      "detail": "This function code activates the C-axis braking mechanism to brake the C-axis when the turning spindle No. 2 is connected to the C-axis. During high-speed positioning that requires high accuracy or during machining with EIA programs, apply the low-pressure brake as necessary using the relevant M codes.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M312",
+      "description": "Turning Spindle No. 2 C-Axis Unclamping",
+      "detail": "This function code deactivates the C-axis clamping mechanism and braking mechanism when the turning spindle No. 2 is connected to the C-axis. there.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 846
+    },
+    {
+      "code": "M333",
+      "description": "Turning Spindle (No. 2) Chuck Clamp Pressure LOW Select (Option)",
+      "detail": "This function code changes the gripping pressure of the turning spindle (No. 2) chuck to a low pressure.",
+      "notes": [
+        "*1: Only for turning spindle No. 2",
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M334",
+      "description": "Turning Spindle (No. 2) Chuck Clamp Pressure HIGH Select (Option)",
+      "detail": "This function code changes the gripping pressure of the turning spindle (No. 2) chuck to a high pressure.",
+      "notes": [
+        "*1: Only for turning spindle No. 2",
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M341",
+      "description": "Turning Spindle No. 2 Motor High-Speed Coil Select",
+      "detail": "This function code shifts the coils of the turning spindle No. 2 motor to the high-speed position.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M343",
+      "description": "Turning Spindle No. 2 Motor Low-Speed Coil Select",
+      "detail": "This function code shifts the coils of the turning spindle No. 2 motor to the low-speed position. During power-on, this state is set automatically.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M358",
+      "description": "Turning Spindle No. 2 Air Blast ON",
+      "detail": "This function code activates turning spindle No. 2 air blasting. At this time, the turning spindle No. 2 rotates min–1. at about 50 Air blasting stops after the elapse of the timer-set time. Timer setting: PLC parameter TIM76.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M359",
+      "description": "Turning Spindle No. 2 Air Blast OFF",
+      "detail": "This function code stops turning spindle No. 2 air blasting.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M364",
+      "description": "Turning Spindle No. 2 Jaw Coolant ON (Option)",
+      "detail": "This function code activates turning spindle No. 2 jaw coolant injection.",
+      "notes": [
+        "*1: Only for turning spindle No. 2",
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M365",
+      "description": "Turning Spindle No. 2 Jaw Air Coolant OFF (Option)",
+      "detail": "This function code stops turning spindle No. 2 jaw coolant injection",
+      "notes": [
+        "*1: Only for turning spindle No. 2",
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M366",
+      "description": "Turning Spindle No. 2 Shower Coolant ON (Option)",
+      "detail": "This function code activates turning spindle No. 2 shower coolant injection.",
+      "notes": [
+        "*1: Only for turning spindle No. 2",
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M367",
+      "description": "Turning Spindle No. 2 Shower Coolant OFF (Option)",
+      "detail": "This function code deactivates turning spindle No. 2 shower coolant injection",
+      "notes": [
+        "*1: Only for turning spindle No. 2",
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M368",
+      "description": "Turning Spindle No. 2 Spindle-Through Coolant ON (Option)",
+      "detail": "This function code activates turning spindle-through coolant injection on turning spindle No. 2 side.",
+      "notes": [
+        "*1: Only for turning spindle No. 2",
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M369",
+      "description": "Turning Spindle No. 2 Spindle-Through Coolant OFF (Option)",
+      "detail": "This function code deactivates turning spindle-through coolant injection on turning spindle No. 2 side.",
+      "notes": [
+        "*1: Only for turning spindle No. 2",
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M370",
+      "description": "Turning Spindle No. 2 Spindle-Through Air Blast ON (Option)",
+      "detail": "This function code activates turning spindle-through air blasting on turning spindle No. 2 side.",
+      "notes": [
+        "*1: Only for turning spindle No. 2",
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M371",
+      "description": "Turning Spindle No. 2 Spindle-Through Air Blast OFF (Option)",
+      "detail": "This function code stops turning spindle-through air blasting on turning spindle No. 2 side.",
+      "notes": [
+        "*1: Only for turning spindle No. 2",
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M372",
+      "description": "Turning Spindle (No. 2) Chuck, ID Chucking Selection",
+      "detail": "This function code sets the chucking direction of the turning spindle (No. 2) to ID chucking.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M373",
+      "description": "Turning Spindle (No. 2) Chuck, OD Chucking Selection",
+      "detail": "This function code sets the chucking direction of the turning spindle (No. 2) to OD chucking.",
+      "notes": [
+        "*1: Only for turning spindle No. 2"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M400",
+      "description": "External M-Code Output 1 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M401",
+      "description": "External M-Code Output 2 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M402",
+      "description": "External M-Code Output 3 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M403",
+      "description": "External M-Code Output 4 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M404",
+      "description": "External M-Code Output 5 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M405",
+      "description": "External M-Code Output 6 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M406",
+      "description": "External M-Code Output 7 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 847
+    },
+    {
+      "code": "M408",
+      "description": "External M-Code Output 9 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M409",
+      "description": "External M-Code Output 10 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M410",
+      "description": "External M-Code Output 11 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M411",
+      "description": "External M-Code Output 12 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M412",
+      "description": "External M-Code Output 13 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M413",
+      "description": "External M-Code Output 14 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M414",
+      "description": "External M-Code Output 15 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M415",
+      "description": "External M-Code Output 16 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M416",
+      "description": "External M-Code Output 17 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M417",
+      "description": "External M-Code Output 18 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M418",
+      "description": "External M-Code Output 19 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M419",
+      "description": "External M-Code Output 20 (Option)",
+      "detail": "This function code sends M-codes to externally connected units.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M540",
+      "description": "TRANSFER mode ON (only for INTEGREX e-670H-S)",
+      "detail": "This function code makes the workpiece transfer mode (from turning spindle No. 1 to turning spindle No. 2 or vice versa) valid.",
+      "notes": [],
+      "source_page": 848
+    },
+    {
+      "code": "M541",
+      "description": "TRANSFER mode OFF (only for INTEGREX e-670H-S)",
+      "detail": "This function code makes the workpiece transfer mode (from turning spindle No. 1 to turning spindle No. 2 or vice versa) invalid.",
+      "notes": [],
+      "source_page": 848
+    },
+    {
+      "code": "M542",
+      "description": "TRANSFER BAR mode ON (only for INTEGREX e-670H-S)",
+      "detail": "This function code makes the workpiece gripping, synchronized rechucking and synchronized cutting-off modes with both turning spindle No. 1 and turning spindle No. 2 valid.",
+      "notes": [],
+      "source_page": 848
+    },
+    {
+      "code": "M543",
+      "description": "TRANSFER BAR mode OFF (only for INTEGREX e-670H-S)",
+      "detail": "This function code makes the workpiece gripping, synchronized rechucking and synchronized cutting-off modes with both turning spindle No. 1 and turning spindle No. 2 invalid.",
+      "notes": [],
+      "source_page": 848
+    },
+    {
+      "code": "M557",
+      "description": "High-pressure Coolant Pressure Setting Cancel (Option)",
+      "detail": "This function code cancels the YMC super flow pressure setting.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M610",
+      "description": "Grinder Mode ON (Option)",
+      "detail": "This function code rotates the turning spindle and the milling spindle at the same time and makes grinder machining function mode valid. At this time, however, the operation of the two spindles is not synchronized.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M611",
+      "description": "Grinder Milling Spindle Speed Set (Option)",
+      "detail": "This function code sets the milling spindle speed for grinder machining. min–1. “M611S”: The milling spindle rotates at ",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M612",
+      "description": "Grinder Mode OFF (Option)",
+      "detail": "This function code makes M610 invalid.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M613",
+      "description": "Mist Collector ON (Option)",
+      "detail": "This function code starts the mist collector.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M614",
+      "description": "Mist Collector OFF (Option)",
+      "detail": "This function code stops the operation of the mist collector.",
+      "notes": [
+        "Option — not fitted on every machine"
+      ],
+      "source_page": 848
+    },
+    {
+      "code": "M673",
+      "description": "Long Boring Bar Coolant OFF",
+      "detail": "This function code stops long boring bar coolant.",
+      "notes": [],
+      "source_page": 849
+    },
+    {
+      "code": "M674",
+      "description": "Long Boring Bar Air Blow ON",
+      "detail": "This function code discharges long boring bar air blow.",
+      "notes": [],
+      "source_page": 849
+    },
+    {
+      "code": "M675",
+      "description": "Long Boring Bar Air Blow OFF",
+      "detail": "This function code stops long boring bar air blow.",
+      "notes": [],
+      "source_page": 849
+    },
+    {
+      "code": "M831",
+      "description": "Tailstock Thrust Setup",
+      "detail": "This function code sets the thrust of the tailstock.",
+      "notes": [],
+      "source_page": 849
+    },
+    {
+      "code": "M841",
+      "description": "Tailstock Movement to “Position 1”",
+      "detail": "This function code moves the tailstock to TAIL POS. 1 specified in the setup data.",
+      "notes": [],
+      "source_page": 849
+    },
+    {
+      "code": "M842",
+      "description": "Tailstock Movement to “Position 2”",
+      "detail": "This function code moves the tailstock to TAIL POS. 2 specified in the setup data.",
+      "notes": [],
+      "source_page": 849
+    },
+    {
+      "code": "M843",
+      "description": "Tailstock Movement to “Reverse Position”",
+      "detail": "This function code moves the tailstock to the second zero point.",
+      "notes": [],
+      "source_page": 849
+    },
+    {
+      "code": "M844",
+      "description": "Tailstock Interlock Cancel",
+      "detail": "This function code allows spindle rotation, regardless of the current position of the tailstock.",
+      "notes": [],
+      "source_page": 849
+    },
+    {
+      "code": "M845",
+      "description": "Cancellation of M844",
+      "detail": "This function code cancels the M844 mode.",
+      "notes": [],
+      "source_page": 849
+    },
+    {
+      "code": "M998",
+      "description": "Program Chain (WNo. Search  Cycle Start)",
+      "detail": "Regarded as the end of the program, and cyclically starts the next program after executing the number search for the program.",
+      "notes": [],
+      "source_page": 849
+    },
+    {
+      "code": "M999",
+      "description": "Program Chain (WNo. Search Only)",
+      "detail": "Regarded as the end of the program, and terminates operation with the number search for the next program. Note : M-codes that cannot undergo simultaneous processing Although up to four M-codes can be included in one block, if M-codes that cannot undergo simultaneous processing are included in the program, alarm 227 SIMULTANEOUS M CODE OPERATION will be displayed and operation will come to a feed-hold stop. 4-10 E",
+      "notes": [],
+      "source_page": 849
+    }
+  ]
+}

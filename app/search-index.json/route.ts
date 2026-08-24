@@ -1,6 +1,7 @@
 import { getAllAlarms } from "@/lib/alarmData";
 import { getAllParameterPages } from "@/lib/parameterData";
-import type { AlarmTuple, ParamTuple, SearchIndex } from "@/lib/searchIndex";
+import { getAllMCodes } from "@/lib/mcodeData";
+import type { AlarmTuple, MCodeTuple, ParamTuple, SearchIndex } from "@/lib/searchIndex";
 
 // Emitted as a static file at build time (like the sitemap). This is the
 // only data the browser needs for search: the 1.8 MB parameter file and
@@ -27,7 +28,12 @@ export function GET() {
       if (b.name && b.name !== "—") p.push([page.slug, page.address, b.bit, b.name, g, c]);
     }
   }
-  const body: SearchIndex = { v: 1, groups, categories, a, p };
+  // "Not used" codes stay searchable — "is M47 used?" deserves a hit — but
+  // are flagged so the card can say so instead of showing a blank name.
+  const m: MCodeTuple[] = getAllMCodes().map((x) =>
+    x.notUsed ? [x.code, "Not used on this machine", 1] : [x.code, x.description],
+  );
+  const body: SearchIndex = { v: 1, groups, categories, a, p, m };
   return new Response(JSON.stringify(body), {
     headers: {
       "Content-Type": "application/json; charset=utf-8",

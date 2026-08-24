@@ -1,17 +1,18 @@
 import type { SearchIndex } from "./searchIndex";
 
-export type ResultType = "alarm" | "param";
+export type ResultType = "alarm" | "param" | "mcode";
 export type Severity = "critical" | "warning" | "notice";
 
 export interface SearchResult {
   type: ResultType;
   key: string;
   href: string;
-  code: string;          // "221" or "F91" / "D91 bit 3"
+  code: string;          // "221", "F91" / "D91 bit 3", "M30"
   name: string;
   severity?: Severity;   // alarms
   group?: string;        // parameters
   category?: string;     // parameters
+  notUsed?: boolean;     // M-codes: "Not used" placeholder
 }
 
 interface Entry extends SearchResult {
@@ -36,13 +37,21 @@ export function expandIndex(ix: SearchIndex): Entry[] {
                code, name, group: ix.groups[g], category: ix.categories[cat],
                codeL: code.toLowerCase(), nameL: name.toLowerCase(), digits: address.replace(/\D/g, "") });
   }
+  for (const [code, name, u] of ix.m ?? []) {
+    out.push({ type: "mcode", key: `m${code}`, href: `/mcodes/${code}`, code, name, notUsed: u === 1,
+               codeL: code.toLowerCase(), nameL: name.toLowerCase(),
+               digits: String(Number(code.slice(1))) });
+  }
   return out;
 }
 
-// Rank: exact code (alarms first) > code prefix > code contains / numeric
-// part match > name word-start > name contains. Ties keep index order,
-// which is ascending code within each dataset.
-export function search(entries: Entry[], query: string, limit = 200): { results: SearchResult[]; total: number } {
+// Rank: exact code (alarms first, then parameters, then M-codes) > code
+// prefix > code contains / numeric part match > name word-start > name
+// contains. Ties keep index order, which is ascending code within each
+// dataset.
+// Returns every match, ranked; the caller caps what it renders (after any
+// type filter, so a filter can reach matches beyond the display cap).
+export function search(entries: Entry[], query: string): { results: SearchResult[]; total: number } {
   const q = query.trim().toLowerCase();
   if (!q) return { results: [], total: 0 };
   const isNum = /^\d+$/.test(q);
@@ -55,8 +64,8 @@ export function search(entries: Entry[], query: string, limit = 200): { results:
     else if (e.codeL.includes(q) || (isNum && e.digits.includes(q))) score = 2;
     else if (e.nameL.startsWith(q) || e.nameL.includes(" " + q)) score = 3;
     else if (e.nameL.includes(q)) score = 4;
-    if (score >= 0) scored.push([score * 2 + (e.type === "alarm" ? 0 : 1), i, e]);
+    if (score >= 0) scored.push([score * 3 + (e.type === "alarm" ? 0 : e.type === "param" ? 1 : 2), i, e]);
   });
   scored.sort((x, y) => x[0] - y[0] || x[1] - y[1]);
-  return { results: scored.slice(0, limit).map((s) => s[2]), total: scored.length };
+  return { results: scored.map((s) => s[2]), total: scored.length };
 }

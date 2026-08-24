@@ -1,5 +1,6 @@
 import { getAllAlarms } from "@/lib/alarmData";
 import { getAllParameterPages } from "@/lib/parameterData";
+import { getAllMCodes } from "@/lib/mcodeData";
 import type { SearchResult } from "@/lib/search";
 import { Hub } from "./Hub";
 
@@ -13,5 +14,5 @@ export default function Home() {
     const a = alarms.find((x) => x.severity === sev);
     if (a) sample.push({ type: "alarm", key: `a${a.code}`, href: `/alarms/${a.code}`, code: String(a.code), name: a.message, severity: a.severity });
   }
-  return <Hub seed={{ counts: { alarms: alarms.length, params: getAllParameterPages().length }, sample }} />;
+  return <Hub seed={{ counts: { alarms: alarms.length, params: getAllParameterPages().length, mcodes: getAllMCodes().length }, sample }} />;
 }
