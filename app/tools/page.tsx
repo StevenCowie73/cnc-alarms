@@ -35,6 +35,13 @@ const TOOLS = [
     blurb:
       "Any two of radius, chord, included angle, arc length and rise — get the other three, exact. Plus slot patterns on a diameter: the angle each feature subtends, C-axis centrelines, and leading/trailing edge angles, ready for the program.",
   },
+  {
+    href: "/tools/wear-comp",
+    name: "Wear Comp Calculator",
+    formula: "øX = 2·(target−measured)/cos",
+    blurb:
+      "Measured vs target → the signed WEAR COMP øX value, direction stated in plain words. The diameter-vs-radius ×2 trap and the cos correction for faces measured square to a taper are shown step by step, never applied silently.",
+  },
 ];
 
 export default function ToolsIndex() {
@@ -125,7 +132,7 @@ export default function ToolsIndex() {
       </div>
 
       <p className="flow-empty" style={{ marginTop: 24 }}>
-        — more tools coming: wear comp helper —
+        — more tools as real jobs need them —
       </p>
     </main>
   );
