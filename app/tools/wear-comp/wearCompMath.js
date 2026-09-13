@@ -13,8 +13,16 @@
 //        radial tool move when you measure square (normal) to the face,
 //        so a normal-measured error needs DIVIDING by cos(A) on its way
 //        to the comp: comp = 2·(target − measured) / cos(A).
-//        A = 0 is a straight diameter (full effect); A = 90 is a square
-//        shoulder face (X does nothing — that's a Z correction).
+//        The maths runs from A = 0 (a straight diameter, full effect) to
+//        A = 90 (a square shoulder, where X does nothing — that's a Z
+//        correction), but solveTaper accepts NEITHER end:
+//          A = 0  is refused — it is not a taper at all, and solveSize
+//                 already does that case properly on a diameter or
+//                 per-side reading.
+//          A = 90 is refused — no øX move can shift a square face.
+//        So solveTaper's domain is 0 < A < 90. Whether A = 0 should instead
+//        be accepted and routed to the same answer as solveSize is an open
+//        question, deliberately left alone for now.
 
 const RAD = Math.PI / 180;
 
@@ -60,8 +68,12 @@ export function solveTaper({ measured, target, angleDeg }) {
     errs.push("Measured needs a number, 0 or more — the reading square off the face.");
   if (!Number.isFinite(target) || target < 0)
     errs.push("Target needs a number, 0 or more — use 0 if the face should clean up flush.");
-  if (!Number.isFinite(angleDeg) || angleDeg <= 0)
-    errs.push("Face angle needs a number over 0° — the angle between the face and the part centreline (45 for a 45° face).");
+  if (!Number.isFinite(angleDeg))
+    errs.push("Face angle needs a number — the angle between the face and the part centreline (45 for a 45° face).");
+  else if (angleDeg === 0)
+    errs.push("A 0° face is a straight diameter, not a taper — use the plain size mode above (measured on diameter, or per side), which handles it. This mode wants a face angle over 0°.");
+  else if (angleDeg < 0)
+    errs.push(`A face angle of ${angleDeg}° is below zero — measure the angle between the face and the part centreline, as a positive number (45 for a 45° face).`);
   else if (angleDeg >= 90)
     errs.push(`A ${angleDeg}° face is square to the axis (or past it) — an X comp can't move it. That's a Z correction, not øX.`);
   if (errs.length) return { errs };

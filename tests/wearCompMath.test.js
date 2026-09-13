@@ -111,14 +111,20 @@ describe("solveTaper on an angled face (the cos trap)", () => {
     expect(result.comp).toBeCloseTo(2 * (10.0 - 10.02), 9);
   });
 
-  it("treats a zero degree face as a straight diameter at full effect", () => {
-    // FLAGGED: the module header says "A = 0 is a straight diameter (full
-    // effect)", which reads as a valid, meaningful case, but the validation
-    // rejects angleDeg <= 0. Comment and code disagree; this is the test the
-    // comment implies.
-    const { result, errs } = solveTaper({ measured: 10.02, target: 10.0, angleDeg: 0 });
-    expect(errs, `angleDeg 0 was rejected: ${JSON.stringify(errs)}`).toBeUndefined();
-    expect(result.comp).toBeCloseTo(2 * (10.0 - 10.02), 12);
+  it("refuses a zero degree face and points at the plain size mode", () => {
+    // Behaviour deliberately unchanged: a 0 degree face is not a taper, and
+    // solveSize already does that case. The message now says which mode to
+    // use instead of only "over 0". Whether 0 should be ACCEPTED and routed
+    // to the solveSize answer is an open question, not settled here.
+    const { errs } = solveTaper({ measured: 10.02, target: 10.0, angleDeg: 0 });
+    expect(errs).toBeDefined();
+    expect(errs.join(" ")).toContain("straight diameter");
+    expect(errs.join(" ")).toContain("per side");
+  });
+
+  it("refuses a negative face angle with its own message", () => {
+    const { errs } = solveTaper({ measured: 0.1, target: 0, angleDeg: -45 });
+    expect(errs.join(" ")).toContain("below zero");
   });
 });
 
