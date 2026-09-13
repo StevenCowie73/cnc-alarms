@@ -157,12 +157,34 @@ describe("solveChord input validation", () => {
     expect(solveChord({ arc: full.arc, rise: full.rise }).errs.join(" ")).toContain("two possible answers");
   });
 
-  it("never returns a segment of a full circle or more", () => {
-    // The module refuses an INPUT angle of 360 or more because "a chord needs
-    // less than 360". A result it computes itself must obey the same rule.
+  it("accepts a computed full circle: rise equal to the diameter is 360 degrees", () => {
+    // Ruled correct: when the rise equals the diameter the arc closes on
+    // itself, so 360 is the right answer, not an error. The input-angle check
+    // still refuses a TYPED 360; only a computed one is allowed.
     const { result, errs } = solveChord({ radius: 1, rise: 2 });
-    if (result) expect(result.angleDeg).toBeLessThan(360);
-    else expect(errs.length).toBeGreaterThan(0);
+    expect(errs, `unexpected errors: ${JSON.stringify(errs)}`).toBeUndefined();
+    expect(result.angleDeg).toBeCloseTo(360, 9);
+    expect(result.arc).toBeCloseTo(2 * Math.PI, 9);
+    expect(result.chord).toBeCloseTo(0, 9);
+  });
+
+  it("refuses a rise past the diameter, which is the only way past a full circle", () => {
+    // 360 is the ceiling every path is bounded by, so the input guard on rise
+    // is what keeps a computed angle from ever exceeding it.
+    expect(solveChord({ radius: 1, rise: 2.0001 }).errs.join(" ")).toContain("sagitta");
+  });
+
+  it("never computes more than a full circle from any valid pair", () => {
+    // Sweep the whole supported range rather than trusting one example.
+    const R = 2;
+    for (let deg = 1; deg < 360; deg += 1) {
+      const full = expected(R, deg / DEG);
+      for (const [a, b] of [["angleDeg", "radius"], ["arc", "radius"],
+                            ["radius", "rise"], ["chord", "rise"], ["arc", "chord"]]) {
+        const { result } = solveChord({ [a]: full[a], [b]: full[b] });
+        if (result) expect(result.angleDeg, `${a}+${b} at ${deg} deg`).toBeLessThanOrEqual(360 + 1e-9);
+      }
+    }
   });
 });
 

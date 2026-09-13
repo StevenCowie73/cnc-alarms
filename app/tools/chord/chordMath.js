@@ -124,6 +124,13 @@ export function solveChord(values) {
 
   if (!(R > 0) || !(theta > 0) || !Number.isFinite(R) || !Number.isFinite(theta))
     return { errs: ["These two numbers don't make a valid chord — check them against the print."] };
+  // A computed full circle is legitimate: a rise equal to the diameter means
+  // the arc closes on itself, and 360° is the right answer. MORE than a full
+  // circle is not. This bound is deliberately > and not >=, unlike the
+  // input-angle check above, which rejects a typed 360 because nobody types a
+  // full circle into a chord calculator on purpose.
+  if (theta > 2 * Math.PI + 1e-9)
+    return { errs: ["These two numbers work out to more than a full circle — check them against the print."] };
   return { result: deriveAll(R, theta), given };
 }
 
