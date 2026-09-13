@@ -23,6 +23,8 @@ const IX: SearchIndex = {
     [310, "MIS-SET G CODE", "n"],
     [500, "Coolant pressure low", "c"],
     [612, "Retooling fault", "n"],
+    [715, "NO NOM-\u03c6 DATA IN PROGRAM", "n"],
+    [720, "\u00d8bore undersize", "n"],
   ],
   p: [
     ["f91", "F91", null, "Feed rate clamp", 0, 0],
@@ -38,6 +40,7 @@ const IX: SearchIndex = {
     ["G43", "Tool length comp"],
     ["G43.4", "Tool centre point control"],
     ["G05", "Coolant lookahead"],
+    ["G81", "Bore cycle"],
   ],
 };
 
@@ -147,13 +150,32 @@ describe("search: ranking tiers", () => {
   });
 
   it("ranks a hyphenated word-start as a word start", () => {
-    // FLAGGED: the comment says the tier is "name word-start", and a hyphen
-    // reads as a word boundary. "MIS-SET G CODE" should therefore outrank
-    // "Offsetting error", which only contains "set" inside a word. The index
-    // deliberately lists Offsetting FIRST, so index order alone cannot pass
-    // this test.
+    // A hyphen is a word boundary, so "MIS-SET G CODE" is a word-start match
+    // for "set" and outranks "Offsetting error", which only contains it
+    // mid-word. The index lists Offsetting FIRST, so index order alone cannot
+    // pass this test.
     const order = codes("set");
     expect(order.indexOf("310")).toBeLessThan(order.indexOf("410"));
+  });
+
+  it("treats a non-ASCII letter as part of a word, not as a separator", () => {
+    // "\u00d8bore undersize" contains "bore" directly after a letter, so it is
+    // NOT a word start; "Bore cycle" is. A \\w-based boundary would call
+    // \u00d8 a separator and wrongly promote the alarm above the G-code, which
+    // the type ranking would then hide. This ordering only holds if the
+    // boundary test is Unicode-aware.
+    const order = codes("bore");
+    expect(order).toContain("G81");
+    expect(order).toContain("720");
+    expect(order.indexOf("G81")).toBeLessThan(order.indexOf("720"));
+  });
+
+  it("handles a Greek letter in a name without breaking the boundary logic", () => {
+    // Real alarm name from this repo's data.
+    expect(codes("data")).toContain("715");
+    expect(codes("nom")).toContain("715");
+    // The Greek letter itself sits after a hyphen, so it is a word start.
+    expect(codes("\u03c6")).toContain("715");
   });
 
   it("is case insensitive on both code and name", () => {

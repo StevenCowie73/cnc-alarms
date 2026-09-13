@@ -52,6 +52,21 @@ export function expandIndex(ix: SearchIndex): Entry[] {
   return out;
 }
 
+// A word boundary for ranking purposes: anything that is not a letter or a
+// digit separates words. Space, hyphen, slash, bracket and comma all count,
+// so "MIS-SET G CODE" is a word-start match for "set". Unicode-aware on
+// purpose: a name like "NO NOM-\u03c6 DATA IN PROGRAM" contains a Greek
+// letter, and \p{L} keeps it a word character rather than treating it as a
+// separator and inventing a boundary that is not there.
+const WORD_CHAR = /[\p{L}\p{N}]/u;
+
+function isWordStart(haystack: string, needle: string): boolean {
+  for (let i = haystack.indexOf(needle); i !== -1; i = haystack.indexOf(needle, i + 1)) {
+    if (i === 0 || !WORD_CHAR.test(haystack[i - 1])) return true;
+  }
+  return false;
+}
+
 // Rank: exact code (alarms first, then parameters, M-codes, G-codes) >
 // code prefix > code contains / numeric part match > name word-start >
 // name contains. Ties keep index order, which is ascending code within
@@ -69,7 +84,7 @@ export function search(entries: Entry[], query: string): { results: SearchResult
     else if (e.codeL.startsWith(q)) score = 1;
     else if (isNum && e.digits === q) score = 1;
     else if (e.codeL.includes(q) || (isNum && e.digits.includes(q))) score = 2;
-    else if (e.nameL.startsWith(q) || e.nameL.includes(" " + q)) score = 3;
+    else if (isWordStart(e.nameL, q)) score = 3;
     else if (e.nameL.includes(q)) score = 4;
     if (score >= 0)
       scored.push([
